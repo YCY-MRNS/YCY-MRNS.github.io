@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on ChangYue</title>
-    <link>https://ycy-mrns.github.io/categories/</link>
+    <link>http://ycy-mrns.github.io/categories/</link>
     <description>Recent content in Categories on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 06 Aug 2019 22:06:24 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 10:26:14 +0800</lastBuildDate>
     
-	<atom:link href="https://ycy-mrns.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ycy-mrns.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>英语单词</title>
+      <link>http://ycy-mrns.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</link>
+      <pubDate>Wed, 07 Aug 2019 10:26:14 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Category 1</title>
-      <link>https://ycy-mrns.github.io/categories/category-1/</link>
+      <link>http://ycy-mrns.github.io/categories/category-1/</link>
       <pubDate>Tue, 06 Aug 2019 22:06:24 +0800</pubDate>
       
-      <guid>https://ycy-mrns.github.io/categories/category-1/</guid>
+      <guid>http://ycy-mrns.github.io/categories/category-1/</guid>
       <description></description>
     </item>
     

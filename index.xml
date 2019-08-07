@@ -2,39 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ChangYue</title>
-    <link>https://ycy-mrns.github.io/</link>
+    <link>http://ycy-mrns.github.io/</link>
     <description>Recent content on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Aug 2019 09:53:18 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 10:26:14 +0800</lastBuildDate>
     
-	<atom:link href="https://ycy-mrns.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://ycy-mrns.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Spring</title>
-      <link>https://ycy-mrns.github.io/post/spring/</link>
-      <pubDate>Wed, 07 Aug 2019 09:53:18 +0800</pubDate>
+      <title>单词Day1</title>
+      <link>http://ycy-mrns.github.io/post/%E5%8D%95%E8%AF%8Dday1/</link>
+      <pubDate>Wed, 07 Aug 2019 10:26:14 +0800</pubDate>
       
-      <guid>https://ycy-mrns.github.io/post/spring/</guid>
-      <description></description>
+      <guid>http://ycy-mrns.github.io/post/%E5%8D%95%E8%AF%8Dday1/</guid>
+      <description>abruptly adv. 突然地（suddenly）  rupt - = 破 ab - = 加强 -ly = 副词后缀
+    衍生 意思     abrupt adj. 突然的 唐突的 陡峭的   interrupt v. 中断 干扰    erupt v. 爆发 喷出    disrupt v. 破坏 分裂    bankrupt adj. 破产的    例句：The sky darkened abruptly 天突然暗了下来
+absent a. 缺席的  ab- = 否定</description>
     </item>
     
     <item>
-      <title>Blog</title>
-      <link>https://ycy-mrns.github.io/post/blog/</link>
-      <pubDate>Tue, 06 Aug 2019 22:06:24 +0800</pubDate>
+      <title>Spring</title>
+      <link>http://ycy-mrns.github.io/post/spring/</link>
+      <pubDate>Wed, 07 Aug 2019 09:53:18 +0800</pubDate>
       
-      <guid>https://ycy-mrns.github.io/post/blog/</guid>
+      <guid>http://ycy-mrns.github.io/post/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>杨成洁</title>
-      <link>https://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/</link>
+      <link>http://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/</link>
       <pubDate>Tue, 06 Aug 2019 22:06:24 +0800</pubDate>
       
-      <guid>https://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/</guid>
+      <guid>http://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/</guid>
       <description>I love you
 je t&amp;rsquo;aime
 ich liebe dich
