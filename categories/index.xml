@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on ChangYue</title>
-    <link>http://ycy-mrns.github.io/categories/</link>
+    <link>https://ycy-mrns.github.io/categories/</link>
     <description>Recent content in Categories on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 06 Aug 2019 22:06:24 +0800</lastBuildDate>
     
-	<atom:link href="http://ycy-mrns.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ycy-mrns.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Category 1</title>
-      <link>http://ycy-mrns.github.io/categories/category-1/</link>
+      <link>https://ycy-mrns.github.io/categories/category-1/</link>
       <pubDate>Tue, 06 Aug 2019 22:06:24 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/categories/category-1/</guid>
+      <guid>https://ycy-mrns.github.io/categories/category-1/</guid>
       <description></description>
     </item>
     
