@@ -6,10 +6,32 @@
     <description>Recent content on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Aug 2019 10:26:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 10:26:14 +0800</lastBuildDate>
     
 	<atom:link href="http://ycy-mrns.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>单词-Day2</title>
+      <link>http://ycy-mrns.github.io/post/%E5%8D%95%E8%AF%8Dday2/</link>
+      <pubDate>Fri, 09 Aug 2019 10:26:14 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/%E5%8D%95%E8%AF%8Dday2/</guid>
+      <description>1. accommodate v. 使适应，提供住宿  commod- = 方便 -tion 名词后缀 accommodation n. 住宿
+ [ 搭配 ]
+ accommodate to 改变&amp;hellip; 以适应&amp;hellip; accommodate with 向&amp;hellip; 供应  【 例句 】
+ she tried to accommodate her way of life to his . 他试图是自己的生活方式与他的生活方式相适应。 to accommodate a friend with money . 把钱借给一位朋友  2. accompany v. 陪伴，伴奏  pan- = bread 面包
+    衍生 意思     companion n.</description>
+    </item>
+    
+    <item>
+      <title>桶排序</title>
+      <link>http://ycy-mrns.github.io/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Wed, 07 Aug 2019 18:01:01 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</guid>
+      <description>import java.util.Scanner; /** * @program: DSClassDesign * @description: 72:桶式排序 * @author: YuanChangYue * @TestData 6634 9796 435 1405 6123 10001 11459 12018 10372 19874 12860 11326 7096 30205 27010 * 6634,9796,435,1405,6123,10001,11459,12018,10372,19874,12860,11326,7096,30205,27010 * @create: 2019-06-18 11:49 */ public class Main { public static void main(String[] args) { Scanner in = new Scanner(System.in); int[] arrays = new int[15]; for (int i = 0; i &amp;lt; 15; i++) arrays[i] = in.nextInt(); in.close(); barrelSort(arrays); } /** * 进行桶排序 * * @param arr 排序的数组 */ private static void barrelSort(int[] arr) { int[][] bucket = new int[10][arr.</description>
+    </item>
     
     <item>
       <title>单词-Day1</title>

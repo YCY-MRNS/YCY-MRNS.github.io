@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on ChangYue</title>
+    <link>http://ycy-mrns.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 07 Aug 2019 18:01:01 +0800</lastBuildDate>
+    
+	<atom:link href="http://ycy-mrns.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>桶排序</title>
+      <link>http://ycy-mrns.github.io/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Wed, 07 Aug 2019 18:01:01 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</guid>
+      <description>import java.util.Scanner; /** * @program: DSClassDesign * @description: 72:桶式排序 * @author: YuanChangYue * @TestData 6634 9796 435 1405 6123 10001 11459 12018 10372 19874 12860 11326 7096 30205 27010 * 6634,9796,435,1405,6123,10001,11459,12018,10372,19874,12860,11326,7096,30205,27010 * @create: 2019-06-18 11:49 */ public class Main { public static void main(String[] args) { Scanner in = new Scanner(System.in); int[] arrays = new int[15]; for (int i = 0; i &amp;lt; 15; i++) arrays[i] = in.nextInt(); in.close(); barrelSort(arrays); } /** * 进行桶排序 * * @param arr 排序的数组 */ private static void barrelSort(int[] arr) { int[][] bucket = new int[10][arr.</description>
+    </item>
+    
+  </channel>
+</rss>

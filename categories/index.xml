@@ -6,7 +6,7 @@
     <description>Recent content in Categories on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Aug 2019 10:26:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Aug 2019 10:26:14 +0800</lastBuildDate>
     
 	<atom:link href="http://ycy-mrns.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>英语单词</title>
       <link>http://ycy-mrns.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</link>
-      <pubDate>Wed, 07 Aug 2019 10:26:14 +0800</pubDate>
+      <pubDate>Fri, 09 Aug 2019 10:26:14 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法</title>
+      <link>http://ycy-mrns.github.io/categories/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 07 Aug 2019 18:01:01 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/categories/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
