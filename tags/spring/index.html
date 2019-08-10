@@ -4,23 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Categories - ChangYue</title>
+	<title>Spring - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Categories" />
+	<meta property="og:title" content="Spring" />
 <meta property="og:description" content="我的博客" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://ycy-mrns.github.io/categories/" />
+<meta property="og:url" content="http://ycy-mrns.github.io/tags/spring/" />
 
-<meta property="og:updated_time" content="2019-08-09T10:26:14+08:00" />
+<meta property="og:updated_time" content="2019-08-10T20:15:09+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
+<meta name="twitter:title" content="Spring"/>
 <meta name="twitter:description" content="我的博客"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/categories/index.xml" title="ChangYue">
+	<link rel="alternate" type="application/rss+xml" href="/tags/spring/index.xml" title="ChangYue">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	
@@ -68,57 +68,29 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Categories</h1>
+		<h1 class="main__title">Spring</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/categories/%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/" rel="bookmark">
-			英语单词
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/" rel="bookmark">
+			SpringBoot与web开发(一)
 			</a>
 		</h3>
+		<p class="list__lead post__lead">SpringBoot快速使用，自动配置，静态资源映射</p>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-09T10:26:14">August 09, 2019</time>
+	<time class="meta__text" datetime="2019-08-10T20:15:09">August 10, 2019</time>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/categories/%E7%AE%97%E6%B3%95/" rel="bookmark">
-			算法
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-07T18:01:01">August 07, 2019</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/categories/category-1/" rel="bookmark">
-			Category 1
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-06T22:06:24">August 06, 2019</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		
+		SpringBoot 与 Web 开发 1. 开始使用  创建springBoot 应用 选择需要的模块   SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+ 编写代码
+  2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
+3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
+ Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.
 	</div>
 </article>
 </main>

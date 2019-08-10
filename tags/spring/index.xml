@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on ChangYue</title>
+    <link>http://ycy-mrns.github.io/tags/spring/</link>
+    <description>Recent content in Spring on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 10 Aug 2019 20:15:09 +0800</lastBuildDate>
+    
+	<atom:link href="http://ycy-mrns.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringBoot与web开发(一)</title>
+      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</link>
+      <pubDate>Sat, 10 Aug 2019 20:15:09 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</guid>
+      <description>SpringBoot 与 Web 开发 1. 开始使用  创建springBoot 应用 选择需要的模块   SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+ 编写代码
+  2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
+3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
+ Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&amp;quot;Default resource handling disabled&amp;quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&amp;quot;/webjars/**&amp;quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&amp;quot;/webjars/**&amp;quot;) .addResourceLocations(&amp;quot;classpath:/META-INF/resources/webjars/&amp;quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.</description>
+    </item>
+    
+  </channel>
+</rss>

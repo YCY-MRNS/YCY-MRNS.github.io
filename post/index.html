@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://ycy-mrns.github.io/post/" />
 
-<meta property="og:updated_time" content="2019-08-09T10:26:14+08:00" />
+<meta property="og:updated_time" content="2019-08-10T20:15:09+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -70,6 +70,29 @@
 	<header class="main__header">
 		<h1 class="main__title">Posts</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/" rel="bookmark">
+			SpringBoot与web开发(一)
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot快速使用，自动配置，静态资源映射</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-10T20:15:09">August 10, 2019</time>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot 与 Web 开发 1. 开始使用  创建springBoot 应用 选择需要的模块   SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+ 编写代码
+  2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
+3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
+ Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/%E5%8D%95%E8%AF%8Dday2/" rel="bookmark">
@@ -235,11 +258,11 @@ chit pade
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/">SpringBoot与web开发(一)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/%E5%8D%95%E8%AF%8Dday2/">单词-Day2</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/">桶排序</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/%E5%8D%95%E8%AF%8Dday1/">单词-Day1</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/spring/">Spring</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/%E6%9D%A8%E6%88%90%E6%9D%B0/">杨成洁</a></li>
 		</ul>
 	</div>
 </div>
@@ -256,6 +279,8 @@ chit pade
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springboot" title="Springboot">Springboot</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%8d%95%e8%af%8d" title="单词">单词</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%9d%a8%e6%88%90%e6%b4%81" title="杨成洁">杨成洁</a>
