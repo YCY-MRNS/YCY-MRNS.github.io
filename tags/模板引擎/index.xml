@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>模板引擎 on ChangYue</title>
+    <link>http://ycy-mrns.github.io/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</link>
+    <description>Recent content in 模板引擎 on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 10 Aug 2019 22:20:04 +0800</lastBuildDate>
+    
+	<atom:link href="http://ycy-mrns.github.io/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringBoot与web开发(二)-----Thymeleaf 模板引擎</title>
+      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</link>
+      <pubDate>Sat, 10 Aug 2019 22:20:04 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</guid>
+      <description>Thymeleaf 模板引擎 1. 引入Thymeleaf &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-thymeleaf&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt;  @ConfigurationProperties(prefix = &amp;quot;spring.thymeleaf&amp;quot;) public class ThymeleafProperties { private static final Charset DEFAULT_ENCODING = StandardCharsets.UTF_8; public static final String DEFAULT_PREFIX = &amp;quot;classpath:/templates/&amp;quot;; public static final String DEFAULT_SUFFIX = &amp;quot;.html&amp;quot;;  将html页面放在templates目录下使用模板引擎 渲染页面
+ html中引入
+&amp;lt;html lang=&amp;quot;en&amp;quot; xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;   2. 语法规则 来自官网的使用手册：http://www.thymeleaf.org
+ th 语法   表达式
+Simple expressions:（表达式语法） Variable Expressions: ${...}：获取变量值；OGNL； 1）、获取对象的属性、调用方法 2）、使用内置的基本对象： #ctx : the context object. #vars: the context variables.</description>
+    </item>
+    
+  </channel>
+</rss>

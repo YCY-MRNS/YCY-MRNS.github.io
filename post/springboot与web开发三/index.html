@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SpringBoot与Web开发(三)-----Spring MVC - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="SpringBoot与Web开发(三)-----Spring MVC" />
+<meta property="og:description" content="Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
+本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
+ 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
+Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
+The auto-configuration adds the following features on top of Spring’s defaults:
+ Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
+ 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document))." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/" />
+<meta property="article:published_time" content="2019-08-12T16:36:54+08:00" />
+<meta property="article:modified_time" content="2019-08-12T16:36:54+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot与Web开发(三)-----Spring MVC"/>
+<meta name="twitter:description" content="Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
+本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
+ 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
+Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
+The auto-configuration adds the following features on top of Spring’s defaults:
+ Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
+ 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document))."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于我</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/java/">JAVA</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/front/">前端</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/live/">生活</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/english/">英语</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SpringBoot与Web开发(三)-----Spring MVC</h1>
+			<p class="post__lead"> Spring Boot 中 Spring MVC 自动配置 ，Spring MVC的拓展 ，全面接管SpringMVC </p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T16:36:54">August 12, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#spring-boot-与-spring-mvc">Spring Boot 与 Spring MVC</a>
+<ul>
+<li><a href="#1-spring-boot-中spring-mvc-自动配置">1. Spring Boot 中Spring MVC 自动配置</a></li>
+<li><a href="#2-spring-mvc的拓展">2. Spring MVC的拓展</a>
+<ul>
+<li><a href="#主要关键点">主要关键点</a></li>
+<li><a href="#原理">原理</a></li>
+</ul></li>
+<li><a href="#3-全面接管springmvc">3. 全面接管SpringMVC</a>
+<ul>
+<li><a href="#原理-1">原理</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="spring-boot-与-spring-mvc">Spring Boot 与 Spring MVC</h1>
+
+<blockquote>
+<p>根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。</p>
+
+<p>本章节提到的官文文档地址如下：
+ &lt;<a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration">https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration</a></p>
+</blockquote>
+
+<h2 id="1-spring-boot-中spring-mvc-自动配置">1. Spring Boot 中Spring MVC 自动配置</h2>
+
+<p>官方文档中的原文如下：</p>
+
+<p>Spring Boot provides auto-configuration for Spring MVC that works well with most applications.</p>
+
+<p>The auto-configuration adds the following features on top of Spring’s defaults:</p>
+
+<ul>
+<li><p>Inclusion of <code>ContentNegotiatingViewResolver</code> and <code>BeanNameViewResolver</code> beans.</p>
+
+<ul>
+<li>自动配置viewResolver  （视图解析器：根据方法返回的值获得视图对象 ）</li>
+<li><code>ContentNegotiatingViewResolver</code> ： 组合所有的试图解析器</li>
+<li>自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==</li>
+</ul></li>
+
+<li><p>Support for serving static resources, including support for WebJars (covered <a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-static-content">later in this document</a>)).</p>
+
+<ul>
+<li>支持静态文件夹路径，也包括webjars</li>
+</ul></li>
+
+<li><p>Automatic registration of <code>Converter</code>, <code>GenericConverter</code>, and <code>Formatter</code> beans.</p>
+
+<ul>
+<li><p>自动注册 <code>Converter</code>, <code>GenericConverter</code>, and <code>Formatter</code></p></li>
+
+<li><p><code>Converter</code> ： 转换器 （类型转换）</p></li>
+
+<li><p><code>Formatter</code> ： 格式化器 例如：日期格式转换</p>
+
+<pre><code class="language-java">//添加转换器和格式化器
+		@Override
+		public void addFormatters(FormatterRegistry registry) {
+			for (Converter&lt;?, ?&gt; converter : getBeansOfType(Converter.class)) {
+				registry.addConverter(converter);
+			}
+			for (GenericConverter converter : getBeansOfType(GenericConverter.class)) {
+				registry.addConverter(converter);
+			}
+			for (Formatter&lt;?&gt; formatter : getBeansOfType(Formatter.class)) {
+				registry.addFormatter(formatter);
+			}
+		}
+</code></pre></li>
+</ul></li>
+
+<li><p>Support for <code>HttpMessageConverters</code> (covered <a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-message-converters">later in this document</a>).</p>
+
+<ul>
+<li><code>HttpMessageConverters</code> : Spring MVC用来转换Http请求和响应</li>
+<li><code>HttpMessageConverters</code> : 从容器中拿到所有的<code>HttpMessageConverter</code></li>
+</ul></li>
+
+<li><p>Automatic registration of <code>MessageCodesResolver</code> (covered <a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-message-codes">later in this document</a>).</p>
+
+<ul>
+<li>错误代码</li>
+</ul></li>
+
+<li><p>Static <code>index.html</code> support.</p>
+
+<ul>
+<li>支持静态首页</li>
+</ul></li>
+
+<li><p>Custom <code>Favicon</code> support (covered <a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-favicon">later in this document</a>).</p>
+
+<ul>
+<li>支持自定义小图标</li>
+</ul></li>
+
+<li><p>Automatic use of a <code>ConfigurableWebBindingInitializer</code> bean (covered <a href="https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-web-binding-initializer">later in this document</a>).</p></li>
+</ul>
+
+<h2 id="2-spring-mvc的拓展">2. Spring MVC的拓展</h2>
+
+<blockquote>
+<p>默认SpringBoot 对 Spring MVC 的自动配置 对应开发不够的 ，还需要拓展SpringMVc的配置 。</p>
+
+<p>以下是SpringBoot的文档对SpringMVC的拓展的描述指导</p>
+</blockquote>
+
+<p>If you want to keep Spring Boot MVC features and you want to add additional <a href="https://docs.spring.io/spring/docs/5.1.9.RELEASE/spring-framework-reference/web.html#mvc">MVC configuration</a> (interceptors, formatters, view controllers, and other features), you can add your own <code>@Configuration</code> class of type <code>WebMvcConfigurer</code> but <strong>without</strong> <code>@EnableWebMvc</code>. If you wish to provide custom instances of <code>RequestMappingHandlerMapping</code>, <code>RequestMappingHandlerAdapter</code>, or <code>ExceptionHandlerExceptionResolver</code>, you can declare a <code>WebMvcRegistrationsAdapter</code> instance to provide such components.</p>
+
+<h3 id="主要关键点">主要关键点</h3>
+
+<ul>
+<li>编写一个配置类，需要加上<code>@@Configuration</code> 注解，</li>
+<li>需要是<code>WebMvcConfigurer</code> 类，继承这个interface</li>
+<li>不能有<code>@EnableWebMvc</code></li>
+</ul>
+
+<h3 id="原理">原理</h3>
+
+<p>根据Spring MVC 的配置类是 <code>WebMvcAutoConfiguration.class</code>中的方法<code>WebMvcAutoConfigurationAdapter.class</code> ，其有注解<code>@Import(EnableWebMvcConfiguration.class)</code></p>
+
+<pre><code class="language-java">/**
+* Configuration equivalent to {@code @EnableWebMvc}.
+*/
+@Configuration
+public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration 
+	
+@Configuration
+public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+   private final List&lt;WebMvcConfigurer&gt; delegates = new ArrayList();
+	//其中一段
+    public void addWebMvcConfigurers(List&lt;WebMvcConfigurer&gt; configurers) {
+        if (!CollectionUtils.isEmpty(configurers)) {
+            this.delegates.addAll(configurers);
+        }
+    }
+</code></pre>
+
+<p>根据以上<code>DelegatingWebMvcConfiguration.class</code>中一部分代码可以知道，我们的配置类继承<code>WebMvcConfigurer</code> 实现的<code>configurer</code>也会被全添加进List<WebMvcConfigurer>,在<code>WebMvcAutoConfiguration.class</code>中加载，这就是我们写的配置类可以和自动配置类一起起作用的原因。</p>
+
+<h2 id="3-全面接管springmvc">3. 全面接管SpringMVC</h2>
+
+<blockquote>
+<p>根据SpringBoot的官方文档还可以知道，SpringBoot是准许我们全面接管SpringMVC的，就像SSM使用方式一样</p>
+</blockquote>
+
+<p><strong><em>以下是官方文档的原文：</em></strong></p>
+
+<p>If you want to take complete control of Spring MVC, you can add your own <code>@Configuration</code> annotated with <code>@EnableWebMvc</code>.</p>
+
+<p><strong>如果我们需要完全的控制Spring MVC ，我需要在我们自己的配置类上添加<code>@Configuration</code>和<code>@EnableWebMvc</code>.</strong></p>
+
+<h3 id="原理-1">原理</h3>
+
+<blockquote>
+<p>为什么自动配置会失效？</p>
+</blockquote>
+
+<ol>
+<li><p><code>@EnableWebMvc</code> 的核心</p>
+
+<pre><code class="language-java">@Import({DelegatingWebMvcConfiguration.class})
+public @interface EnableWebMvc 
+
+</code></pre></li>
+
+<li><p>其中导入<code>DelegatingWebMvcConfiguration.class</code></p>
+
+<pre><code class="language-java">@Configuration
+public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+   private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite
+</code></pre></li>
+
+<li><p>查看SpringMVC的自动配置类<code>WebMvcAutoConfiguration.class</code>的注解</p>
+
+<pre><code class="language-java">@Configuration
+@ConditionalOnWebApplication(type = Type.SERVLET)
+@ConditionalOnClass({ Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })
+@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
+@AutoConfigureAfter({ DispatcherServletAutoConfiguration.class, TaskExecutionAutoConfiguration.class,
+		ValidationAutoConfiguration.class })
+public class WebMvcAutoConfiguration 
+</code></pre></li>
+</ol>
+
+<p>其中有一个<code>@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</code>,当<code>WebMvcConfigurationSupport.class</code>不存在才加载配置类，当我们的配置类加上<code>@EnableWebMvc</code> 就会导入<code>DelegatingWebMvcConfiguration.class</code>而它有继承了<code>WebMvcConfigurationSupport</code>这时候容器中已经存在，就不会加载SpringBoot的SpringMVC自动配置类。</p>
+
+<p>​</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/springmvc/" rel="tag">SpringMVC</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/spring/" rel="tag">Spring</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/springboot/" rel="tag">SpringBoot</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SpringBoot与web开发(二)-----Thymeleaf 模板引擎</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SpringBoot与web开发(四)-----登录拦截</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

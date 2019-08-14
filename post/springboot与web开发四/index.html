@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SpringBoot与web开发(四)-----登录拦截 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="SpringBoot与web开发(四)-----登录拦截" />
+<meta property="og:description" content="准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" />
+<meta property="article:published_time" content="2019-08-13T08:56:37+08:00" />
+<meta property="article:modified_time" content="2019-08-13T08:56:37+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot与web开发(四)-----登录拦截"/>
+<meta name="twitter:description" content="准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于我</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/java/">JAVA</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/front/">前端</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/live/">生活</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/english/">英语</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SpringBoot与web开发(四)-----登录拦截</h1>
+			<p class="post__lead">拦截器登录</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#准备工作">准备工作</a>
+<ul>
+<li><a href="#1-controller层">1.controller层</a></li>
+<li><a href="#2-拦截器">2.拦截器</a></li>
+<li><a href="#3-自定义springmvc-配置类">3. 自定义SpringMVC 配置类</a></li>
+<li><a href="#4-页面">4. 页面</a></li>
+<li><a href="#5-实现效果">5. 实现效果</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h2 id="准备工作">准备工作</h2>
+
+<blockquote>
+<p>页面downloadboostrap的官方实例页面，方便练习</p>
+
+<p>资源来自：<a href="https://getbootstrap.com/docs/4.3/examples/">https://getbootstrap.com/docs/4.3/examples/</a></p>
+</blockquote>
+
+<p><img src="/post/img/bootstrap页面.png" alt="bootstarp的官方实例页面" /></p>
+
+<p><strong>资源的目录如下：</strong></p>
+
+<p><img src="/post/img/登录拦截目录.png" alt="登录拦截目录" /></p>
+
+<h3 id="1-controller层">1.controller层</h3>
+
+<pre><code class="language-java">package com.changyue.springbootresetfucrud.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
+
+/**
+ * @program: spring-boot-restful-crud
+ * @description: 用户控制器
+ * @author: YuanChangYue
+ * @create: 2019-08-13 17:59
+ */
+@Controller
+public class LoginController {
+
+    /**
+     * 用户登录
+     *
+     * @param username    用户名   默认测试 123
+     * @param password    密码     默认测试 123
+     * @param map         map
+     * @param httpSession session
+     * @return 页面名称
+     */
+    @PostMapping(&quot;/user/login&quot;)
+    public String login(@RequestParam(&quot;username&quot;) String username,
+                        @RequestParam(&quot;password&quot;) String password,
+                        Map&lt;String, Object&gt; map, HttpSession httpSession) {
+        if (&quot;123&quot;.equals(username) &amp;&amp; &quot;123&quot;.equals(password)) {
+            //将用户名放入session中，拦截器会根据这判断是否登录，从而进行拦截
+            httpSession.setAttribute(&quot;loginUser&quot;, username);
+            //防止表单的重复提交
+            return &quot;redirect:/main.html&quot;;
+        } else {
+            //错误信息
+            map.put(&quot;msg&quot;, &quot;密码或者账号错误&quot;);
+            return &quot;login&quot;;
+        }
+    }
+}
+
+</code></pre>
+
+<h3 id="2-拦截器">2.拦截器</h3>
+
+<pre><code class="language-java">package com.changyue.springbootresetfucrud.component;
+
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @program: spring-boot-restful-crud
+ * @description: 登录拦截器
+ * @author: YuanChangYue
+ * @create: 2019-08-13 17:59
+ */
+public class LoginHandlerInterceptor implements HandlerInterceptor {
+    /**
+     * controller 之前执行
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //获得登录凭证
+        Object loginUser = request.getSession().getAttribute(&quot;loginUser&quot;);
+        //是否登录过
+        if (loginUser == null) {
+            //没有登录 拦截下来 返回登录界面
+            request.setAttribute(&quot;msg&quot;, &quot;没有权限，请登录！&quot;);
+            request.getRequestDispatcher(&quot;/index.html&quot;).forward(request, response);
+            return false;
+        } else {
+            //放行
+            return true;
+        }
+    }
+}
+</code></pre>
+
+<h3 id="3-自定义springmvc-配置类">3. 自定义SpringMVC 配置类</h3>
+
+<blockquote>
+<p>根据官方的文档</p>
+</blockquote>
+
+<p>If you want to keep Spring Boot MVC features and you want to add additional <a href="https://docs.spring.io/spring/docs/5.1.9.RELEASE/spring-framework-reference/web.html#mvc">MVC configuration</a> (interceptors, formatters, view controllers, and other features), you can add your own <code>@Configuration</code> class of type <code>WebMvcConfigurer</code> but <strong>without</strong> <code>@EnableWebMvc</code>. If you wish to provide custom instances of <code>RequestMappingHandlerMapping</code>, <code>RequestMappingHandlerAdapter</code>, or <code>ExceptionHandlerExceptionResolver</code>, you can declare a <code>WebMvcRegistrationsAdapter</code> instance to provide such components.</p>
+
+<p><strong>主要关键点：</strong></p>
+
+<ul>
+<li>编写一个配置类，需要加上<code>@Configuration</code> 注解，</li>
+<li>需要继承<code>WebMvcConfigurer</code> 接口</li>
+
+<li><p>不能有<code>@EnableWebMvc</code> 注解</p>
+
+<pre><code class="language-java">package com.changyue.springbootresetfucrud.config;
+
+import com.changyue.springbootresetfucrud.component.LoginHandlerInterceptor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.*;
+
+/**
+* @program: spring-boot-restful-crud
+* @description: SpringMVC 配置类 视图和拦截器等注册
+* @author: YuanChangYue
+* @create: 2019-08-13 17:59
+*/
+@Configuration
+public class MyConfig implements WebMvcConfigurer {
+
+@Bean
+public WebMvcConfigurer WebMvcConfigurer() {
+    return new WebMvcConfigurer() {
+
+        /**
+         * 添加视图映射
+         * @param registry
+         */
+        @Override
+        public void addViewControllers(ViewControllerRegistry registry) {
+            registry.addViewController(&quot;/&quot;).setViewName(&quot;login&quot;);
+            registry.addViewController(&quot;/index.html&quot;).setViewName(&quot;login&quot;);
+            registry.addViewController(&quot;/main.html&quot;).setViewName(&quot;dashboard&quot;);
+        }
+
+        /**
+         * 添加拦截器
+         * 除了登录界面,首页和静态资源
+         * 其他资源进行拦截
+         * 意图是验证用户是否在登录的情况下进去内部
+         * @param registry
+         */
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns(&quot;/**&quot;)
+                    .excludePathPatterns(&quot;/index.html&quot;, &quot;/&quot;, &quot;/user/login&quot;, &quot;/asserts/**&quot;, &quot;/webjars/**&quot;);
+        }
+    };
+}
+}
+</code></pre></li>
+</ul>
+
+<h3 id="4-页面">4. 页面</h3>
+
+<p><strong><em>登录页面   login.html</em></strong></p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;&quot;&gt;
+    &lt;title&gt;Signin Template for Bootstrap&lt;/title&gt;
+    &lt;!-- Bootstrap core CSS --&gt;
+    &lt;link href=&quot;asserts/css/bootstrap.min.css&quot; th:href=&quot;@{/webjars/bootstrap/4.3.1/css/bootstrap.css}&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;!-- Custom styles for this template --&gt;
+    &lt;link href=&quot;asserts/css/signin.css&quot; th:href=&quot;@{/asserts/css/signin.css}&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+
+&lt;body class=&quot;text-center&quot;&gt;
+&lt;form class=&quot;form-signin&quot; action=&quot;dashboard.html&quot; th:action=&quot;@{/user/login}&quot; method=&quot;post&quot;&gt;
+    &lt;img class=&quot;mb-4&quot; th:href=&quot;@{/asserts/img/bootstrap-solid.svg}&quot; src=&quot;asserts/img/bootstrap-solid.svg&quot; alt=&quot;&quot;
+         width=&quot;72&quot; height=&quot;72&quot;&gt;
+    &lt;h1 class=&quot;h3 mb-3 font-weight-normal&quot; th:text=&quot;#{login.tip}&quot;&gt;Please sign in&lt;/h1&gt;
+    &lt;!--判断--&gt;
+    &lt;p style=&quot;color: red&quot; th:text=&quot;${msg}&quot; th:if=&quot;${not #strings.isEmpty(msg)}&quot;&gt;&lt;/p&gt;
+    &lt;label class=&quot;sr-only&quot; th:text=&quot;#{login.username}&quot;&gt;Username&lt;/label&gt;
+    &lt;input type=&quot;text&quot; th:placeholder=&quot;#{login.username}&quot; class=&quot;form-control&quot; name=&quot;username&quot; placeholder=&quot;Username&quot;
+           required=&quot;&quot;
+           autofocus=&quot;&quot;&gt;
+    &lt;label class=&quot;sr-only&quot; th:text=&quot;#{login.password}&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; class=&quot;form-control&quot; th:placeholder=&quot;#{login.password}&quot; name=&quot;password&quot;
+           placeholder=&quot;Password&quot; required=&quot;&quot;&gt;
+    &lt;div class=&quot;checkbox mb-3&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; value=&quot;remember-me&quot;&gt;[[#{login.rememer}]]
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button class=&quot;btn btn-lg btn-primary btn-block&quot; type=&quot;submit&quot; th:text=&quot;#{login.btn}&quot;&gt;Sign in&lt;/button&gt;
+    &lt;p class=&quot;mt-5 mb-3 text-muted&quot;&gt;© 2017-2018&lt;/p&gt;
+    &lt;a class=&quot;btn btn-sm&quot; th:href=&quot;@{/templates/login.html(l='zh_CH')}&quot;&gt;中文&lt;/a&gt;
+    &lt;a class=&quot;btn btn-sm&quot; th:href=&quot;@{/templates/login.html(l='en_US')}&quot;&gt;English&lt;/a&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong><em>内部控制台  dashboard.html</em></strong></p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot; &gt;
+   &lt;head&gt;
+      &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+      &lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;
+      &lt;meta name=&quot;author&quot; content=&quot;&quot;&gt;
+
+      &lt;title&gt;Dashboard Template for Bootstrap&lt;/title&gt;
+      &lt;!-- Bootstrap core CSS --&gt;
+      &lt;link href=&quot;asserts/css/bootstrap.min.css&quot; th:href=&quot;@{/webjars/bootstrap/4.3.1/css/bootstrap.css} &quot; rel=&quot;stylesheet&quot;&gt;
+
+      &lt;!-- Custom styles for this template --&gt;
+      &lt;link href=&quot;asserts/css/dashboard.css&quot; th:href=&quot;@{/asserts/css/dashboard.css}&quot; rel=&quot;stylesheet&quot;&gt;
+      &lt;style type=&quot;text/css&quot;&gt;
+         /* Chart.js */
+         
+         @-webkit-keyframes chartjs-render-animation {
+            from {
+               opacity: 0.99
+            }
+            to {
+               opacity: 1
+            }
+         }
+         
+         @keyframes chartjs-render-animation {
+            from {
+               opacity: 0.99
+            }
+            to {
+               opacity: 1
+            }
+         }
+         
+         .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+         }
+      &lt;/style&gt;
+   &lt;/head&gt;
+
+   &lt;body&gt;
+      &lt;nav th:insert=&quot;commons/bar::topnav&quot;&gt;&lt;/nav&gt;
+
+      &lt;div class=&quot;container-fluid&quot;&gt;
+         &lt;div class=&quot;row&quot;&gt;
+
+            &lt;nav th:insert=&quot;commons/bar::sidebar(active='Dashboard')&quot;&gt;&lt;/nav&gt;
+
+            &lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;
+               &lt;div class=&quot;chartjs-size-monitor&quot; style=&quot;position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;&quot;&gt;
+                  &lt;div class=&quot;chartjs-size-monitor-expand&quot; style=&quot;position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;&quot;&gt;
+                     &lt;div style=&quot;position:absolute;width:1000000px;height:1000000px;left:0;top:0&quot;&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;chartjs-size-monitor-shrink&quot; style=&quot;position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;&quot;&gt;
+                     &lt;div style=&quot;position:absolute;width:200%;height:200%;left:0; top:0&quot;&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+               &lt;/div&gt;
+               &lt;div class=&quot;d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom&quot;&gt;
+                  &lt;h1 class=&quot;h2&quot;&gt;Dashboard&lt;/h1&gt;
+                  &lt;div class=&quot;btn-toolbar mb-2 mb-md-0&quot;&gt;
+                     &lt;div class=&quot;btn-group mr-2&quot;&gt;
+                        &lt;button class=&quot;btn btn-sm btn-outline-secondary&quot;&gt;Share&lt;/button&gt;
+                        &lt;button class=&quot;btn btn-sm btn-outline-secondary&quot;&gt;Export&lt;/button&gt;
+                     &lt;/div&gt;
+                     &lt;button class=&quot;btn btn-sm btn-outline-secondary dropdown-toggle&quot;&gt;
+                &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;feather feather-calendar&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot; ry=&quot;2&quot;&gt;&lt;/rect&gt;&lt;line x1=&quot;16&quot; y1=&quot;2&quot; x2=&quot;16&quot; y2=&quot;6&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;8&quot; y1=&quot;2&quot; x2=&quot;8&quot; y2=&quot;6&quot;&gt;&lt;/line&gt;&lt;line x1=&quot;3&quot; y1=&quot;10&quot; x2=&quot;21&quot; y2=&quot;10&quot;&gt;&lt;/line&gt;&lt;/svg&gt;
+                This week
+              &lt;/button&gt;
+                  &lt;/div&gt;
+               &lt;/div&gt;
+
+               &lt;canvas class=&quot;my-4 chartjs-render-monitor&quot; id=&quot;myChart&quot; width=&quot;1076&quot; height=&quot;454&quot; style=&quot;display: block; width: 1076px; height: 454px;&quot;&gt;&lt;/canvas&gt;
+
+               
+            &lt;/main&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Bootstrap core JavaScript
+    ================================================== --&gt;
+      &lt;!-- Placed at the end of the document so the pages load faster --&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;asserts/js/jquery-3.2.1.slim.min.js&quot; &gt;&lt;/script&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;asserts/js/popper.min.js&quot; &gt;&lt;/script&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;asserts/js/bootstrap.min.js&quot; &gt;&lt;/script&gt;
+
+      &lt;!-- Icons --&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;asserts/js/feather.min.js&quot; &gt;&lt;/script&gt;
+      &lt;script&gt;
+         feather.replace()
+      &lt;/script&gt;
+
+      &lt;!-- Graphs --&gt;
+      &lt;script type=&quot;text/javascript&quot; src=&quot;asserts/js/Chart.min.js&quot; &gt;&lt;/script&gt;
+      &lt;script&gt;
+         var ctx = document.getElementById(&quot;myChart&quot;);
+         var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+               labels: [&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;],
+               datasets: [{
+                  data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                  lineTension: 0,
+                  backgroundColor: 'transparent',
+                  borderColor: '#007bff',
+                  borderWidth: 4,
+                  pointBackgroundColor: '#007bff'
+               }]
+            },
+            options: {
+               scales: {
+                  yAxes: [{
+                     ticks: {
+                        beginAtZero: false
+                     }
+                  }]
+               },
+               legend: {
+                  display: false,
+               }
+            }
+         });
+      &lt;/script&gt;
+
+   &lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="5-实现效果">5. 实现效果</h3>
+
+<p><img src="/post/img/登录页面.png" alt="登录界面" /></p>
+
+<p>登录页面</p>
+
+<p><img src="/post/img/登录错误密码.png" alt="登录错误密码" /></p>
+
+<p>登录错误密码</p>
+
+<p><img src="/post/img/登录错误提示.png" alt="登录错误提示" /></p>
+
+<p>登录错误提示</p>
+
+<p><img src="/post/img/登录成功.png" alt="登录成功" /></p>
+
+<p>登录成功</p>
+
+<p><img src="/post/img/直接登录.png" alt="直接登录" /></p>
+
+<p>直接登录</p>
+
+<p><img src="/post/img/直接登录提示.png" alt="直接登录提示" /></p>
+
+<p>直接登录提示</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/springmvc/" rel="tag">SpringMVC</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/spring/" rel="tag">Spring</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/" rel="tag">拦截器</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/springboot/" rel="tag">SpringBoot</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SpringBoot与Web开发(三)-----Spring MVC</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

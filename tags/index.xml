@@ -6,7 +6,7 @@
     <description>Recent content in Tags on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Aug 2019 20:15:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 08:56:37 +0800</lastBuildDate>
     
 	<atom:link href="http://ycy-mrns.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Spring</title>
       <link>http://ycy-mrns.github.io/tags/spring/</link>
-      <pubDate>Sat, 10 Aug 2019 20:15:09 +0800</pubDate>
+      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/tags/spring/</guid>
       <description></description>
@@ -23,9 +23,45 @@
     <item>
       <title>SpringBoot</title>
       <link>http://ycy-mrns.github.io/tags/springboot/</link>
-      <pubDate>Sat, 10 Aug 2019 20:15:09 +0800</pubDate>
+      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/tags/springboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SpringMVC</title>
+      <link>http://ycy-mrns.github.io/tags/springmvc/</link>
+      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/tags/springmvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>拦截器</title>
+      <link>http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thymeleaf</title>
+      <link>http://ycy-mrns.github.io/tags/thymeleaf/</link>
+      <pubDate>Sat, 10 Aug 2019 22:20:04 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/tags/thymeleaf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>模板引擎</title>
+      <link>http://ycy-mrns.github.io/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Sat, 10 Aug 2019 22:20:04 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</guid>
       <description></description>
     </item>
     

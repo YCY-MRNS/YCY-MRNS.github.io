@@ -4,29 +4,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SpringBoot与web开发(一) - ChangYue</title>
+	<title>SpringBoot与web开发(一)-----SpringBoot快速使用 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="SpringBoot与web开发(一)" />
-<meta property="og:description" content="SpringBoot 与 Web 开发 1. 开始使用  创建springBoot 应用 选择需要的模块   SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+	<meta property="og:title" content="SpringBoot与web开发(一)-----SpringBoot快速使用" />
+<meta property="og:description" content="1. 开始使用  创建springBoot 应用 选择需要的模块  创建springboot
+选择模块
+ SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
  编写代码
   2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
 3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
  Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
-@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this." />
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.mvcProperties.getStaticPathPattern(); if (!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/" />
 <meta property="article:published_time" content="2019-08-10T20:15:09+08:00" />
 <meta property="article:modified_time" content="2019-08-10T20:15:09+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SpringBoot与web开发(一)"/>
-<meta name="twitter:description" content="SpringBoot 与 Web 开发 1. 开始使用  创建springBoot 应用 选择需要的模块   SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+<meta name="twitter:title" content="SpringBoot与web开发(一)-----SpringBoot快速使用"/>
+<meta name="twitter:description" content="1. 开始使用  创建springBoot 应用 选择需要的模块  创建springboot
+选择模块
+ SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
  编写代码
   2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
 3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
  Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
-@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this."/>
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.mvcProperties.getStaticPathPattern(); if (!"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,12 +82,17 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">SpringBoot与web开发(一)</h1>
+			<h1 class="post__title">SpringBoot与web开发(一)-----SpringBoot快速使用</h1>
 			<p class="post__lead">SpringBoot快速使用，自动配置，静态资源映射</p>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
 	<time class="meta__text" datetime="2019-08-10T20:15:09">August 10, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
 </div>
 </div>
 		</header>
@@ -92,11 +101,17 @@
 	<div class="toc__menu">
 		<nav id="TableOfContents">
 <ul>
-<li><a href="#springboot-与-web-开发">SpringBoot 与 Web 开发</a>
+<li>
 <ul>
 <li><a href="#1-开始使用">1. 开始使用</a></li>
 <li><a href="#2-自动配置">2. 自动配置</a></li>
-<li><a href="#3-静态资源映射规则">3. 静态资源映射规则</a></li>
+<li><a href="#3-静态资源映射规则">3. 静态资源映射规则</a>
+<ul>
+<li><a href="#1-所有webjars-都会在classpath-meta-inf-resources-webjars-下面去找资源">1.  所有webjars/**都会在classpath:/META-INF/resources/webjars/下面去找资源</a></li>
+<li><a href="#2-当前项目下的任何资源">2. **/ 当前项目下的任何资源</a></li>
+<li><a href="#3-映射index页面">3. 映射index页面</a></li>
+<li><a href="#4-页面的小图标-favicon">4. 页面的小图标 favicon</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -105,17 +120,19 @@
 <div class="content post__content clearfix">
 			
 
-<h1 id="springboot-与-web-开发">SpringBoot 与 Web 开发</h1>
-
 <h2 id="1-开始使用">1. 开始使用</h2>
 
 <ol>
 <li>创建springBoot 应用 选择需要的模块</li>
 </ol>
 
-<p><img src="/post/img/SpringBoot与web-1.png" alt="创建springboot" /></p>
+<p><div align=center><img src="/post/img/SpringBoot与web-1.png" alt="创建springboot" /></p>
+
+<p>创建springboot</p>
 
 <p><img src="/post/img/SpringBoot与web-2.png" alt="选择模块" /></p>
+
+<p>选择模块</div></p>
 
 <ol>
 <li><p>SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可</p></li>
@@ -131,9 +148,9 @@ XXXXXProperties  ： 配置类
 
 <p>这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。</p>
 
-<p><img src="/post/img/SpringBoot与web-5.png" alt="org.springframework.boot.autoconfigure" /></p>
+<p><img src="/post/img/SpringBoot与web-5.png" alt="" /></p>
 
-<p><img src="/post/img/SpringBoot与web-4.png" alt="org.springframework.boot.autoconfigure" /></p>
+<p><img src="/post/img/SpringBoot与web-4.png" alt="" /></p>
 
 <h2 id="3-静态资源映射规则">3. 静态资源映射规则</h2>
 
@@ -165,18 +182,13 @@ XXXXXProperties  ： 配置类
 		}
 </code></pre>
 
-<ol>
-<li>###<strong>所有webjars/**都会在classpath:/META-INF/resources/webjars/下面去找资源</strong></li>
-</ol>
+<h3 id="1-所有webjars-都会在classpath-meta-inf-resources-webjars-下面去找资源">1.  所有webjars/**都会在classpath:/META-INF/resources/webjars/下面去找资源</h3>
+
+<div align=center>  ![](/post/img/SpringBoot与web-6.png) </div>
 
 <ul>
 <li>webjars :  以jar的形式引入  （<a href="https://www.webjars.org/">https://www.webjars.org/</a>）</li>
 <li>好处： （1）将静态资源版本化，更利于升级和维护 （2）剥离静态资源，提高编译速度和打包效率（3）实现资源共享，有利于统一前端开发。</li>
-</ul>
-
-<p><img src="/post/img/SpringBoot与web-6.png" alt="" /></p>
-
-<ul>
 <li>访问资源  localhost：8080/webjars/jquery/3.4.1/jquery.js</li>
 
 <li><p>pom.xml</p>
@@ -189,17 +201,15 @@ XXXXXProperties  ： 配置类
 </code></pre></li>
 </ul>
 
-<ol>
-<li><p>###*<em>/*</em> **  <strong>当前项目下的任何资源</strong></p>
+<h3 id="2-当前项目下的任何资源">2. **/ 当前项目下的任何资源</h3>
 
-<pre><code class="language-java"> @ConfigurationProperties(prefix = &quot;spring.resources&quot;, ignoreUnknownFields = false)
- public class ResourceProperties {
+<pre><code class="language-java">@ConfigurationProperties(prefix = &quot;spring.resources&quot;, ignoreUnknownFields = false)
+public class ResourceProperties {
 
- private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { &quot;classpath:/META-INF/resources/&quot;,
-        &quot;classpath:/resources/&quot;, &quot;classpath:/static/&quot;, &quot;classpath:/public/&quot; };
+private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { &quot;classpath:/META-INF/resources/&quot;,
+		&quot;classpath:/resources/&quot;, &quot;classpath:/static/&quot;, &quot;classpath:/public/&quot; };
 
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>默认寻找静态资源的文件夹路径：</p>
 
@@ -213,23 +223,20 @@ XXXXXProperties  ： 配置类
 
 <p><strong>例如：</strong> localhost：8080/XXX  默认就去以上路径去找</p>
 
-<ol>
-<li><p>###<strong>映射index页面</strong></p>
+<h3 id="3-映射index页面">3. 映射index页面</h3>
 
 <pre><code class="language-java">@Bean
 public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext) {
-  return new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext),
-        applicationContext, getWelcomePage(), this.mvcProperties.getStaticPathPattern());
+   return new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext),
+         applicationContext, getWelcomePage(), this.mvcProperties.getStaticPathPattern());
 }
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>*<em>满足访问/*</em> 的访问路径  **</p>
 
 <p><strong>例如：localhost：8080/</strong></p>
 
-<ol>
-<li><p>###页面的小图标 favicon</p>
+<h3 id="4-页面的小图标-favicon">4. 页面的小图标 favicon</h3>
 
 <pre><code class="language-java">@Configuration
 		@ConditionalOnProperty(value = &quot;spring.mvc.favicon.enabled&quot;, matchIfMissing = true)
@@ -252,7 +259,7 @@ public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext ap
 			public SimpleUrlHandlerMapping faviconHandlerMapping() {
 				SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
 				mapping.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
-                 
+              
 				mapping.setUrlMap(Collections.singletonMap(&quot;**/favicon.ico&quot;, faviconRequestHandler()));
 				return mapping;
 			}
@@ -279,8 +286,7 @@ public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext ap
 <li><p><strong>默认就是启动的</strong></p></li>
 
 <li><p><strong>同样是满足/**的映射路径</strong></p></li>
-</ul></li>
-</ol>
+</ul>
 
 <p>​</p>
 
@@ -319,6 +325,9 @@ public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext ap
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/post/%E5%8D%95%E8%AF%8Dday2/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">单词-Day2</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SpringBoot与web开发(二)-----Thymeleaf 模板引擎</p></a>
 	</div>
 </nav>
 

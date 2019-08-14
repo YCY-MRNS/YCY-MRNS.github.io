@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>拦截器 on ChangYue</title>
+    <link>http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+    <description>Recent content in 拦截器 on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 13 Aug 2019 08:56:37 +0800</lastBuildDate>
+    
+	<atom:link href="http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringBoot与web开发(四)-----登录拦截</title>
+      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</link>
+      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</guid>
+      <description>准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&amp;quot;/user/login&amp;quot;) public String login(@RequestParam(&amp;quot;username&amp;quot;) String username, @RequestParam(&amp;quot;password&amp;quot;) String password, Map&amp;lt;String, Object&amp;gt; map, HttpSession httpSession) { if (&amp;quot;123&amp;quot;.</description>
+    </item>
+    
+  </channel>
+</rss>
