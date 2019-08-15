@@ -100,6 +100,7 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
 <li><a href="#1-引入thymeleaf">1. 引入Thymeleaf</a></li>
 <li><a href="#2-语法规则">2. 语法规则</a></li>
 <li><a href="#3-实例">3. 实例</a></li>
+<li><a href="#4-提取公共片段">4. 提取公共片段</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -161,22 +162,22 @@ Variable Expressions: ${...}：获取变量值；OGNL；
                 
             ${session.foo}
         3）、内置的一些工具对象：
-#execInfo : information about the template being processed.
-#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.
-#uris : methods for escaping parts of URLs/URIs
-#conversions : methods for executing the configured conversion service (if any).
-#dates : methods for java.util.Date objects: formatting, component extraction, etc.
-#calendars : analogous to #dates , but for java.util.Calendar objects.
-#numbers : methods for formatting numeric objects.
-#strings : methods for String objects: contains, startsWith, prepending/appending, etc.
-#objects : methods for objects in general.
-#bools : methods for boolean evaluation.
-#arrays : methods for arrays.
-#lists : methods for lists.
-#sets : methods for sets.
-#maps : methods for maps.
-#aggregates : methods for creating aggregates on arrays or collections.
-#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).
+    #execInfo : information about the template being processed.
+    #messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #{…} syntax.
+    #uris : methods for escaping parts of URLs/URIs
+    #conversions : methods for executing the configured conversion service (if any).
+    #dates : methods for java.util.Date objects: formatting, component extraction, etc.
+    #calendars : analogous to #dates , but for java.util.Calendar objects.
+    #numbers : methods for formatting numeric objects.
+    #strings : methods for String objects: contains, startsWith, prepending/appending, etc.
+    #objects : methods for objects in general.
+    #bools : methods for boolean evaluation.
+    #arrays : methods for arrays.
+    #lists : methods for lists.
+    #sets : methods for sets.
+    #maps : methods for maps.
+    #aggregates : methods for creating aggregates on arrays or collections.
+    #ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).
 
 Selection Variable Expressions: *{...}：选择表达式：和${}在功能上是一样；
 	补充：配合 th:object=&quot;${session.user}：
@@ -272,6 +273,37 @@ public String success(Map&lt;String, Object&gt; map) {
 <p><strong><em>具体用法 可参照官方文档：</em></strong></p>
 
 <p><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf">https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf</a></p>
+
+<h2 id="4-提取公共片段">4. 提取公共片段</h2>
+
+<blockquote>
+<p>thymeleaf 提供代码片段的复用</p>
+
+<p>参考文档  <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf">https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf</a>   第八章：template layout</p>
+</blockquote>
+
+<ul>
+<li><p>顶部菜单栏 使用 <code>th:fragment</code> 定义片段</p>
+
+<pre><code class="language-html">&lt;nav class=&quot;navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0&quot; th:fragment=&quot;topnav&quot;&gt;
+ ......
+&lt;/nav&gt;
+</code></pre></li>
+
+<li><p>引入定义的片段</p>
+
+<pre><code class="language-html">&lt;nav th:insert=&quot;commons/bar::topnav&quot;&gt;&lt;/nav&gt;
+</code></pre></li>
+
+<li><p>三种引入方式</p>
+
+<pre><code class="language-html">&lt;body&gt;
+&lt;div th:insert=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+&lt;div th:replace=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+&lt;div th:include=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre></li>
+</ul>
 
 		</div>
 		<footer class="post__footer">
