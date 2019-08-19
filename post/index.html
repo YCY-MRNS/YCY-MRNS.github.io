@@ -73,9 +73,10 @@
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/" rel="bookmark">
-			SpringBoot与web开发(五)
+			SpringBoot与web开发(五) ---- SpringBoot 错误处理机制
 			</a>
 		</h3>
+		<p class="list__lead post__lead">SpringBoot 错误处理机制</p>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
@@ -89,7 +90,13 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
+		#SpringBoot 错误处理
+ SpringBoot 默认错误机制，返回一个错误页面和 json数据
+  浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
+ 其中有几个重要的组件：
+ DefaultErrorAttributes ： 共享信息
+ timestamp 时间 status 状态码 error 错误提示 exception 异常对象 message 异常信息 errors JSR303 数据校验的信息  DefaultErrorViewResolver
+@Override public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map&lt;String, Object&gt; model) { ModelAndView modelAndView = resolve(String.valueOf(status.value()), model); if (modelAndView == null &amp;&amp; SERIES_VIEWS.containsKey(status.series())) { modelAndView = resolve(SERIES_VIEWS.get(status.series()), model); } return modelAndView; } private ModelAndView resolve(String viewName, Map&lt;String, Object&gt; model) { String errorViewName = &quot;error/&quot; + viewName; //使用模板引擎 TemplateAvailabilityProvider provider = this.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -347,7 +354,7 @@ chit pade
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">SpringBoot与web开发(五)</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">SpringBoot与web开发(四)-----登录拦截</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/">SpringBoot与Web开发(三)-----Spring MVC</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/">SpringBoot与web开发(二)-----Thymeleaf 模板引擎</a></li>

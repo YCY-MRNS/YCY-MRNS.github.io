@@ -12,12 +12,18 @@
     
     
     <item>
-      <title>SpringBoot与web开发(五)</title>
+      <title>SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</title>
       <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</link>
       <pubDate>Wed, 14 Aug 2019 14:13:20 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</guid>
-      <description></description>
+      <description>#SpringBoot 错误处理
+ SpringBoot 默认错误机制，返回一个错误页面和 json数据
+  浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
+ 其中有几个重要的组件：
+ DefaultErrorAttributes ： 共享信息
+ timestamp 时间 status 状态码 error 错误提示 exception 异常对象 message 异常信息 errors JSR303 数据校验的信息  DefaultErrorViewResolver
+@Override public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map&amp;lt;String, Object&amp;gt; model) { ModelAndView modelAndView = resolve(String.valueOf(status.value()), model); if (modelAndView == null &amp;amp;&amp;amp; SERIES_VIEWS.containsKey(status.series())) { modelAndView = resolve(SERIES_VIEWS.get(status.series()), model); } return modelAndView; } private ModelAndView resolve(String viewName, Map&amp;lt;String, Object&amp;gt; model) { String errorViewName = &amp;quot;error/&amp;quot; + viewName; //使用模板引擎 TemplateAvailabilityProvider provider = this.</description>
     </item>
     
     <item>
