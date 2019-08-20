@@ -4,23 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SpringMVC - ChangYue</title>
+	<title>数据库 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="SpringMVC" />
+	<meta property="og:title" content="数据库" />
 <meta property="og:description" content="我的博客" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://ycy-mrns.github.io/tags/springmvc/" />
+<meta property="og:url" content="http://ycy-mrns.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" />
 
-<meta property="og:updated_time" content="2019-08-13T08:56:37+08:00" />
+<meta property="og:updated_time" content="2019-08-20T10:55:58+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SpringMVC"/>
+<meta name="twitter:title" content="数据库"/>
 <meta name="twitter:description" content="我的博客"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/springmvc/index.xml" title="ChangYue">
+	<link rel="alternate" type="application/rss+xml" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="ChangYue">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	
@@ -68,19 +68,19 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">SpringMVC</h1>
+		<h1 class="main__title">数据库</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="bookmark">
-			SpringBoot与web开发(四)-----登录拦截
+			<a href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" rel="bookmark">
+			SpringBoot数据访问
 			</a>
 		</h3>
-		<p class="list__lead post__lead">拦截器登录</p>
+		<p class="list__lead post__lead">SpringBoot 数据库访问 JDBC访问数据库 整合Druid数据源 整合MyBatis 整合JPA</p>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+	<time class="meta__text" datetime="2019-08-20T10:55:58">August 20, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -90,39 +90,12 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		准备工作  页面downloadboostrap的官方实例页面，方便练习
-资源来自：https://getbootstrap.com/docs/4.3/examples/
- 资源的目录如下：
-1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/" rel="bookmark">
-			SpringBoot与Web开发(三)-----Spring MVC
-			</a>
-		</h3>
-		<p class="list__lead post__lead"> Spring Boot 中 Spring MVC 自动配置 ，Spring MVC的拓展 ，全面接管SpringMVC </p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-12T16:36:54">August 12, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
-本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
- 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
-Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
-The auto-configuration adds the following features on top of Spring’s defaults:
- Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
- 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document)).
+		SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &ndash;&gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.47&lt;/version&gt; &lt;/dependency&gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&lt;Resource&gt; scripts = this.
 	</div>
 </article>
 </main>

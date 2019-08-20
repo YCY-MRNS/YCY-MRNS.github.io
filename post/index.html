@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://ycy-mrns.github.io/post/" />
 
-<meta property="og:updated_time" content="2019-08-14T14:13:20+08:00" />
+<meta property="og:updated_time" content="2019-08-20T10:55:58+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -72,6 +72,82 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" rel="bookmark">
+			SpringBoot数据访问
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot 数据库访问 JDBC访问数据库 整合Druid数据源 整合MyBatis 整合JPA</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-20T10:55:58">August 20, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &ndash;&gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.47&lt;/version&gt; &lt;/dependency&gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&lt;Resource&gt; scripts = this.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Edocker/" rel="bookmark">
+			Docker
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-19T20:31:45">August 19, 2019</time>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		 Docker  Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
+ 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/" rel="bookmark">
+			SpringBoot与web开发(六)----SpringBoot容器
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot容器</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-19T18:58:44">August 19, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
+ 1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
+server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
+  注册三大组件的方式
+ ServletRegistrationBean
+ FilterRegistrationBean
+ ServletListenerRegistrationBean
+/** * @program: spring-boot-restful-crud * @description: servlet配置类 * @author: YuanChangYue * @create: 2019-08-19 19:20 */ @Configuration public class MyServletConfig { @Bean public ServletRegistrationBean myServlet() { return new ServletRegistrationBean&lt;&gt;(new MyServlet(), &quot;/myServlet&quot;); } @Bean public FilterRegistrationBean myFilter() { FilterRegistrationBean&lt;Filter&gt; registrationBean = new FilterRegistrationBean&lt;&gt;(); registrationBean.setFilter(new MyFilter()); registrationBean.setUrlPatterns(Arrays.asList(&quot;/hello&quot;, &quot;/myServlet&quot;)); return registrationBean; } @Bean public ServletListenerRegistrationBean myListen() { return new ServletListenerRegistrationBean(new MyListen()); } }  /** * @program: spring-boot-restful-crud * @description: 自定义Listen * @author: YuanChangYue * @create: 2019-08-19 19:42 */ public class MyListen implements ServletContextListener { @Override public void contextInitialized(ServletContextEvent sce) { System.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/" rel="bookmark">
 			SpringBoot与web开发(五) ---- SpringBoot 错误处理机制
 			</a>
@@ -90,8 +166,7 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		#SpringBoot 错误处理
- SpringBoot 默认错误机制，返回一个错误页面和 json数据
+		SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
   浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
  其中有几个重要的组件：
  DefaultErrorAttributes ： 共享信息
@@ -260,83 +335,13 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
 	<div class="content list__excerpt post__content clearfix">
 		import java.util.Scanner; /** * @program: DSClassDesign * @description: 72:桶式排序 * @author: YuanChangYue * @TestData 6634 9796 435 1405 6123 10001 11459 12018 10372 19874 12860 11326 7096 30205 27010 * 6634,9796,435,1405,6123,10001,11459,12018,10372,19874,12860,11326,7096,30205,27010 * @create: 2019-06-18 11:49 */ public class Main { public static void main(String[] args) { Scanner in = new Scanner(System.in); int[] arrays = new int[15]; for (int i = 0; i &lt; 15; i++) arrays[i] = in.nextInt(); in.close(); barrelSort(arrays); } /** * 进行桶排序 * * @param arr 排序的数组 */ private static void barrelSort(int[] arr) { int[][] bucket = new int[10][arr.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/%E5%8D%95%E8%AF%8Dday1/" rel="bookmark">
-			单词-Day1
-			</a>
-		</h3>
-		<p class="list__lead post__lead">单词第一天</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-07T10:26:14">August 07, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e8%8b%b1%e8%af%ad" rel="category">英语</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		abruptly adv.突然地（suddenly）  rupt - = 破 ab - = 加强 -ly= 副词后缀
-    衍生 意思     abrupt adj. 突然的 唐突的 陡峭的   interrupt v. 中断 干扰    erupt v. 爆发 喷出    disrupt v. 破坏 分裂    bankrupt adj. 破产的    【 例句 】：The sky darkened abruptly 天突然暗了下来
-absent a. 缺席的  ab- = 否定
-	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="http://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/">
-			<img src="/post/img/placeholder.jpg" alt="杨成洁" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/%E6%9D%A8%E6%88%90%E6%9D%B0/" rel="bookmark">
-			杨成洁
-			</a>
-		</h3>
-		<p class="list__lead post__lead">My lover</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-06T22:06:24">August 06, 2019</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		I love you
-je t&rsquo;aime
-ich liebe dich
-σε αγαπώ se agapo
-szertlek
-taim i&rsquo;ngra leat
-mina armadtansind
-mina rakastan sinua
-ik zie u graag
-Ti Amo
-te amo vos amo
-estevi milu
-ik hou van jou
-jeg elsker dig
-eu amo-te
-lingo gramo
-tave myliu
-te sakam
-men seni sevirem
-ami to may halobashi
-kocham cie
-te tu be besc
-vivian
-milujite
-inhobbok
-volim te
-chit pade
-āmi tomāke bhālobāshi
-	</div>
 </article>
 </main>
+
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/post/page/2/">»</a>
+</div>
 
 
 			</div>
@@ -354,11 +359,11 @@ chit pade
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/">SpringBoot数据访问</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Edocker/">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/">SpringBoot与web开发(六)----SpringBoot容器</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">SpringBoot与web开发(四)-----登录拦截</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/">SpringBoot与Web开发(三)-----Spring MVC</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/">SpringBoot与web开发(二)-----Thymeleaf 模板引擎</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/">SpringBoot与web开发(一)-----SpringBoot快速使用</a></li>
 		</ul>
 	</div>
 </div>
@@ -381,6 +386,7 @@ chit pade
 		<a class="widget-taglist__link widget__link btn" href="/tags/thymeleaf" title="Thymeleaf">Thymeleaf</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%8d%95%e8%af%8d" title="单词">单词</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%8b%a6%e6%88%aa%e5%99%a8" title="拦截器">拦截器</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93" title="数据库">数据库</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%9d%a8%e6%88%90%e6%b4%81" title="杨成洁">杨成洁</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e" title="模板引擎">模板引擎</a>

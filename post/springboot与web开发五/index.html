@@ -8,8 +8,7 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta property="og:title" content="SpringBoot与web开发(五) ---- SpringBoot 错误处理机制" />
-<meta property="og:description" content="#SpringBoot 错误处理
- SpringBoot 默认错误机制，返回一个错误页面和 json数据
+<meta property="og:description" content="SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
   浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
  其中有几个重要的组件：
  DefaultErrorAttributes ： 共享信息
@@ -22,8 +21,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SpringBoot与web开发(五) ---- SpringBoot 错误处理机制"/>
-<meta name="twitter:description" content="#SpringBoot 错误处理
- SpringBoot 默认错误机制，返回一个错误页面和 json数据
+<meta name="twitter:description" content="SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
   浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
  其中有几个重要的组件：
  DefaultErrorAttributes ： 共享信息
@@ -99,7 +97,7 @@
 	<div class="toc__menu">
 		<nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#springboot-错误处理">SpringBoot 错误处理</a>
 <ul>
 <li><a href="#1-原理">1. 原理</a></li>
 <li><a href="#2-自定义">2. 自定义</a></li>
@@ -111,7 +109,7 @@
 <div class="content post__content clearfix">
 			
 
-<p>#SpringBoot 错误处理</p>
+<h1 id="springboot-错误处理">SpringBoot 错误处理</h1>
 
 <blockquote>
 <p>SpringBoot 默认错误机制，返回一个错误页面和 json数据</p>
@@ -339,86 +337,71 @@ public class MyExceptionHandler {
 <ol>
 <li><p>将我们的定制数据传递出去</p>
 
-<p>当出现<code>error</code>时候，会来到<code>/error</code>请求中，这样就会被<code>BasicErrorController</code>类处理，查看这个类发现，相应的响应数据是由<code>getErrorAttributes</code>（在<code>BasicErrorController</code>继承的父类<code>AbstractErrorController</code> （<code>ErrorController.class</code>实现类））方法的得到的。再看<code>ErrorMvcAutoConfiguration</code>自动装载<code>BasicErrorController</code> ：</p></li>
-</ol>
+<p>当出现<code>error</code>时候，会来到<code>/error</code>请求中，这样就会被<code>BasicErrorController</code>类处理，查看这个类发现，相应的响应数据是由<code>getErrorAttributes</code>（在<code>BasicErrorController</code>继承的父类<code>AbstractErrorController</code> （<code>ErrorController.class</code>实现类））方法的得到的。再看<code>ErrorMvcAutoConfiguration</code>自动装载<code>BasicErrorController</code> ：</p>
 
-<p>​<code>java
-  @Bean
+<pre><code class="language-java"> @Bean
   //当没有ErrorController.class就会加载BasicErrorController到容器中
   @ConditionalOnMissingBean(value = ErrorController.class, search = SearchStrategy.CURRENT)
   public BasicErrorController basicErrorController(ErrorAttributes errorAttributes) {
   return new BasicErrorController(errorAttributes, this.serverProperties.getError(), this.errorViewResolvers);}
-  ​</code></p>
+</code></pre>
 
 <ul>
 <li>这样就可以来编写一个<code>BasicErrorController</code>的实现类，放在容器中。</li>
-<li><code>BasicErrorController</code>最终会在<code>ErrorAttributes</code>中取出响应数据，所以 我们可以编写自己的<code>ErrorAttribute</code>.
-<br /></li>
-</ul>
 
-<p>​```java
-  package com.changyue.springbootresetfucrud.controller;</p>
+<li><p><code>BasicErrorController</code>最终会在<code>ErrorAttributes</code>中取出响应数据，所以 我们可以编写自己的<code>ErrorAttribute</code>.</p>
 
-<p>import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
-  import org.springframework.web.context.request.WebRequest;</p>
-
-<p>import java.util.Map;</p>
-
-<p>/**
-   * @program: spring-boot-restful-crud
-   * @description: 自定义ErrorAttributes
-   * @author: YuanChangYue
-   * @create: 2019-08-19 15:02
-   */
-  public class MyErrorAtrributes extends DefaultErrorAttributes {</p>
-
-<pre><code>  @Override
+<pre><code class="language-java">    
+/**
+* @program: spring-boot-restful-crud
+* @description: 自定义ErrorAttributes
+* @author: YuanChangYue
+* @create: 2019-08-19 15:02
+*/
+public class MyErrorAtrributes extends DefaultErrorAttributes {
+          
+  @Override
   public Map&lt;String, Object&gt; getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
       Map&lt;String, Object&gt; errorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
       errorAttributes.put(&quot;owner&quot;, &quot;ChangYue&quot;);
       return errorAttributes;
   } 
-</code></pre>
-
-<p>}</p>
-
-<p>​```</p>
-
-<p><img src="/post/img/自定义attribute.png" alt="自定义attribute" /></p>
-
-<ul>
-<li>将自定义异常处理类需要传递的数据传递到自定义ErrorAttributes中，并添加进去
-<br /></li>
+}
+</code></pre></li>
 </ul>
 
-<p>​```java
-  /**
+<p><img src="/post/img/自定义attribute.png" alt="自定义attribute" /></p></li>
+</ol></li>
+</ul>
+
+<p>​           将自定义异常处理类需要传递的数据传递到自定义ErrorAttributes中，并添加进去</p>
+
+<p>​</p>
+
+<pre><code class="language-java">  /**
    * @program: spring-boot-restful-crud
    * @description: 自定义ErrorAttributes
    * @author: YuanChangYue
    * @create: 2019-08-19 15:02
    */
   @Component
-  public class MyErrorAttributes extends DefaultErrorAttributes {</p>
-
-<pre><code>  /**
-   * @return 页面和json获取的字段
-   */
-  @Override
-  public Map&lt;String, Object&gt; getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
-      Map&lt;String, Object&gt; errorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
-      errorAttributes.put(&quot;owner&quot;, &quot;ChangYue&quot;);
-      //自定义需要的传递的数据
-      Map&lt;String, Object&gt; exc = (Map&lt;String, Object&gt;) webRequest.getAttribute(&quot;exc&quot;, 0);
-      errorAttributes.put(&quot;exc&quot;, exc);
-      return errorAttributes;
+  public class MyErrorAttributes extends DefaultErrorAttributes {
+  
+      /**
+       * @return 页面和json获取的字段
+       */
+      @Override
+      public Map&lt;String, Object&gt; getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
+          Map&lt;String, Object&gt; errorAttributes = super.getErrorAttributes(webRequest, includeStackTrace);
+          errorAttributes.put(&quot;owner&quot;, &quot;ChangYue&quot;);
+          //自定义需要的传递的数据
+          Map&lt;String, Object&gt; exc = (Map&lt;String, Object&gt;) webRequest.getAttribute(&quot;exc&quot;, 0);
+          errorAttributes.put(&quot;exc&quot;, exc);
+          return errorAttributes;
+      }
+  
   }
-</code></pre>
-
-<p>}
-  ​```</p>
-
-<p>​```java
+  
   /**
    * @program: spring-boot-restful-crud
    * @description: 异常处理器
@@ -426,39 +409,37 @@ public class MyExceptionHandler {
    * @create: 2019-08-19 12:53
    */
   @ControllerAdvice
-  public class MyExceptionHandler {</p>
-
-<pre><code>  /**
-   * 处理UserNotException
-   * 注意：一定要设置错误代码
-   * 根据：org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController#getStatus(javax.servlet.http.HttpServletRequest)
-   * 关键点：request.setAttribute(&quot;javax.servlet.error.status_code&quot;, 500);
-   *
-   * @return 处理信息
-   */
-  @ExceptionHandler(UserNotException.class)
-  public String handlerException(Exception e, HttpServletRequest request) {
-      Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
-      //传入错误代码 4xx 5xx
-      //Integer statusCode = (Integer) request.getAttribute(&quot;javax.servlet.error.status_code&quot;);
-      request.setAttribute(&quot;javax.servlet.error.status_code&quot;, 500);
-      map.put(&quot;code&quot;, &quot;user not exist&quot;);
-      map.put(&quot;message&quot;, e.getMessage());
-      request.setAttribute(&quot;exc&quot;, map);
-      return &quot;forward:/error&quot;;
+  public class MyExceptionHandler {
+  
+      /**
+       * 处理UserNotException
+       * 注意：一定要设置错误代码
+       * 根据：org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController#getStatus(javax.servlet.http.HttpServletRequest)
+       * 关键点：request.setAttribute(&quot;javax.servlet.error.status_code&quot;, 500);
+       *
+       * @return 处理信息
+       */
+      @ExceptionHandler(UserNotException.class)
+      public String handlerException(Exception e, HttpServletRequest request) {
+          Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+          //传入错误代码 4xx 5xx
+          //Integer statusCode = (Integer) request.getAttribute(&quot;javax.servlet.error.status_code&quot;);
+          request.setAttribute(&quot;javax.servlet.error.status_code&quot;, 500);
+          map.put(&quot;code&quot;, &quot;user not exist&quot;);
+          map.put(&quot;message&quot;, e.getMessage());
+          request.setAttribute(&quot;exc&quot;, map);
+          return &quot;forward:/error&quot;;
+      }
   }
 </code></pre>
 
-<p>}</p>
-
-<p>​```</p>
+<p>​</p>
 
 <p><img src="/post/img/自定义attribute2.png" alt="自定义attribute2" /></p>
 
 <p><strong>同时在错误页面中也可以显示出来</strong></p>
 
-<p><img src="/post/img/自定义attribute2_html.png" alt="自定义attribute2_html" /></p></li>
-</ul>
+<p><img src="/post/img/自定义attribute2_html.png" alt="自定义attribute2_html" /></p>
 
 		</div>
 		<footer class="post__footer">
@@ -488,6 +469,9 @@ public class MyExceptionHandler {
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SpringBoot与web开发(四)-----登录拦截</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SpringBoot与web开发(六)----SpringBoot容器</p></a>
 	</div>
 </nav>
 

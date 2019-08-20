@@ -6,10 +6,40 @@
     <description>Recent content in JAVA on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 14 Aug 2019 14:13:20 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2019 10:55:58 +0800</lastBuildDate>
     
 	<atom:link href="http://ycy-mrns.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringBoot数据访问</title>
+      <link>http://ycy-mrns.github.io/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Tue, 20 Aug 2019 10:55:58 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</guid>
+      <description>SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &amp;ndash;&amp;gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.1.47&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&amp;lt;Resource&amp;gt; scripts = this.</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot与web开发(六)----SpringBoot容器</title>
+      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</link>
+      <pubDate>Mon, 19 Aug 2019 18:58:44 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</guid>
+      <description>SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
+ 1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
+server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
+  注册三大组件的方式
+ ServletRegistrationBean
+ FilterRegistrationBean
+ ServletListenerRegistrationBean
+/** * @program: spring-boot-restful-crud * @description: servlet配置类 * @author: YuanChangYue * @create: 2019-08-19 19:20 */ @Configuration public class MyServletConfig { @Bean public ServletRegistrationBean myServlet() { return new ServletRegistrationBean&amp;lt;&amp;gt;(new MyServlet(), &amp;quot;/myServlet&amp;quot;); } @Bean public FilterRegistrationBean myFilter() { FilterRegistrationBean&amp;lt;Filter&amp;gt; registrationBean = new FilterRegistrationBean&amp;lt;&amp;gt;(); registrationBean.setFilter(new MyFilter()); registrationBean.setUrlPatterns(Arrays.asList(&amp;quot;/hello&amp;quot;, &amp;quot;/myServlet&amp;quot;)); return registrationBean; } @Bean public ServletListenerRegistrationBean myListen() { return new ServletListenerRegistrationBean(new MyListen()); } }  /** * @program: spring-boot-restful-crud * @description: 自定义Listen * @author: YuanChangYue * @create: 2019-08-19 19:42 */ public class MyListen implements ServletContextListener { @Override public void contextInitialized(ServletContextEvent sce) { System.</description>
+    </item>
     
     <item>
       <title>SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</title>
@@ -17,8 +47,7 @@
       <pubDate>Wed, 14 Aug 2019 14:13:20 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</guid>
-      <description>#SpringBoot 错误处理
- SpringBoot 默认错误机制，返回一个错误页面和 json数据
+      <description>SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
   浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
  其中有几个重要的组件：
  DefaultErrorAttributes ： 共享信息

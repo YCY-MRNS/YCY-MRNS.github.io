@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SpringBoot数据访问 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta property="og:title" content="SpringBoot数据访问" />
+<meta property="og:description" content="SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &ndash;&gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.47&lt;/version&gt; &lt;/dependency&gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&lt;Resource&gt; scripts = this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" />
+<meta property="article:published_time" content="2019-08-20T10:55:58+08:00" />
+<meta property="article:modified_time" content="2019-08-20T10:55:58+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot数据访问"/>
+<meta name="twitter:description" content="SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &ndash;&gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.47&lt;/version&gt; &lt;/dependency&gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&lt;Resource&gt; scripts = this."/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于我</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/java/">JAVA</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/front/">前端</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/live/">生活</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/english/">英语</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SpringBoot数据访问</h1>
+			<p class="post__lead">SpringBoot 数据库访问 JDBC访问数据库 整合Druid数据源 整合MyBatis 整合JPA</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-20T10:55:58">August 20, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#springboot访问数据库">SpringBoot访问数据库</a>
+<ul>
+<li><a href="#jdbc访问数据库">JDBC访问数据库</a>
+<ul>
+<li><a href="#1-准备工作">1. 准备工作</a></li>
+<li><a href="#2-创建表">2. 创建表</a></li>
+<li><a href="#3-简单查询">3. 简单查询</a></li>
+</ul></li>
+<li><a href="#整合druid数据源">整合Druid数据源</a>
+<ul>
+<li><a href="#1-添加maven依赖">1.  添加maven依赖</a></li>
+<li><a href="#2-application-yml">2. application.yml</a></li>
+<li><a href="#3-测试类检测是否切换成功">3. 测试类检测是否切换成功</a></li>
+<li><a href="#4-druid数据源其他配置">4. Druid数据源其他配置</a></li>
+<li><a href="#5-druid的配置类">5. Druid的配置类</a></li>
+</ul></li>
+<li><a href="#整合mybatis">整合MyBatis</a>
+<ul>
+<li><a href="#1-添加依赖">1. 添加依赖</a></li>
+<li><a href="#2-创建实体类">2. 创建实体类</a></li>
+<li><a href="#3-注解版">3. 注解版</a></li>
+<li><a href="#4-mapper配置版">4. mapper配置版</a></li>
+</ul></li>
+<li><a href="#整合-springdata-jpa">整合 SpringData JPA</a>
+<ul>
+<li><a href="#1-实体类">1. 实体类</a></li>
+<li><a href="#2-dao接口">2. Dao接口</a></li>
+<li><a href="#3-配置">3. 配置</a></li>
+<li><a href="#4-简单查询">4. 简单查询</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="springboot访问数据库">SpringBoot访问数据库</h1>
+
+<blockquote>
+<p>springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA</p>
+</blockquote>
+
+<p><strong>源码：<code>DataSourceAutoConfiguration</code> &ndash;&gt;<code>PooledDataSourceConfiguration</code>可以看到数据源的配置</strong></p>
+
+<pre><code class="language-java">@Configuration
+@Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class})
+@ConditionalOnMissingBean({DataSource.class, XADataSource.class})
+@Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class})
+protected static class PooledDataSourceConfiguration {
+    protected PooledDataSourceConfiguration() {
+    }
+}
+</code></pre>
+
+<h2 id="jdbc访问数据库">JDBC访问数据库</h2>
+
+<h3 id="1-准备工作">1. 准备工作</h3>
+
+<ul>
+<li><p>pom.xml</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+&lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+&lt;groupId&gt;mysql&lt;/groupId&gt;
+&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+&lt;version&gt;5.1.47&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></li>
+
+<li><p>application.yml</p>
+
+<pre><code class="language-yaml">spring:
+datasource:
+username: root
+password:
+url: jdbc:mysql://localhost:3306/jdbc
+driver-class-name: com.mysql.jdbc.Driver
+</code></pre></li>
+</ul>
+
+<h3 id="2-创建表">2. 创建表</h3>
+
+<blockquote>
+<p>springboot创建表相关源码， 通过<code>DataSourceInitializer</code>拿到数据源，可以创建表结构或者表数据</p>
+</blockquote>
+
+<pre><code class="language-java">//创建表结构
+public boolean createSchema() {
+    List&lt;Resource&gt; scripts = this.getScripts(&quot;spring.datasource.schema&quot;, this.properties.getSchema(), &quot;schema&quot;);
+    if (!scripts.isEmpty()) {
+        if (!this.isEnabled()) {
+            logger.debug(&quot;Initialization disabled (not running DDL scripts)&quot;);
+            return false;
+        }
+
+        String username = this.properties.getSchemaUsername();
+        String password = this.properties.getSchemaPassword();
+        this.runScripts(scripts, username, password);
+    }
+    return !scripts.isEmpty();
+}
+//初始化表数据
+public void initSchema() {
+        List&lt;Resource&gt; scripts = this.getScripts(&quot;spring.datasource.data&quot;, this.properties.getData(), &quot;data&quot;);
+        if (!scripts.isEmpty()) {
+            if (!this.isEnabled()) {
+                logger.debug(&quot;Initialization disabled (not running data scripts)&quot;);
+                return;
+            }
+
+            String username = this.properties.getDataUsername();
+            String password = this.properties.getDataPassword();
+            this.runScripts(scripts, username, password);
+        }
+
+    }
+//执行sql语句
+private void runScripts(List&lt;Resource&gt; resources, String username, String password) {
+        if (!resources.isEmpty()) {
+            ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+            populator.setContinueOnError(this.properties.isContinueOnError());
+            populator.setSeparator(this.properties.getSeparator());
+            if (this.properties.getSqlScriptEncoding() != null) {
+                populator.setSqlScriptEncoding(this.properties.getSqlScriptEncoding().name());
+            }
+
+            Iterator var5 = resources.iterator();
+
+            while(var5.hasNext()) {
+                Resource resource = (Resource)var5.next();
+                populator.addScript(resource);
+            }
+
+            DataSource dataSource = this.dataSource;
+            if (StringUtils.hasText(username) &amp;&amp; StringUtils.hasText(password)) {
+                dataSource = DataSourceBuilder.create(this.properties.getClassLoader()).driverClassName(this.properties.determineDriverClassName()).url(this.properties.determineUrl()).username(username).password(password).build();
+            }
+
+            DatabasePopulatorUtils.execute(populator, dataSource);
+        }
+    }
+//获得脚本
+private List&lt;Resource&gt; getScripts(String propertyName, List&lt;String&gt; resources, String fallback) {
+        if (resources != null) {
+            return this.getResources(propertyName, resources, true);
+        } else {
+            String platform = this.properties.getPlatform();
+            List&lt;String&gt; fallbackResources = new ArrayList();
+            fallbackResources.add(&quot;classpath*:&quot; + fallback + &quot;-&quot; + platform + &quot;.sql&quot;);
+            fallbackResources.add(&quot;classpath*:&quot; + fallback + &quot;.sql&quot;);
+            return this.getResources(propertyName, fallbackResources, false);
+        }
+    }
+</code></pre>
+
+<p>通过以上源码可以知道，想要执行创建表结构或者表数据的sql语句，默认将sql文件的名称修改为：</p>
+
+<ul>
+<li><strong>schema-*.sql</strong></li>
+<li><strong>data-*.sql</strong></li>
+</ul>
+
+<p>或者在配置文件中直接指定：</p>
+
+<pre><code class="language-yaml">spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
+    schema:
+      - classpath:department.sql
+    initialization-mode: always
+</code></pre>
+
+<p><img src="/post/img/目录.png" alt="目录" /></p>
+
+<p>department.sql</p>
+
+<pre><code class="language-sql">DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `departmentName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+</code></pre>
+
+<p>直接运行Application，就可以生成表结构：</p>
+
+<p><img src="/post/img/springboot生成表.png" alt="springboot生成表" /></p>
+
+<h3 id="3-简单查询">3. 简单查询</h3>
+
+<p>表数据</p>
+
+<p><img src="/post/img/表数据.png" alt="表数据" /></p>
+
+<p>Controller</p>
+
+<pre><code class="language-java">/**
+ * @program: spring-boot-data-jdbc
+ * @description: 通过JDBC的方式操作数据库
+ * @author: YuanChangYue
+ * @create: 2019-08-20 12:11
+ */
+@Controller
+public class JDBCController {
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @GetMapping(&quot;/deps&quot;)
+    @ResponseBody
+    public List&lt;Map&lt;String, Object&gt;&gt; queryList() {
+        return jdbcTemplate.queryForList(&quot;select * from department&quot;);
+    }
+
+}
+</code></pre>
+
+<p>查询结果</p>
+
+<p><img src="/post/img/查询结果.png" alt="查询结果" /></p>
+
+<h2 id="整合druid数据源">整合Druid数据源</h2>
+
+<h3 id="1-添加maven依赖">1.  添加maven依赖</h3>
+
+<pre><code class="language-xml">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+  &lt;artifactId&gt;druid&lt;/artifactId&gt;
+  &lt;version&gt;1.1.10&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;log4j&lt;/groupId&gt;
+  &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+  &lt;version&gt;1.2.17&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p><strong><em>注意:需要添加 log4j 的依赖，否者会报错</em></strong></p>
+
+<p><img src="/post/img/报错-没有log4j.png" alt="报错-没有log4j" /></p>
+
+<h3 id="2-application-yml">2. application.yml</h3>
+
+<pre><code class="language-yaml">spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+</code></pre>
+
+<h3 id="3-测试类检测是否切换成功">3. 测试类检测是否切换成功</h3>
+
+<pre><code class="language-java">package springbootdatajdbc.demo;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DemoApplicationTests {
+
+    @Autowired
+    DataSource dataSource;
+
+    @Test
+    public void contextLoads() throws SQLException {
+        System.out.println(&quot;dataSource.getClass() = &quot; + dataSource.getClass());
+        Connection connection = dataSource.getConnection();
+        System.out.println(&quot;connection = &quot; + connection);
+        connection.close();
+    }
+}
+</code></pre>
+
+<p><img src="/post/img/Druid数据源.png" alt="Druid数据源" /></p>
+
+<h3 id="4-druid数据源其他配置">4. Druid数据源其他配置</h3>
+
+<pre><code class="language-yaml">spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+</code></pre>
+
+<h3 id="5-druid的配置类">5. Druid的配置类</h3>
+
+<pre><code class="language-java">package springbootdatajdbc.demo.config;
+
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @program: spring-boot-data-jdbc
+ * @description: Druid配置类
+ * @author: YuanChangYue
+ * @create: 2019-08-20 12:40
+ */
+@Configuration
+public class DruidConfig {
+
+    @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+    @Bean
+    public DataSource druid() {
+        return new DruidDataSource();
+    }
+
+  /**
+     * 配置后台监控
+     * 1 . 配置管理后台的Servlet
+     */
+    @Bean
+    public ServletRegistrationBean statViewServlet() {
+        ServletRegistrationBean&lt;StatViewServlet&gt; bean = new ServletRegistrationBean&lt;&gt;(new StatViewServlet(), &quot;/druid/*&quot;);
+        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
+        initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;);
+        initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;);
+        initParams.put(&quot;allow&quot;, &quot;&quot;);
+
+        bean.setInitParameters(initParams);
+        return bean;
+    }
+
+  /**
+     * 2 . 配置监听web的filter
+     */
+  @Bean
+  public FilterRegistrationBean webStatFilter() {
+    FilterRegistrationBean&lt;WebStatFilter&gt; bean = new FilterRegistrationBean&lt;&gt;(new WebStatFilter());
+    Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
+    initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;);
+    bean.setInitParameters(initParams);
+    bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+    return bean;
+  }
+}
+
+</code></pre>
+
+<p>最后访问 : <a href="http://localhost:8080/druid">http://localhost:8080/druid</a></p>
+
+<p><img src="/post/img/Druid登录页.png" alt="Druid登录页" /></p>
+
+<p><img src="/post/img/Druid主页.png" alt="Druid主页" /></p>
+
+<h2 id="整合mybatis">整合MyBatis</h2>
+
+<h3 id="1-添加依赖">1. 添加依赖</h3>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.7.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;spring-boot-data-mybatis&lt;/groupId&gt;
+    &lt;artifactId&gt;demo&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;name&gt;demo&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;2.1.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.10&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;log4j&lt;/groupId&gt;
+            &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+            &lt;version&gt;1.2.17&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+
+
+</code></pre>
+
+<p><img src="/post/img/mybatis-spring-boot-starter.png" alt="mybatis-spring-boot-starter" /></p>
+
+<h3 id="2-创建实体类">2. 创建实体类</h3>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.bean;
+
+/**
+ * @program: spring-boot-data-mybatis
+ * @description:
+ * @author: YuanChangYue
+ * @create: 2019-08-20 13:43
+ */
+public class Department {
+    private Integer Id;
+    private String departmentName;
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+}
+
+</code></pre>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.bean;
+
+/**
+ * @program: spring-boot-data-mybatis
+ * @description:
+ * @author: YuanChangYue
+ * @create: 2019-08-20 13:46
+ */
+public class Employee {
+    private Integer id;
+    private String lastName;
+    private String email;
+    private Integer gender;
+    private int dId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public int getdId() {
+        return dId;
+    }
+
+    public void setdId(int dId) {
+        this.dId = dId;
+    }
+}
+
+</code></pre>
+
+<h3 id="3-注解版">3. 注解版</h3>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.mapper;
+
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
+import springbootdatamybatis.demo.bean.Department;
+
+@Repository
+@Mapper
+public interface DepartmentMapper {
+
+    @Select(&quot;select * from department where id = #{id} &quot;)
+    public Department getDepById(Integer id);
+
+    @Delete(&quot;delete from department where id = #{id}&quot;)
+    public int deleteDepById(Integer id);
+  
+    @Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)
+    @Insert(&quot;insert into department(departmentName) values(#{departmentName})&quot;)
+    public int insertDept(Department department);
+
+    @Update(&quot;update department set departmentName=#{departmentName} where id = #{id}&quot;)
+    public int updateDept(Department department);
+
+}
+
+
+</code></pre>
+
+<p>这里为了方便，没有加入serive层</p>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+import springbootdatamybatis.demo.bean.Department;
+import springbootdatamybatis.demo.mapper.DepartmentMapper;
+
+/**
+ * @program: spring-boot-data-mybatis
+ * @description: 部门控制器
+ * @author: YuanChangYue
+ * @create: 2019-08-20 13:56
+ */
+@Controller
+public class DeptController {
+
+    @Autowired
+    DepartmentMapper departmentMapper;
+
+    @GetMapping(&quot;/dept/{id}&quot;)
+    @ResponseBody
+    public Department getDep(@PathVariable(&quot;id&quot;) Integer id) {
+        return departmentMapper.getDepById(id);
+    }
+
+    @GetMapping(&quot;/dept&quot;)
+    @ResponseBody
+    public Department insertDept(Department department) {
+        departmentMapper.insertDept(department);
+        return department;
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.config;
+
+import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @program: spring-boot-data-mybatis
+ * @description: Mybatis 配置类
+ * @author: YuanChangYue
+ * @create: 2019-08-20 15:47
+ */
+@Configuration
+public class MybatisConfig {
+
+    /**
+     *  自定义配置 支持驼峰 
+     */
+    @Bean
+    public ConfigurationCustomizer configurationCustomizer() {
+        return configuration -&gt; configuration.setMapUnderscoreToCamelCase(true);
+    }
+}
+
+</code></pre>
+
+<p><img src="/post/img/dept-querybyid.png" alt="dept-querybyid" /></p>
+
+<p><img src="/post/img/dept-insert.png" alt="dept-insert" /></p>
+
+<h3 id="4-mapper配置版">4. mapper配置版</h3>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.mapper;
+
+import org.springframework.stereotype.Repository;
+import springbootdatamybatis.demo.bean.Employee;
+
+@Repository
+public interface EmployeeMapper {
+
+    public Employee getEmpById(Integer id);
+    
+}
+</code></pre>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;springbootdatamybatis.demo.mapper.EmployeeMapper&quot;&gt;
+
+    &lt;select id=&quot;getEmpById&quot; resultType=&quot;springbootdatamybatis.demo.bean.Employee&quot;&gt;
+        select * from employee where id  = #{id}
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;settings&gt;
+        &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+    &lt;/settings&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<pre><code class="language-java">package springbootdatamybatis.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
+import springbootdatamybatis.demo.bean.Employee;
+import springbootdatamybatis.demo.mapper.EmployeeMapper;
+
+/**
+ * @program: spring-boot-data-mybatis
+ * @description:
+ * @author: YuanChangYue
+ * @create: 2019-08-20 16:20
+ */
+@Controller
+public class EmpController {
+
+    @Autowired
+    EmployeeMapper employeeMapper;
+
+    @ResponseBody
+    @GetMapping(&quot;/emp/{id}&quot;)
+    public Employee getEmpById(@PathVariable(&quot;id&quot;) Integer id) {
+        return employeeMapper.getEmpById(id);
+    }
+}
+</code></pre>
+
+<pre><code class="language-yaml">spring:
+  datasource:
+    #   数据源基本配置
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis
+    type: com.alibaba.druid.pool.DruidDataSource
+    #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+#    initialization-mode: always
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*
+
+</code></pre>
+
+<p><img src="/post/img/emp-queryById.png" alt="emp-queryById" /></p>
+
+<h2 id="整合-springdata-jpa">整合 SpringData JPA</h2>
+
+<h3 id="1-实体类">1. 实体类</h3>
+
+<pre><code class="language-java">package com.changyue.springbootdatajpa.entity;
+
+import javax.persistence.*;
+
+/**
+ * @program: spring-boot-data-jpa
+ * @description: 用户
+ * @author: YuanChangYue
+ * @create: 2019-08-20 16:36
+ */
+@Entity
+@Table(name = &quot;tbl_user&quot;)
+@JsonIgnoreProperties(value = {&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = &quot;last_name&quot;, length = 50)
+    private String lastName;
+    @Column
+    private String email;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmial() {
+        return email;
+    }
+
+    public void setEmial(String emial) {
+        this.email = emial;
+    }
+}
+</code></pre>
+
+<h3 id="2-dao接口">2. Dao接口</h3>
+
+<pre><code class="language-java">package com.changyue.springbootdatajpa.repository;
+
+
+import com.changyue.springbootdatajpa.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+/**
+ * 继承JpaRepository
+ */
+public interface UserRepository extends JpaRepository&lt;User, Integer&gt; {
+
+}
+</code></pre>
+
+<h3 id="3-配置">3. 配置</h3>
+
+<pre><code class="language-yaml">spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/jpa
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    
+  jpa:
+    hibernate:
+      #更新和创建表结构
+      ddl-auto: update
+    #控制台显示sql
+    show-sql: true	
+</code></pre>
+
+<p><strong>完成以上操作，会根据实体类在数据库中创建表</strong></p>
+
+<p><img src="/post/img/jpa-create-table.png" alt="jpa-create-table" /></p>
+
+<h3 id="4-简单查询">4. 简单查询</h3>
+
+<pre><code class="language-java">package com.changyue.springbootdatajpa.controller;
+
+import com.changyue.springbootdatajpa.entity.User;
+import com.changyue.springbootdatajpa.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @program: spring-boot-data-jpa
+ * @description:
+ * @author: YuanChangYue
+ * @create: 2019-08-20 16:52
+ */
+@RestController
+public class UserController {
+    @Autowired
+    UserRepository userRepository;
+
+    /**
+     * 简单通过id查询出use信息
+     *
+     * @return user json
+     */
+    @GetMapping(&quot;/user/{id}&quot;)
+    public User getUserById(@PathVariable(&quot;id&quot;) Integer id) {
+        return userRepository.getOne(id);
+    }
+}
+</code></pre>
+
+<p><img src="/post/img/user-queryById.png" alt="user-queryById" /></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/springboot/" rel="tag">SpringBoot</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/springboot%E4%B8%8Edocker/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Docker</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <description>Recent content in Tags on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 14 Aug 2019 14:13:20 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2019 10:55:58 +0800</lastBuildDate>
     
 	<atom:link href="http://ycy-mrns.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>SpringBoot</title>
       <link>http://ycy-mrns.github.io/tags/springboot/</link>
-      <pubDate>Wed, 14 Aug 2019 14:13:20 +0800</pubDate>
+      <pubDate>Tue, 20 Aug 2019 10:55:58 +0800</pubDate>
       
       <guid>http://ycy-mrns.github.io/tags/springboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据库</title>
+      <link>http://ycy-mrns.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Tue, 20 Aug 2019 10:55:58 +0800</pubDate>
+      
+      <guid>http://ycy-mrns.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description></description>
     </item>
     
