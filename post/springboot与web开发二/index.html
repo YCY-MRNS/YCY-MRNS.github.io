@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zh-CN">
+<html class="no-js" lang="en-us">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,25 +7,8 @@
 	<title>SpringBoot与web开发(二)-----Thymeleaf 模板引擎 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="SpringBoot与web开发(二)-----Thymeleaf 模板引擎" />
-<meta property="og:description" content="Thymeleaf 模板引擎 1. 引入Thymeleaf &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt; &lt;/dependency&gt;  @ConfigurationProperties(prefix = &quot;spring.thymeleaf&quot;) public class ThymeleafProperties { private static final Charset DEFAULT_ENCODING = StandardCharsets.UTF_8; public static final String DEFAULT_PREFIX = &quot;classpath:/templates/&quot;; public static final String DEFAULT_SUFFIX = &quot;.html&quot;;  将html页面放在templates目录下使用模板引擎 渲染页面
- html中引入
-&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;   2. 语法规则 来自官网的使用手册：http://www.thymeleaf.org
- th 语法   表达式
-Simple expressions:（表达式语法） Variable Expressions: ${...}：获取变量值；OGNL； 1）、获取对象的属性、调用方法 2）、使用内置的基本对象： #ctx : the context object. #vars: the context variables." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/" />
-<meta property="article:published_time" content="2019-08-10T22:20:04+08:00" />
-<meta property="article:modified_time" content="2019-08-10T22:20:04+08:00" />
-
-	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SpringBoot与web开发(二)-----Thymeleaf 模板引擎"/>
-<meta name="twitter:description" content="Thymeleaf 模板引擎 1. 引入Thymeleaf &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt; &lt;/dependency&gt;  @ConfigurationProperties(prefix = &quot;spring.thymeleaf&quot;) public class ThymeleafProperties { private static final Charset DEFAULT_ENCODING = StandardCharsets.UTF_8; public static final String DEFAULT_PREFIX = &quot;classpath:/templates/&quot;; public static final String DEFAULT_SUFFIX = &quot;.html&quot;;  将html页面放在templates目录下使用模板引擎 渲染页面
- html中引入
-&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;   2. 语法规则 来自官网的使用手册：http://www.thymeleaf.org
- th 语法   表达式
-Simple expressions:（表达式语法） Variable Expressions: ${...}：获取变量值；OGNL； 1）、获取对象的属性、调用方法 2）、使用内置的基本对象： #ctx : the context object. #vars: the context variables."/>
-
+	
+	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -44,30 +27,7 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
 				<div class="logo__tagline">我的博客</div>
 			</a>
 		</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">Menu</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">关于我</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/java/">JAVA</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/front/">前端</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/live/">生活</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/english/">英语</a>
-		</li>
-	</ul>
-</nav>
-
+		<div class="divider"></div>
 	</div>
 </header>
 		<div class="wrapper flex">
@@ -86,7 +46,7 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
 </div>
 </div>
 		</header>
@@ -326,9 +286,6 @@ public String success(Map&lt;String, Object&gt; map) {
 	</figure>
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
-	</div>
-	<div class="authorbox__description">
-		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
 	</div>
 </div>
 

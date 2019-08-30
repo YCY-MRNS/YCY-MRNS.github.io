@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zh-CN">
+<html class="no-js" lang="en-us">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,17 +7,8 @@
 	<title>Posts - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="Posts" />
-<meta property="og:description" content="我的博客" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://ycy-mrns.github.io/post/" />
-
-<meta property="og:updated_time" content="2019-08-20T10:55:58+08:00" />
-
-	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="我的博客"/>
-
+	
+	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="ChangYue">
@@ -37,30 +28,7 @@
 				<div class="logo__tagline">我的博客</div>
 			</a>
 		</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">Menu</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">关于我</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/java/">JAVA</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/front/">前端</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/live/">生活</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/english/">英语</a>
-		</li>
-	</ul>
-</nav>
-
+		<div class="divider"></div>
 	</div>
 </header>
 		<div class="wrapper flex">
@@ -72,15 +40,139 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/%E5%8D%95%E8%AF%8Dday1/" rel="bookmark">
-			单词-Day1
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="bookmark">
+			SpringBoot与web开发(四)-----登录拦截
 			</a>
 		</h3>
-		<p class="list__lead post__lead">单词第一天</p>
+		<p class="list__lead post__lead">拦截器登录</p>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-07T10:26:14">August 07, 2019</time>
+	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/" rel="bookmark">
+			SpringBoot与Web开发(三)-----Spring MVC
+			</a>
+		</h3>
+		<p class="list__lead post__lead"> Spring Boot 中 Spring MVC 自动配置 ，Spring MVC的拓展 ，全面接管SpringMVC </p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T16:36:54">August 12, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
+本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
+ 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
+Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
+The auto-configuration adds the following features on top of Spring’s defaults:
+ Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
+ 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document)).
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/" rel="bookmark">
+			SpringBoot与web开发(二)-----Thymeleaf 模板引擎
+			</a>
+		</h3>
+		<p class="list__lead post__lead">模板引擎 Thymeleaf</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-10T22:20:04">August 10, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Thymeleaf 模板引擎 1. 引入Thymeleaf &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt; &lt;/dependency&gt;  @ConfigurationProperties(prefix = &quot;spring.thymeleaf&quot;) public class ThymeleafProperties { private static final Charset DEFAULT_ENCODING = StandardCharsets.UTF_8; public static final String DEFAULT_PREFIX = &quot;classpath:/templates/&quot;; public static final String DEFAULT_SUFFIX = &quot;.html&quot;;  将html页面放在templates目录下使用模板引擎 渲染页面
+ html中引入
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;   2. 语法规则 来自官网的使用手册：http://www.thymeleaf.org
+ th 语法   表达式
+Simple expressions:（表达式语法） Variable Expressions: ${...}：获取变量值；OGNL； 1）、获取对象的属性、调用方法 2）、使用内置的基本对象： #ctx : the context object. #vars: the context variables.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/" rel="bookmark">
+			SpringBoot与web开发(一)-----SpringBoot快速使用
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot快速使用，自动配置，静态资源映射</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-10T20:15:09">August 10, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		1. 开始使用  创建springBoot 应用 选择需要的模块  创建springboot
+选择模块
+ SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
+ 编写代码
+  2. 自动配置 XXXXXAutoConfiguration ：在容器中自动配置组件 XXXXXProperties ： 配置类  这些文件都在通过Mavan引入的外部库中，org.springframework.boot.autoconfigure。
+3. 静态资源映射规则  默认创建的 SpringBoot 项目是没有web文件夹的，那如何映射css，js等静态资源呢？
+ Spring boot 会自动装配WebMvcAutoConfiguration类，会对静态资源的映射做出规定,
+@Override public void addResourceHandlers(ResourceHandlerRegistry registry) { if (!this.resourceProperties.isAddMappings()) { logger.debug(&quot;Default resource handling disabled&quot;); return; } Duration cachePeriod = this.resourceProperties.getCache().getPeriod(); CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl(); if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) { customizeResourceHandlerRegistration(registry.addResourceHandler(&quot;/webjars/**&quot;) .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;) .setCachePeriod(getSeconds(cachePeriod)).setCacheControl(cacheControl)); } String staticPathPattern = this.mvcProperties.getStaticPathPattern(); if (!
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/%E5%8D%95%E8%AF%8Dday2/" rel="bookmark">
+			单词-Day2
+			</a>
+		</h3>
+		<p class="list__lead post__lead">单词第二天</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-09T10:26:14">August 09, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -90,66 +182,22 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		abruptly adv.突然地（suddenly）  rupt - = 破 ab - = 加强 -ly= 副词后缀
-    衍生 意思     abrupt adj. 突然的 唐突的 陡峭的   interrupt v. 中断 干扰    erupt v. 爆发 喷出    disrupt v. 破坏 分裂    bankrupt adj. 破产的    【 例句 】：The sky darkened abruptly 天突然暗了下来
-absent a. 缺席的  ab- = 否定
+		1. accommodate v. 使适应，提供住宿  commod- = 方便 -tion 名词后缀 accommodation n. 住宿
+ [ 搭配 ]
+ accommodate to 改变&hellip; 以适应&hellip; accommodate with 向&hellip; 供应  【 例句 】
+ she tried to accommodate her way of life to his . 他试图是自己的生活方式与他的生活方式相适应。 to accommodate a friend with money . 把钱借给一位朋友  2. accompany v. 陪伴，伴奏  pan- = bread 面包
+    衍生 意思     companion n.
 	</div>
-</article><article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="http://ycy-mrns.github.io/post/%E6%9D%A8%E6%88%90%E6%9D%B0/">
-			<img src="/post/img/placeholder.jpg" alt="杨成洁" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/%E6%9D%A8%E6%88%90%E6%9D%B0/" rel="bookmark">
-			杨成洁
-			</a>
-		</h3>
-		<p class="list__lead post__lead">My lover</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-06T22:06:24">August 06, 2019</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		I love you
-je t&rsquo;aime
-ich liebe dich
-σε αγαπώ se agapo
-szertlek
-taim i&rsquo;ngra leat
-mina armadtansind
-mina rakastan sinua
-ik zie u graag
-Ti Amo
-te amo vos amo
-estevi milu
-ik hou van jou
-jeg elsker dig
-eu amo-te
-lingo gramo
-tave myliu
-te sakam
-men seni sevirem
-ami to may halobashi
-kocham cie
-te tu be besc
-vivian
-milujite
-inhobbok
-volim te
-chit pade
-āmi tomāke bhālobāshi
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/%E5%8D%95%E8%AF%8Dday2/">Read more…</a>
 	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/post/">«</a>
-	<span class="pagination__item pagination__item--current">2/2</span>
+	<span class="pagination__item pagination__item--current">2/3</span>
+	<a class="pagination__item pagination__item--next btn" href="/post/page/3/">»</a>
 </div>
 
 
@@ -161,18 +209,18 @@ chit pade
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="http://ycy-mrns.github.io/" />
+		<input type="hidden" name="sitesearch" value="http://example.org/" />
 	</form>
 </div>
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">后端踩坑记录----通过虚拟路径访问本地图片</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/">SpringBoot数据访问</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Edocker/">Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/">SpringBoot与web开发(六)----SpringBoot容器</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">SpringBoot与web开发(四)-----登录拦截</a></li>
 		</ul>
 	</div>
 </div>
@@ -180,7 +228,8 @@ chit pade
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%90%8e%e7%ab%af">后端</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e7%ae%97%e6%b3%95">算法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%8b%b1%e8%af%ad">英语</a></li>
 		</ul>
@@ -189,19 +238,21 @@ chit pade
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/springboot" title="Springboot">Springboot</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/thymeleaf" title="Thymeleaf">Thymeleaf</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%8d%95%e8%af%8d" title="单词">单词</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%8b%a6%e6%88%aa%e5%99%a8" title="拦截器">拦截器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93" title="数据库">数据库</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%9d%a8%e6%88%90%e6%b4%81" title="杨成洁">杨成洁</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e" title="模板引擎">模板引擎</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%ae%97%e6%b3%95" title="算法">算法</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%8b%b1%e8%af%ad" title="英语">英语</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springboot" title="Springboot">Springboot (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/thymeleaf" title="Thymeleaf">Thymeleaf (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tomcat" title="Tomcat">Tomcat (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%8d%95%e8%af%8d" title="单词">单词 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%8b%a6%e6%88%aa%e5%99%a8" title="拦截器">拦截器 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93" title="数据库">数据库 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%9d%a8%e6%88%90%e6%b4%81" title="杨成洁">杨成洁 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e" title="模板引擎">模板引擎 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%8b%b1%e8%af%ad" title="英语">英语 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b8%a9%e5%9d%91%e8%ae%b0%e5%bd%95" title="踩坑记录">踩坑记录 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">

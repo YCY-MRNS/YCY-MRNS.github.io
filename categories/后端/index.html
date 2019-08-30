@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后端 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="/categories/%E5%90%8E%E7%AB%AF/index.xml" title="ChangYue">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">后端</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" rel="bookmark">
+			后端踩坑记录----通过虚拟路径访问本地图片
+			</a>
+		</h3>
+		<p class="list__lead post__lead">通过虚拟路径访问本地图片</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-21T10:56:01">August 21, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		通过虚拟路径访问本地图片  情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。
+ 1. 错误重现 数据库：
+没有做任何设置之前：
+2. 解决步骤  方法 一： eclipse  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt; &lt;!-- eclipse --&gt; &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt; &lt;/Context&gt; &lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&gt; &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt; &lt;/Context&gt; &lt;/Host&gt;   方法二：开发工具为 Idea  快捷键： shift+alt+F10 , 进入Run小窗口
+​ 进入Tomcat设置界面：
+​ 选择自己的当前项目的Tomcat：
+​ 设置路径：
+​ 重启tomcat:
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" rel="bookmark">
+			SpringBoot数据访问
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot 数据库访问 JDBC访问数据库 整合Druid数据源 整合MyBatis 整合JPA</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-20T10:55:58">August 20, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
+ 源码：DataSourceAutoConfiguration &ndash;&gt;PooledDataSourceConfiguration可以看到数据源的配置
+@Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
+&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;mysql&lt;/groupId&gt; &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt; &lt;version&gt;5.1.47&lt;/version&gt; &lt;/dependency&gt;  application.yml
+spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
+ //创建表结构 public boolean createSchema() { List&lt;Resource&gt; scripts = this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/" rel="bookmark">
+			SpringBoot与web开发(六)----SpringBoot容器
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot容器</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-19T18:58:44">August 19, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
+ 1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
+server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
+  注册三大组件的方式
+ ServletRegistrationBean
+ FilterRegistrationBean
+ ServletListenerRegistrationBean
+/** * @program: spring-boot-restful-crud * @description: servlet配置类 * @author: YuanChangYue * @create: 2019-08-19 19:20 */ @Configuration public class MyServletConfig { @Bean public ServletRegistrationBean myServlet() { return new ServletRegistrationBean&lt;&gt;(new MyServlet(), &quot;/myServlet&quot;); } @Bean public FilterRegistrationBean myFilter() { FilterRegistrationBean&lt;Filter&gt; registrationBean = new FilterRegistrationBean&lt;&gt;(); registrationBean.setFilter(new MyFilter()); registrationBean.setUrlPatterns(Arrays.asList(&quot;/hello&quot;, &quot;/myServlet&quot;)); return registrationBean; } @Bean public ServletListenerRegistrationBean myListen() { return new ServletListenerRegistrationBean(new MyListen()); } }  /** * @program: spring-boot-restful-crud * @description: 自定义Listen * @author: YuanChangYue * @create: 2019-08-19 19:42 */ public class MyListen implements ServletContextListener { @Override public void contextInitialized(ServletContextEvent sce) { System.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/" rel="bookmark">
+			SpringBoot与web开发(五) ---- SpringBoot 错误处理机制
+			</a>
+		</h3>
+		<p class="list__lead post__lead">SpringBoot 错误处理机制</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-14T14:13:20">August 14, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
+  浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
+ 其中有几个重要的组件：
+ DefaultErrorAttributes ： 共享信息
+ timestamp 时间 status 状态码 error 错误提示 exception 异常对象 message 异常信息 errors JSR303 数据校验的信息  DefaultErrorViewResolver
+@Override public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map&lt;String, Object&gt; model) { ModelAndView modelAndView = resolve(String.valueOf(status.value()), model); if (modelAndView == null &amp;&amp; SERIES_VIEWS.containsKey(status.series())) { modelAndView = resolve(SERIES_VIEWS.get(status.series()), model); } return modelAndView; } private ModelAndView resolve(String viewName, Map&lt;String, Object&gt; model) { String errorViewName = &quot;error/&quot; + viewName; //使用模板引擎 TemplateAvailabilityProvider provider = this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="bookmark">
+			SpringBoot与web开发(四)-----登录拦截
+			</a>
+		</h3>
+		<p class="list__lead post__lead">拦截器登录</p>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">Read more…</a>
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/%E5%90%8E%E7%AB%AF/page/2/">»</a>
+</div>
+
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="http://example.org/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">后端踩坑记录----通过虚拟路径访问本地图片</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/">SpringBoot数据访问</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Edocker/">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/">SpringBoot与web开发(六)----SpringBoot容器</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/">SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%90%8e%e7%ab%af">后端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e7%ae%97%e6%b3%95">算法</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%8b%b1%e8%af%ad">英语</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springboot" title="Springboot">Springboot (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/thymeleaf" title="Thymeleaf">Thymeleaf (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tomcat" title="Tomcat">Tomcat (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e5%8d%95%e8%af%8d" title="单词">单词 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%8b%a6%e6%88%aa%e5%99%a8" title="拦截器">拦截器 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e5%ba%93" title="数据库">数据库 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84" title="数据结构">数据结构 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%9d%a8%e6%88%90%e6%b4%81" title="杨成洁">杨成洁 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e" title="模板引擎">模板引擎 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%8b%b1%e8%af%ad" title="英语">英语 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b8%a9%e5%9d%91%e8%ae%b0%e5%bd%95" title="踩坑记录">踩坑记录 (1)</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/YCY-MRNS" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:604028466@qq.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>604028466@qq.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

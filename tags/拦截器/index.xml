@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>拦截器 on ChangYue</title>
-    <link>http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+    <link>http://example.org/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
     <description>Recent content in 拦截器 on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 13 Aug 2019 08:56:37 +0800</lastBuildDate>
     
-	<atom:link href="http://ycy-mrns.github.io/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://example.org/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringBoot与web开发(四)-----登录拦截</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</link>
       <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</guid>
       <description>准备工作  页面downloadboostrap的官方实例页面，方便练习
 资源来自：https://getbootstrap.com/docs/4.3/examples/
  资源的目录如下：

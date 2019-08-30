@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后端踩坑记录----通过虚拟路径访问本地图片 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">后端踩坑记录----通过虚拟路径访问本地图片</h1>
+			<p class="post__lead">通过虚拟路径访问本地图片</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-21T10:56:01">August 21, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#通过虚拟路径访问本地图片">通过虚拟路径访问本地图片</a>
+<ul>
+<li><a href="#1-错误重现">1. 错误重现</a></li>
+<li><a href="#2-解决步骤">2. 解决步骤</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="通过虚拟路径访问本地图片">通过虚拟路径访问本地图片</h1>
+
+<blockquote>
+<p>情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。</p>
+</blockquote>
+
+<h2 id="1-错误重现">1. 错误重现</h2>
+
+<p>数据库：</p>
+
+<p><img src="/post/img/数据库headline.png" alt="数据库headline" /></p>
+
+<p>没有做任何设置之前：</p>
+
+<p><img src="/post/img/图片加载失败.png" alt="图片加载失败" /></p>
+
+<h2 id="2-解决步骤">2. 解决步骤</h2>
+
+<ul>
+<li><strong>方法 一：</strong> eclipse</li>
+</ul>
+
+<p>在Tomcat目录下找到conf文件夹，打开<strong>server.xml</strong>   D:\apache-tomcat-9.0.22\conf\server.xml</p>
+
+<pre><code class="language-xml">
+  &lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+
+    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+  prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt;
+  &lt;!-- eclipse --&gt;
+  &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt;
+  &lt;/Context&gt;
+
+  &lt;!-- 
+  在此处添加以下内容  我的图片位置为 ： 
+  D:\projectdev\img\upload\item\headtitle\XXXXX.jpg 
+   --&gt;
+  &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt;
+  &lt;/Context&gt;
+    
+  &lt;/Host&gt;
+</code></pre>
+
+<ul>
+<li><strong>方法二：</strong>开发工具为 Idea</li>
+</ul>
+
+<p>快捷键： <code>shift</code>+<code>alt</code>+<code>F10</code>  , 进入Run小窗口</p>
+
+<p><img src="/post/img/idea-run.png" alt="idea-run" /></p>
+
+<p>​   进入Tomcat设置界面：</p>
+
+<p><img src="/post/img/idea-run-open.png" alt="idea-run-open" /></p>
+
+<p>​   选择自己的<strong>当前项目的Tomcat</strong>：</p>
+
+<p><img src="/post/img/idea-tomcat-setting-1.png" alt="idea-tomcat-setting-1" /></p>
+
+<p>​   设置路径：</p>
+
+<p><img src="/post/img/idea-tomcat-setting-2.png" alt="idea-tomcat-setting-1" /></p>
+
+<p><img src="/post/img/idea-tomcat-setting-3.png" alt="idea-tomcat-setting-1" /></p>
+
+<p><img src="/post/img/idea-tomcat-setting-4.png" alt="idea-tomcat-setting-1" /></p>
+
+<p>​   重启tomcat:</p>
+
+<p><img src="/post/img/idea-tomcat-setting-5.png" alt="idea-tomcat-setting-1" /></p>
+
+<p>​   访问成功：</p>
+
+<p><img src="/post/img/idea-tomcat-setting-6.png" alt="idea-tomcat-setting-1" /></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="tag">踩坑记录</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/tomcat/" rel="tag">Tomcat</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SpringBoot数据访问</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

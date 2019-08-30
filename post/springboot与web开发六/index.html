@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zh-CN">
+<html class="no-js" lang="en-us">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,31 +7,8 @@
 	<title>SpringBoot与web开发(六)----SpringBoot容器 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta property="og:title" content="SpringBoot与web开发(六)----SpringBoot容器" />
-<meta property="og:description" content="SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
- 1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
-server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
-  注册三大组件的方式
- ServletRegistrationBean
- FilterRegistrationBean
- ServletListenerRegistrationBean
-/** * @program: spring-boot-restful-crud * @description: servlet配置类 * @author: YuanChangYue * @create: 2019-08-19 19:20 */ @Configuration public class MyServletConfig { @Bean public ServletRegistrationBean myServlet() { return new ServletRegistrationBean&lt;&gt;(new MyServlet(), &quot;/myServlet&quot;); } @Bean public FilterRegistrationBean myFilter() { FilterRegistrationBean&lt;Filter&gt; registrationBean = new FilterRegistrationBean&lt;&gt;(); registrationBean.setFilter(new MyFilter()); registrationBean.setUrlPatterns(Arrays.asList(&quot;/hello&quot;, &quot;/myServlet&quot;)); return registrationBean; } @Bean public ServletListenerRegistrationBean myListen() { return new ServletListenerRegistrationBean(new MyListen()); } }  /** * @program: spring-boot-restful-crud * @description: 自定义Listen * @author: YuanChangYue * @create: 2019-08-19 19:42 */ public class MyListen implements ServletContextListener { @Override public void contextInitialized(ServletContextEvent sce) { System." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/" />
-<meta property="article:published_time" content="2019-08-19T18:58:44+08:00" />
-<meta property="article:modified_time" content="2019-08-19T18:58:44+08:00" />
-
-	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SpringBoot与web开发(六)----SpringBoot容器"/>
-<meta name="twitter:description" content="SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
- 1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
-server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
-  注册三大组件的方式
- ServletRegistrationBean
- FilterRegistrationBean
- ServletListenerRegistrationBean
-/** * @program: spring-boot-restful-crud * @description: servlet配置类 * @author: YuanChangYue * @create: 2019-08-19 19:20 */ @Configuration public class MyServletConfig { @Bean public ServletRegistrationBean myServlet() { return new ServletRegistrationBean&lt;&gt;(new MyServlet(), &quot;/myServlet&quot;); } @Bean public FilterRegistrationBean myFilter() { FilterRegistrationBean&lt;Filter&gt; registrationBean = new FilterRegistrationBean&lt;&gt;(); registrationBean.setFilter(new MyFilter()); registrationBean.setUrlPatterns(Arrays.asList(&quot;/hello&quot;, &quot;/myServlet&quot;)); return registrationBean; } @Bean public ServletListenerRegistrationBean myListen() { return new ServletListenerRegistrationBean(new MyListen()); } }  /** * @program: spring-boot-restful-crud * @description: 自定义Listen * @author: YuanChangYue * @create: 2019-08-19 19:42 */ public class MyListen implements ServletContextListener { @Override public void contextInitialized(ServletContextEvent sce) { System."/>
-
+	
+	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -50,30 +27,7 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 				<div class="logo__tagline">我的博客</div>
 			</a>
 		</div>
-		
-<nav class="menu">
-	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-		<span class="menu__btn-title" tabindex="-1">Menu</span>
-	</button>
-	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">关于我</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/java/">JAVA</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/front/">前端</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/live/">生活</a>
-		</li>
-		<li class="menu__item">
-			<a class="menu__link" href="/english/">英语</a>
-		</li>
-	</ul>
-</nav>
-
+		<div class="divider"></div>
 	</div>
 </header>
 		<div class="wrapper flex">
@@ -92,7 +46,7 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/java" rel="category">JAVA</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
 </div>
 </div>
 		</header>
@@ -298,9 +252,6 @@ doPost(req, resp);
 	</figure>
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
-	</div>
-	<div class="authorbox__description">
-		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
 	</div>
 </div>
 

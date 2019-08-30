@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SpringBoot on ChangYue</title>
-    <link>http://ycy-mrns.github.io/tags/springboot/</link>
+    <link>http://example.org/tags/springboot/</link>
     <description>Recent content in SpringBoot on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 20 Aug 2019 10:55:58 +0800</lastBuildDate>
     
-	<atom:link href="http://ycy-mrns.github.io/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://example.org/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringBoot数据访问</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</link>
+      <link>http://example.org/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</link>
       <pubDate>Tue, 20 Aug 2019 10:55:58 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</guid>
+      <guid>http://example.org/post/springboot%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE/</guid>
       <description>SpringBoot访问数据库  springboot 默认支持很多数据源 有：Hikari，Tomcat， Dbcp2，Generic。 springboot2.X默认数据源为：Hikari。下面还会讲到切换数据源到阿里的Druid， 同时和springboot桥接进行数据库访问的方式也有很多：JDBC，Mybatis，JPA
  源码：DataSourceAutoConfiguration &amp;ndash;&amp;gt;PooledDataSourceConfiguration可以看到数据源的配置
 @Configuration @Conditional({DataSourceAutoConfiguration.PooledDataSourceCondition.class}) @ConditionalOnMissingBean({DataSource.class, XADataSource.class}) @Import({Hikari.class, Tomcat.class, Dbcp2.class, Generic.class, DataSourceJmxConfiguration.class}) protected static class PooledDataSourceConfiguration { protected PooledDataSourceConfiguration() { } }  JDBC访问数据库 1. 准备工作  pom.xml
@@ -27,10 +27,10 @@ spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jd
     
     <item>
       <title>SpringBoot与web开发(六)----SpringBoot容器</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</link>
       <pubDate>Mon, 19 Aug 2019 18:58:44 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%85%AD/</guid>
       <description>SpringBoot 容器  SpringBoot的容器默认使用的Tomcat，
  1.如何修改Servlet容器的相关配置？  修改Servlet的配置 （org.springframework.boot.autoconfigure.web.ServerProperties）
 server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Servlet,Filter,Listener  SpringBoot默认的是以jar包的方式启动嵌入Serlvet容器，没有Web.xml。
@@ -43,10 +43,10 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
     
     <item>
       <title>SpringBoot与web开发(五) ---- SpringBoot 错误处理机制</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</link>
       <pubDate>Wed, 14 Aug 2019 14:13:20 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</guid>
       <description>SpringBoot 错误处理  SpringBoot 默认错误机制，返回一个错误页面和 json数据
   浏览器   其它客户端  1. 原理  源码 ErrorMvcAutoConfiguration
  其中有几个重要的组件：
@@ -57,10 +57,10 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
     
     <item>
       <title>SpringBoot与web开发(四)-----登录拦截</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</link>
       <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/</guid>
       <description>准备工作  页面downloadboostrap的官方实例页面，方便练习
 资源来自：https://getbootstrap.com/docs/4.3/examples/
  资源的目录如下：
@@ -69,10 +69,10 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
     
     <item>
       <title>SpringBoot与Web开发(三)-----Spring MVC</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/</link>
       <pubDate>Mon, 12 Aug 2019 16:36:54 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/</guid>
       <description>Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
 本章节提到的官文文档地址如下： &amp;lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
  1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
@@ -84,10 +84,10 @@ The auto-configuration adds the following features on top of Spring’s defaults
     
     <item>
       <title>SpringBoot与web开发(二)-----Thymeleaf 模板引擎</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</link>
       <pubDate>Sat, 10 Aug 2019 22:20:04 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%8C/</guid>
       <description>Thymeleaf 模板引擎 1. 引入Thymeleaf &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-thymeleaf&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt;  @ConfigurationProperties(prefix = &amp;quot;spring.thymeleaf&amp;quot;) public class ThymeleafProperties { private static final Charset DEFAULT_ENCODING = StandardCharsets.UTF_8; public static final String DEFAULT_PREFIX = &amp;quot;classpath:/templates/&amp;quot;; public static final String DEFAULT_SUFFIX = &amp;quot;.html&amp;quot;;  将html页面放在templates目录下使用模板引擎 渲染页面
  html中引入
 &amp;lt;html lang=&amp;quot;en&amp;quot; xmlns:th=&amp;quot;http://www.thymeleaf.org&amp;quot;&amp;gt;   2. 语法规则 来自官网的使用手册：http://www.thymeleaf.org
@@ -97,10 +97,10 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
     
     <item>
       <title>SpringBoot与web开发(一)-----SpringBoot快速使用</title>
-      <link>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</link>
+      <link>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</link>
       <pubDate>Sat, 10 Aug 2019 20:15:09 +0800</pubDate>
       
-      <guid>http://ycy-mrns.github.io/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</guid>
+      <guid>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%80/</guid>
       <description>1. 开始使用  创建springBoot 应用 选择需要的模块  创建springboot
 选择模块
  SpringBoot 已经为我们把需要的配置自动装配好，只需要在后续的开发中，在配置文件中进行设置即可
