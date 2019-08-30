@@ -6,10 +6,20 @@
     <description>Recent content on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Aug 2019 10:56:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 14:49:43 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git记录-Please commit your changes or stash them before you merge</title>
+      <link>http://example.org/post/git%E8%AE%B0%E5%BD%95-1/</link>
+      <pubDate>Fri, 30 Aug 2019 14:49:43 +0800</pubDate>
+      
+      <guid>http://example.org/post/git%E8%AE%B0%E5%BD%95-1/</guid>
+      <description>错误重现  情况是想要将github上的远程仓库的修改更新到本地
+ 解决办法 根据提示，可以commit再meger。这里我选择直接使用 git pull ，之前我是使用的 git fetch 是将远程主机的最新内容拉到本地检查了以后决定是否合并到工作本机分支中。使用git pull 可以同时操作了我之前的两个步骤 git fetch+git meger ，则是将远程主机的最新内容拉下来后直接合并。在这之前将 git 重置一下 ， git reset --hard。</description>
+    </item>
     
     <item>
       <title>后端踩坑记录----通过虚拟路径访问本地图片</title>

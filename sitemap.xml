@@ -4,25 +4,42 @@
   
   <url>
     <loc>http://example.org/categories/</loc>
-    <lastmod>2019-08-21T10:56:01+08:00</lastmod>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2019-08-21T10:56:01+08:00</lastmod>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://example.org/post/git%E8%AE%B0%E5%BD%95-1/</loc>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://example.org/post/</loc>
-    <lastmod>2019-08-21T10:56:01+08:00</lastmod>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://example.org/tags/</loc>
-    <lastmod>2019-08-21T10:56:01+08:00</lastmod>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/git/</loc>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/git/</loc>
+    <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
