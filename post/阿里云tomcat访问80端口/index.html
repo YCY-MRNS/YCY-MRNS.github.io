@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>阿里云Tomcat访问80端口 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">阿里云Tomcat访问80端口</h1>
+			<p class="post__lead">阿里云Tomcat访问80端口</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-20T18:49:02">September 20, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e9%98%bf%e9%87%8c%e4%ba%91" rel="category">阿里云</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#阿里云轻应用服务器tomcat访问80端口">阿里云轻应用服务器Tomcat访问80端口</a>
+<ul>
+<li><a href="#问题重现">问题重现：</a>
+<ul>
+<li><a href="#安全组">安全组:</a></li>
+<li><a href="#防火墙">防火墙：</a></li>
+<li><a href="#监听端口">监听端口：</a></li>
+<li><a href="#防火墙启动">防火墙启动:</a></li>
+</ul></li>
+<li><a href="#解决方式">解决方式：</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="阿里云轻应用服务器tomcat访问80端口">阿里云轻应用服务器Tomcat访问80端口</h1>
+
+<blockquote>
+<p>使用阿里云轻应用服务器, 系统为centOS 7.3 , 在配置好JDK，MySql，Tomcat 后部署自己的项目 ，tomcat8080端口访问，设置80端口却不行，安全组和防火墙配置好了，域名备案也成功了，以及配置server.xml修改为80，同样是不能访问80</p>
+</blockquote>
+
+<h2 id="问题重现">问题重现：</h2>
+
+<h3 id="安全组">安全组:</h3>
+
+<p><img src="/post/img/安全组.png" alt="" /></p>
+
+<h3 id="防火墙">防火墙：</h3>
+
+<p><img src="/post/img/防火墙.png" alt="" /></p>
+
+<h3 id="监听端口">监听端口：</h3>
+
+<p><img src="/post/img/监听端口.png" alt="" /></p>
+
+<h3 id="防火墙启动">防火墙启动:</h3>
+
+<p><img src="/post/img/防火墙启动.png" alt="" /></p>
+
+<p>之上的方式都是不能解决的，于是请求了阿里人工：</p>
+
+<p><img src="/post/img/人工.png" alt="" /></p>
+
+<p>问题依然没有解决</p>
+
+<h2 id="解决方式">解决方式：</h2>
+
+<p>首先查看防火墙是否启动：</p>
+
+<pre><code class="language-shell">systemctl status firewalld
+</code></pre>
+
+<p><img src="/post/img/是否启动firewall.png" alt="" /></p>
+
+<p>这样就是启动了，没有启动可以用：</p>
+
+<pre><code class="language-shell">systemctl start firewalld
+</code></pre>
+
+<p>接着</p>
+
+<pre><code class="language-shell">firewall-cmd --add-masquerade --permanen
+</code></pre>
+
+<p>再将80端口映射到8080端口</p>
+
+<pre><code class="language-shell">firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent
+</code></pre>
+
+<p>最后重载firewall</p>
+
+<pre><code class="language-shell">firewall-cmd --reload
+</code></pre>
+
+<p><img src="/post/img/80端口配置png.png" alt="" /></p>
+
+<p>这样就可以成功使用80端口访问tomcat了。</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/centos/" rel="tag">CentOS</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">阿里云安装redis</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

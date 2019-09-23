@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>阿里云 on ChangYue</title>
+    <link>http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+    <description>Recent content in 阿里云 on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Sep 2019 18:49:02 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>阿里云Tomcat访问80端口</title>
+      <link>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91tomcat%E8%AE%BF%E9%97%AE80%E7%AB%AF%E5%8F%A3/</link>
+      <pubDate>Fri, 20 Sep 2019 18:49:02 +0800</pubDate>
+      
+      <guid>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91tomcat%E8%AE%BF%E9%97%AE80%E7%AB%AF%E5%8F%A3/</guid>
+      <description>阿里云轻应用服务器Tomcat访问80端口  使用阿里云轻应用服务器, 系统为centOS 7.3 , 在配置好JDK，MySql，Tomcat 后部署自己的项目 ，tomcat8080端口访问，设置80端口却不行，安全组和防火墙配置好了，域名备案也成功了，以及配置server.xml修改为80，同样是不能访问80
+ 问题重现： 安全组: 防火墙： 监听端口： 防火墙启动: 之上的方式都是不能解决的，于是请求了阿里人工：
+问题依然没有解决
+解决方式： 首先查看防火墙是否启动：
+systemctl status firewalld  这样就是启动了，没有启动可以用：
+systemctl start firewalld  接着
+firewall-cmd --add-masquerade --permanen  再将80端口映射到8080端口
+firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最后重载firewall
+firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。</description>
+    </item>
+    
+    <item>
+      <title>阿里云安装redis</title>
+      <link>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</link>
+      <pubDate>Wed, 11 Sep 2019 23:05:27 +0800</pubDate>
+      
+      <guid>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</guid>
+      <description> 在阿里云CentOS7.3 系统环境下安装 Redis
+ </description>
+    </item>
+    
+  </channel>
+</rss>

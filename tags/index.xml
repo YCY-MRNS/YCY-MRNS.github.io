@@ -6,10 +6,46 @@
     <description>Recent content in Tags on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Aug 2019 14:49:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Sep 2019 18:49:02 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS</title>
+      <link>http://example.org/tags/centos/</link>
+      <pubDate>Fri, 20 Sep 2019 18:49:02 +0800</pubDate>
+      
+      <guid>http://example.org/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>阿里云</title>
+      <link>http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+      <pubDate>Fri, 20 Sep 2019 18:49:02 +0800</pubDate>
+      
+      <guid>http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redis</title>
+      <link>http://example.org/tags/redis/</link>
+      <pubDate>Wed, 11 Sep 2019 23:05:27 +0800</pubDate>
+      
+      <guid>http://example.org/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>http://example.org/tags/spring/</link>
+      <pubDate>Thu, 05 Sep 2019 11:39:05 +0800</pubDate>
+      
+      <guid>http://example.org/tags/spring/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>git</title>
@@ -62,15 +98,6 @@
       <pubDate>Mon, 19 Aug 2019 20:31:45 +0800</pubDate>
       
       <guid>http://example.org/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spring</title>
-      <link>http://example.org/tags/spring/</link>
-      <pubDate>Tue, 13 Aug 2019 08:56:37 +0800</pubDate>
-      
-      <guid>http://example.org/tags/spring/</guid>
       <description></description>
     </item>
     
