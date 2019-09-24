@@ -6,10 +6,23 @@
     <description>Recent content in Posts on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Sep 2019 18:49:02 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2019 23:28:40 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Idea远程调试</title>
+      <link>http://example.org/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/</link>
+      <pubDate>Mon, 23 Sep 2019 23:28:40 +0800</pubDate>
+      
+      <guid>http://example.org/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/</guid>
+      <description>IntelliJ IDEA 远程调试阿里云  前提是项目已经部署到阿里云上，这里使用的是阿里云的轻应用服务器，经行调试微信端访问服务器的过程
+ 停止tomcat service tomcat stop  修改tomcat的配置 在CentOS下，进入到tomcat路径，下面演示均为我自己的路径。
+cd /usr/local/tomcat  修改catalina.sh ，tomcat启动的时候会调用到，以及tomcat的优化对caralina.sh进行修改，在里面加上：
+CATALINA_OPTS=&amp;quot;-Xdebug -Xrunjdwp:transport=dt_socket,address=8888,server=y,suspend=n&amp;quot;  小提示：使用Vim编辑器 ，按下i 插入，完成后esc退出编辑，shift+: ，输入wq保存并退出
+添加安全组和防火墙 防火墙放行端口 之前在catalina.sh中添加的调试端口为8888idea 添加远程连接与设置 测试远程调试 在需要的地方打上断点，触发远程测试，我这里是使用的微信开发出现这样的界面就是连接成功了</description>
+    </item>
     
     <item>
       <title>阿里云Tomcat访问80端口</title>
