@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>持久层 on ChangYue</title>
+    <link>http://example.org/categories/%E6%8C%81%E4%B9%85%E5%B1%82/</link>
+    <description>Recent content in 持久层 on ChangYue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Oct 2019 16:41:39 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/categories/%E6%8C%81%E4%B9%85%E5%B1%82/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis简单理解</title>
+      <link>http://example.org/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Tue, 22 Oct 2019 16:41:39 +0800</pubDate>
+      
+      <guid>http://example.org/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</guid>
+      <description>Mybatis原理浅析和践行  官方网站的提供非xml的自定的的类 实现的mybatis创建SqlSessionFactory和进行配置
+https://mybatis.org/mybatis-3/getting-started.html
+ //获得数据源 DataSource dataSource = BlogDataSourceFactory.getBlogDataSource(); //初始化事务,Mybatis的运行使用到事务 TransactionFactory transactionFactory = new JdbcTransactionFactory(); //初始化Mybatis的运行环境 Environment environment = new Environment(&amp;quot;development&amp;quot;, transactionFactory, dataSource); //在以上初始化的环境中，获得配置信息 Configuration configuration = new Configuration(environment); //添加mapper类到配置类中 configuration.addMapper(BlogMapper.class); //创建出sqlSessionFatory SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);  使用以上官方的代码
+ 配置数据源
+public ComboPooledDataSource createDateSource() { ComboPooledDataSource dataSource = new ComboPooledDataSource(); try { dataSource.setDriverClass(&amp;quot;com.mysql.jdbc.Driver&amp;quot;); dataSource.setJdbcUrl(&amp;quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;quot;); dataSource.setUser(&amp;quot;root&amp;quot;); dataSource.setPassword(&amp;quot;root&amp;quot;); } catch (PropertyVetoException e) { e.printStackTrace(); } return dataSource; }  创建SqlSession后,获得UserDao接口,直接就可以使用接口方法进行数据库的操作</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -4,13 +4,42 @@
   
   <url>
     <loc>http://example.org/categories/</loc>
-    <lastmod>2019-09-23T23:28:40+08:00</lastmod>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2019-09-23T23:28:40+08:00</lastmod>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/mybatis/</loc>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</loc>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/post/</loc>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/%E6%8C%81%E4%B9%85%E5%B1%82/</loc>
+    <lastmod>2019-10-22T16:41:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -21,18 +50,6 @@
   
   <url>
     <loc>http://example.org/tags/intellij-idea/</loc>
-    <lastmod>2019-09-23T23:28:40+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/post/</loc>
-    <lastmod>2019-09-23T23:28:40+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/</loc>
     <lastmod>2019-09-23T23:28:40+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -72,23 +89,6 @@
   </url>
   
   <url>
-    <loc>http://example.org/tags/spring/</loc>
-    <lastmod>2019-09-05T11:39:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/post/spring-day-1/</loc>
-    <lastmod>2019-09-05T11:39:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/categories/spring/</loc>
-    <lastmod>2019-09-05T11:39:05+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://example.org/post/git%E8%AE%B0%E5%BD%95-1/</loc>
     <lastmod>2019-08-30T14:49:43+08:00</lastmod>
   </url>
@@ -112,18 +112,12 @@
   </url>
   
   <url>
-    <loc>http://example.org/categories/%E5%90%8E%E7%AB%AF/</loc>
-    <lastmod>2019-08-21T10:56:01+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://example.org/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</loc>
     <lastmod>2019-08-21T10:56:01+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://example.org/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2019-08-21T10:56:01+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -170,6 +164,12 @@
   <url>
     <loc>http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%BA%94/</loc>
     <lastmod>2019-08-14T14:13:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/spring/</loc>
+    <lastmod>2019-08-13T08:56:37+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

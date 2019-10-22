@@ -40,7 +40,7 @@
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" rel="bookmark">
-			后端踩坑记录----通过虚拟路径访问本地图片
+			java后端开发通过虚拟路径访问本地图片
 			</a>
 		</h3>
 		<p class="list__lead post__lead">通过虚拟路径访问本地图片</p>
@@ -60,15 +60,13 @@
 		通过虚拟路径访问本地图片  情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。
  1. 错误重现 数据库：
 没有做任何设置之前：
-2. 解决步骤  方法 一： eclipse  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
-&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt; &lt;!-- eclipse --&gt; &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt; &lt;/Context&gt; &lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&gt; &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt; &lt;/Context&gt; &lt;/Host&gt;   方法二：开发工具为 Idea  快捷键： shift+alt+F10 , 进入Run小窗口
+2. 解决步骤  第一步：  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt; &lt;!-- eclipse --&gt; &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt; &lt;/Context&gt; &lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&gt; &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt; &lt;/Context&gt; &lt;/Host&gt;   第二步： 开发工具为 Idea  快捷键： shift+alt+F10 , 进入Run小窗口
 ​ 进入Tomcat设置界面：
 ​ 选择自己的当前项目的Tomcat：
 ​ 设置路径：
 ​ 重启tomcat:
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/">Read more…</a>
+​ 访问成功：
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -218,10 +216,10 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">Mybatis简单理解</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/">Idea远程调试</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/%E9%98%BF%E9%87%8C%E4%BA%91tomcat%E8%AE%BF%E9%97%AE80%E7%AB%AF%E5%8F%A3/">阿里云Tomcat访问80端口</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/">阿里云安装redis</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/spring-day-1/">Spring Day 1</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/git%E8%AE%B0%E5%BD%95-1/">Git记录-Please commit your changes or stash them before you merge</a></li>
 		</ul>
 	</div>
@@ -232,8 +230,8 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/categories/docker">Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/git">Git</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/spring">Spring</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e5%90%8e%e7%ab%af">后端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%8c%81%e4%b9%85%e5%b1%82">持久层</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e7%ae%97%e6%b3%95">算法</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e8%8b%b1%e8%af%ad">英语</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/%e9%98%bf%e9%87%8c%e4%ba%91">阿里云</a></li>
@@ -247,8 +245,9 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker" title="Docker">Docker (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/git" title="Git">Git (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/intellij-idea" title="Intellij idea">Intellij idea (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mybatis" title="Mybatis">Mybatis (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/redis" title="Redis">Redis (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/spring" title="Spring">Spring (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/springboot" title="Springboot">Springboot (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/springmvc" title="Springmvc">Springmvc (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/thymeleaf" title="Thymeleaf">Thymeleaf (1)</a>
@@ -261,7 +260,6 @@ server.servlet.context-path=/crud server.port=8081   2.如何注册自己的Serv
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e6%a8%a1%e6%9d%bf%e5%bc%95%e6%93%8e" title="模板引擎">模板引擎 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e7%94%9f%e6%b4%bb" title="生活">生活 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%8b%b1%e8%af%ad" title="英语">英语 (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%e8%b8%a9%e5%9d%91%e8%ae%b0%e5%bd%95" title="踩坑记录">踩坑记录 (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%e9%98%bf%e9%87%8c%e4%ba%91" title="阿里云">阿里云 (3)</a>
 	</div>
 </div>

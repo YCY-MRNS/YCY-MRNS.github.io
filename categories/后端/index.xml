@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>后端踩坑记录----通过虚拟路径访问本地图片</title>
+      <title>java后端开发通过虚拟路径访问本地图片</title>
       <link>http://example.org/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</link>
       <pubDate>Wed, 21 Aug 2019 10:56:01 +0800</pubDate>
       
@@ -20,12 +20,13 @@
       <description>通过虚拟路径访问本地图片  情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。
  1. 错误重现 数据库：
 没有做任何设置之前：
-2. 解决步骤  方法 一： eclipse  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
-&amp;lt;Host name=&amp;quot;localhost&amp;quot; appBase=&amp;quot;webapps&amp;quot; unpackWARs=&amp;quot;true&amp;quot; autoDeploy=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;Valve className=&amp;quot;org.apache.catalina.valves.AccessLogValve&amp;quot; directory=&amp;quot;logs&amp;quot; prefix=&amp;quot;localhost_access_log&amp;quot; suffix=&amp;quot;.txt&amp;quot;/&amp;gt; &amp;lt;!-- eclipse --&amp;gt; &amp;lt;Context docBase=&amp;quot;shopping&amp;quot; path=&amp;quot;/shopping&amp;quot; reloadble=&amp;quot;true&amp;quot; source=&amp;quot; org.eclipse.jst.jee.server:o2o&amp;quot;&amp;gt; &amp;lt;/Context&amp;gt; &amp;lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&amp;gt; &amp;lt;Context path=&amp;quot;/upload&amp;quot; docBase=&amp;quot;D:\projectdev\img\upload&amp;quot; crossContext=&amp;quot;true&amp;quot; reloadable=&amp;quot;true&amp;quot; debug=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;/Context&amp;gt; &amp;lt;/Host&amp;gt;   方法二：开发工具为 Idea  快捷键： shift+alt+F10 , 进入Run小窗口
+2. 解决步骤  第一步：  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
+&amp;lt;Host name=&amp;quot;localhost&amp;quot; appBase=&amp;quot;webapps&amp;quot; unpackWARs=&amp;quot;true&amp;quot; autoDeploy=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;Valve className=&amp;quot;org.apache.catalina.valves.AccessLogValve&amp;quot; directory=&amp;quot;logs&amp;quot; prefix=&amp;quot;localhost_access_log&amp;quot; suffix=&amp;quot;.txt&amp;quot;/&amp;gt; &amp;lt;!-- eclipse --&amp;gt; &amp;lt;Context docBase=&amp;quot;shopping&amp;quot; path=&amp;quot;/shopping&amp;quot; reloadble=&amp;quot;true&amp;quot; source=&amp;quot; org.eclipse.jst.jee.server:o2o&amp;quot;&amp;gt; &amp;lt;/Context&amp;gt; &amp;lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&amp;gt; &amp;lt;Context path=&amp;quot;/upload&amp;quot; docBase=&amp;quot;D:\projectdev\img\upload&amp;quot; crossContext=&amp;quot;true&amp;quot; reloadable=&amp;quot;true&amp;quot; debug=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;/Context&amp;gt; &amp;lt;/Host&amp;gt;   第二步： 开发工具为 Idea  快捷键： shift+alt+F10 , 进入Run小窗口
 ​ 进入Tomcat设置界面：
 ​ 选择自己的当前项目的Tomcat：
 ​ 设置路径：
-​ 重启tomcat:</description>
+​ 重启tomcat:
+​ 访问成功：</description>
     </item>
     
     <item>

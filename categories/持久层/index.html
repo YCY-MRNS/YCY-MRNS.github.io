@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-us">
 <head>
-	<meta name="generator" content="Hugo 0.56.3" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ChangYue</title>
+	<title>持久层 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="我的博客">
+	<meta name="description" content="">
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="ChangYue">
+	<link rel="alternate" type="application/rss+xml" href="/categories/%E6%8C%81%E4%B9%85%E5%B1%82/index.xml" title="ChangYue">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	
@@ -36,7 +35,9 @@
 			<div class="primary">
 			
 <main class="main list" role="main">
-	<article class="list__item post">
+	<header class="main__header">
+		<h1 class="main__title">持久层</h1>
+	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" rel="bookmark">
@@ -66,126 +67,13 @@ public ComboPooledDataSource createDateSource() { ComboPooledDataSource dataSour
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">Read more…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/" rel="bookmark">
-			Idea远程调试
-			</a>
-		</h3>
-		<p class="list__lead post__lead">idea远程调试阿里云服务器</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-23T23:28:40">September 23, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%98%bf%e9%87%8c%e4%ba%91" rel="category">阿里云</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		IntelliJ IDEA 远程调试阿里云  前提是项目已经部署到阿里云上，这里使用的是阿里云的轻应用服务器，经行调试微信端访问服务器的过程
- 停止tomcat service tomcat stop  修改tomcat的配置 在CentOS下，进入到tomcat路径，下面演示均为我自己的路径。
-cd /usr/local/tomcat  修改catalina.sh ，tomcat启动的时候会调用到，以及tomcat的优化对caralina.sh进行修改，在里面加上：
-CATALINA_OPTS=&quot;-Xdebug -Xrunjdwp:transport=dt_socket,address=8888,server=y,suspend=n&quot;  小提示：使用Vim编辑器 ，按下i 插入，完成后esc退出编辑，shift+: ，输入wq保存并退出
-添加安全组和防火墙 防火墙放行端口 之前在catalina.sh中添加的调试端口为8888idea 添加远程连接与设置 测试远程调试 在需要的地方打上断点，触发远程测试，我这里是使用的微信开发出现这样的界面就是连接成功了
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/">Read more…</a>
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/%E9%98%BF%E9%87%8C%E4%BA%91tomcat%E8%AE%BF%E9%97%AE80%E7%AB%AF%E5%8F%A3/" rel="bookmark">
-			阿里云Tomcat访问80端口
-			</a>
-		</h3>
-		<p class="list__lead post__lead">阿里云Tomcat访问80端口</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-20T18:49:02">September 20, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%98%bf%e9%87%8c%e4%ba%91" rel="category">阿里云</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		阿里云轻应用服务器Tomcat访问80端口  使用阿里云轻应用服务器, 系统为centOS 7.3 , 在配置好JDK，MySql，Tomcat 后部署自己的项目 ，tomcat8080端口访问，设置80端口却不行，安全组和防火墙配置好了，域名备案也成功了，以及配置server.xml修改为80，同样是不能访问80
- 问题重现： 安全组: 防火墙： 监听端口： 防火墙启动: 之上的方式都是不能解决的，于是请求了阿里人工：
-问题依然没有解决
-解决方式： 首先查看防火墙是否启动：
-systemctl status firewalld  这样就是启动了，没有启动可以用：
-systemctl start firewalld  接着
-firewall-cmd --add-masquerade --permanen  再将80端口映射到8080端口
-firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最后重载firewall
-firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/" rel="bookmark">
-			阿里云安装redis
-			</a>
-		</h3>
-		<p class="list__lead post__lead">阿里云 CentOS7.3 安装redis</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-11T23:05:27">September 11, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e9%98%bf%e9%87%8c%e4%ba%91" rel="category">阿里云</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		 在阿里云CentOS7.3 系统环境下安装 Redis
- 
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/git%E8%AE%B0%E5%BD%95-1/" rel="bookmark">
-			Git记录-Please commit your changes or stash them before you merge
-			</a>
-		</h3>
-		<p class="list__lead post__lead">Please commit your changes or stash them before you merge.</p>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-30T14:49:43">August 30, 2019</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/git" rel="category">git</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Git记录-Please commit your changes or stash them before you merge 错误重现  情况是想要将github上的远程仓库的修改更新到本地
- 解决办法 根据提示，可以commit再meger。这里我选择直接使用 git pull ，之前我是使用的 git fetch 是将远程主机的最新内容拉到本地检查了以后决定是否合并到工作本机分支中。使用git pull 可以同时操作了我之前的两个步骤 git fetch+git meger ，则是将远程主机的最新内容拉下来后直接合并。在这之前将 git 重置一下 ， git reset --hard。
-	</div>
 </article>
 </main>
 
-<div class="pagination">
-	<span class="pagination__item pagination__item--current">1/4</span>
-	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
-</div>
-
 
 			</div>
-			<aside class="sidebar"><div class="widget-search widget">
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
