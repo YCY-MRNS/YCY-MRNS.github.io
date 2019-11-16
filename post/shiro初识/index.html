@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Shiro初识 - ChangYue</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="ChangYue" rel="home">
+				<div class="logo__title">ChangYue</div>
+				<div class="logo__tagline">我的博客</div>
+			</a>
+		</div>
+		<div class="divider"></div>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Shiro初识</h1>
+			<p class="post__lead">Shiro学习</p>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-11-17T01:06:10">November 17, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%90%8e%e7%ab%af" rel="category">后端</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#shiro学习">Shiro学习</a>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#概念">概念</a></li>
+<li><a href="#使用">使用</a>
+<ul>
+<li><a href="#依赖">依赖</a></li>
+<li><a href="#配置文件">配置文件</a></li>
+<li><a href="#读取配置类">读取配置类</a></li>
+<li><a href="#实例">实例</a></li>
+</ul></li>
+<li><a href="#封装shrioutils">封装ShrioUtils</a></li>
+<li><a href="#自定义realm">自定义Realm</a></li>
+<li><a href="#shrio异常">Shrio异常</a></li>
+<li><a href="#密码加密">密码加密</a>
+<ul>
+<li><a href="#散列算法">散列算法</a></li>
+<li><a href="#md5utils">MD5Utils</a></li>
+<li><a href="#更进一步">更进一步</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="shiro学习">Shiro学习</h1>
+
+<h2 id="简介">简介</h2>
+
+<blockquote>
+<p>Apache Shiro 是 Java 的一个安全框架。目前，使用 Apache Shiro 的人越来越多，因为它相当简单，对比 Spring Security，可能没有 Spring Security 做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。</p>
+</blockquote>
+
+<h2 id="概念">概念</h2>
+
+<blockquote>
+<p><a href="https://www.w3cschool.cn/shiro/co4m1if2.html">https://www.w3cschool.cn/shiro/co4m1if2.html</a> 详细</p>
+</blockquote>
+
+<h2 id="使用">使用</h2>
+
+<h3 id="依赖">依赖</h3>
+
+<pre><code class="language-xml">    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.11&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;commons-logging&lt;/groupId&gt;
+      &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
+      &lt;version&gt;1.1.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt;
+      &lt;artifactId&gt;shiro-core&lt;/artifactId&gt;
+      &lt;version&gt;1.3.2&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<h3 id="配置文件">配置文件</h3>
+
+<pre><code class="language-xml">[users]
+zhangsan=123456,admin
+lisi=123123,superadmin
+
+[roles]
+admin=product:create,product:delete,product:update,product:view
+public=product:view
+
+</code></pre>
+
+<h3 id="读取配置类">读取配置类</h3>
+
+<pre><code class="language-java">//1.初始化SecurityManger安全管理器
+DefaultSecurityManager sm = new DefaultSecurityManager();
+//2.配置用户的权限信息到安全管理器中
+Realm realm = new IniRealm(&quot;classpath:shrio.ini&quot;);
+sm.setRealm(realm);
+//3.使用SecurityUtils将securityManager设置到运行环境中
+SecurityUtils.setSecurityManager(sm);
+</code></pre>
+
+<p>因为没有<code>slf4j</code>的配置，运行控制台报出</p>
+
+<pre><code class="language-shell">SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+</code></pre>
+
+<p>加上<code>log4j</code>和<code>slf4j</code>桥接</p>
+
+<pre><code class="language-xml">&lt;!-- log4j 和 slf4j 桥接 --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+  &lt;artifactId&gt;log4j-slf4j-impl&lt;/artifactId&gt;
+  &lt;version&gt;2.12.1&lt;/version&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>控制台打印</p>
+
+<pre><code class="language-shell">2019-11-16 21:13:55 DEBUG [main][ResourceUtils.java:159] - Opening resource from class path [shrio.ini]
+2019-11-16 21:13:55 DEBUG [main][Ini.java:351] - Parsing [users]
+2019-11-16 21:13:55 DEBUG [main][Ini.java:351] - Parsing [roles]
+2019-11-16 21:13:55 DEBUG [main][IniRealm.java:179] - Discovered the [roles] section.  Processing...
+2019-11-16 21:13:55 DEBUG [main][IniRealm.java:185] - Discovered the [users] section.  Processing...
+</code></pre>
+
+<h3 id="实例">实例</h3>
+
+<pre><code class="language-java">//1.初始化SecurityManger安全管理器
+DefaultSecurityManager sm = new DefaultSecurityManager();
+//2.配置用户的权限信息到安全管理器中
+Realm realm = new IniRealm(&quot;classpath:shrio.ini&quot;);
+sm.setRealm(realm);
+//3.使用SecurityUtils将securityManager设置到运行环境中
+SecurityUtils.setSecurityManager(sm);
+//4.创建需要认证的Subject SecurityUtils.getSubject()
+Subject subject = SecurityUtils.getSubject();
+//5.创建一个认证的token，记录用户的的身份和凭证（账号密码）
+AuthenticationToken usernamePasswordToken =
+        new UsernamePasswordToken(&quot;zhangsan&quot;,&quot;123456&quot;);
+//6.subject进行登录，认证检查
+subject.login(usernamePasswordToken);
+</code></pre>
+
+<p><code>shrio.ini</code>中有用户为zhangsan密码为123456的user
+运行结果：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F.png?raw=true" alt="" /></p>
+
+<p>账号输入错误的抛出</p>
+
+<pre><code class="language-shell">org.apache.shiro.authc.UnknownAccountException: Realm [org.apache.shiro.realm.text.IniRealm@54c562f7] was unable to find account data for the submitted AuthenticationToken [org.apache.shiro.authc.UsernamePasswordToken - zhangsans, rememberMe=false].
+</code></pre>
+
+<p>密码输入错误的抛出</p>
+
+<pre><code class="language-shell">org.apache.shiro.authc.IncorrectCredentialsException: Submitted credentials for token [org.apache.shiro.authc.UsernamePasswordToken - zhangsan, rememberMe=false] did not match the expected credentials.
+</code></pre>
+
+<p>其他的常见操作</p>
+
+<pre><code class="language-java">//用户认证的状态
+System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+//6.subject进行登录，认证检查
+subject.login(usernamePasswordToken);
+//用户认证的状态
+System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+//7.检查授权资源
+System.out.println(&quot;用户是否拥有admin角色&quot; + subject.hasRole(&quot;admin&quot;));
+System.out.println(&quot;用户是否拥有public该角色&quot; + subject.hasRole(&quot;admin&quot;));
+//8.检查角色的权限
+System.out.println(&quot;用户是否有product:create的权限&quot; + subject.isPermitted(&quot;product:create&quot;));
+System.out.println(&quot;用户是否有多个权限&quot; + subject.isPermitted(&quot;product:create&quot;, &quot;product:insert&quot;)[1]);
+//9.subject信息
+System.out.println(&quot;用户名：&quot;+subject.getPrincipal());
+//10.subject退出
+subject.logout();
+//用户认证的状态
+System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+</code></pre>
+
+<p>运行结果:</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B%E8%AE%A4%E8%AF%81%E6%88%90%E5%8A%9F_%E7%99%BB%E5%BD%95_%E7%8A%B6%E6%80%81_%E8%A7%92%E8%89%B2_%E7%99%BB%E5%87%BA.png?raw=true" alt="" /></p>
+
+<h2 id="封装shrioutils">封装ShrioUtils</h2>
+
+<pre><code class="language-java">/**
+ * @program: shirodemo
+ * @description: shrio工具类
+ * @author: 袁阊越
+ * @create: 2019-11-16 21:47
+ */
+public class ShrioUtils {
+
+    /**
+     * 初始化shrio的运行环境
+     */
+    static {
+        //1.初始化SecurityManger安全管理器
+        DefaultSecurityManager sm = new DefaultSecurityManager();
+        //2.配置用户的权限信息到安全管理器中
+        Realm realm = new IniRealm(&quot;classpath:shrio.ini&quot;);
+        sm.setRealm(realm);
+        //3.使用SecurityUtils将securityManager设置到运行环境中
+        SecurityUtils.setSecurityManager(sm);
+    }
+
+    /**
+     * 主体登录
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return 登录主体
+     */
+    public static Subject login(String username, String password) {
+
+        //1.创建需要认证的Subject SecurityUtils.getSubject()
+        Subject subject = SecurityUtils.getSubject();
+        //2.创建一个认证的token，记录用户的的身份和凭证（账号密码）
+        AuthenticationToken usernamePasswordToken =
+                new UsernamePasswordToken(username, password);
+        //3.subject进行登录，认证检查
+        subject.login(usernamePasswordToken);
+        //用户认证的状态
+        System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+        return subject;
+    }
+
+}
+</code></pre>
+
+<p>测试：</p>
+
+<pre><code class="language-java">    @Test
+    public void testShrioUtils() {
+        //登录object
+        Subject subject = ShrioUtils.login(&quot;zhangsan&quot;, &quot;123456&quot;);
+        //检查授权资源
+        System.out.println(&quot;用户是否拥有admin角色&quot; + subject.hasRole(&quot;admin&quot;));
+        //subject退出
+        subject.logout();
+        //用户认证的状态
+        System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+    }
+</code></pre>
+
+<p>测试结果：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/shrioUtils%E6%B5%8B%E8%AF%95.png?raw=true" alt="" /></p>
+
+<h2 id="自定义realm">自定义Realm</h2>
+
+<ul>
+<li>认证</li>
+</ul>
+
+<p>继承<code>AuthorizingRealm</code></p>
+
+<pre><code class="language-java">/**
+ * @program: shirodemo
+ * @description: 自定义realm
+ * @author: 袁阊越
+ * @create: 2019-11-16 22:04
+ */
+public class ShrioRealm extends AuthorizingRealm {
+
+    /**
+     * 授权资源检查
+     */
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println(&quot;授权资源检查...&quot;);
+        return null;
+    }
+
+    /**
+     * 登录认证
+     */
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+
+        //1. 获取用户的用户名
+        String username = token.getUsername();
+        //2. 获取用户的密码
+        String password = new String(token.getPassword());
+
+        //3. 根据用户名去数据库中查询用户是否存在  模拟操作
+        User user = new User(&quot;zhangsan&quot;, &quot;123456&quot;);
+        if (!user.getUsername().equals(username)) {
+            throw new UnknownAccountException(&quot;用户不存在&quot;);
+        }
+        if (!user.getPassword().equals(password)) {
+            throw new CredentialsException(&quot;密码错误&quot;);
+        }
+        System.out.println(&quot;登录认证...&quot;);
+        return new SimpleAuthenticationInfo(token.getPrincipal(), token.getCredentials(), getName());
+    }
+}
+</code></pre>
+
+<p>测试类：</p>
+
+<pre><code class="language-java">    @Test
+    public void testShrioUtils() {
+        //登录object
+        Subject subject = ShrioUtils.login(&quot;zhangsan&quot;, &quot;123456&quot;);
+        //检查授权资源
+        System.out.println(&quot;用户是否拥有admin角色&quot; + subject.hasRole(&quot;admin&quot;));
+        //subject退出
+        subject.logout();
+        //用户认证的状态
+        System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+    }
+</code></pre>
+
+<p>测试自定义的Realm：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/%E8%87%AA%E5%AE%9A%E4%B9%89Realm%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81%E6%B5%8B%E8%AF%95.png?raw=true" alt="" /></p>
+
+<ul>
+<li><p>授权</p>
+
+<pre><code class="language-java">/**
+* @program: shirodemo
+* @description: 自定义realm
+* @author: 袁阊越
+* @create: 2019-11-16 22:04
+*/
+public class ShrioRealm extends AuthorizingRealm {
+
+/**
+ * 授权
+ * 将认证的通过的用户信息和权限信息设置给认证的主体
+ */
+@Override
+protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+
+    //用户的身份信息
+    String username = principals.getPrimaryPrincipal().toString();
+
+    //通过username从数据库获取当前用户的角色
+    Set&lt;String&gt; rolesNames = new HashSet&lt;&gt;();
+    rolesNames.add(&quot;系统管理员&quot;);
+    rolesNames.add(&quot;系统运维&quot;);
+    //从数据库获取当前用户的权限
+    Set&lt;String&gt; permissionName = new HashSet&lt;&gt;();
+    permissionName.add(&quot;sys:user:create&quot;);
+    permissionName.add(&quot;sys:user:update&quot;);
+    permissionName.add(&quot;sys:user:list&quot;);
+    permissionName.add(&quot;sys:user:delete&quot;);
+    permissionName.add(&quot;sys:user:info&quot;);
+
+    //简单授权的信息，对象的中包含用户的角色和权限信息
+    SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+    info.addRoles(rolesNames);
+    info.addStringPermissions(permissionName);
+
+    System.out.println(&quot;授权...&quot;);
+    return info;
+}
+
+/**
+ * 认证
+ */
+@Override
+protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+
+    UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+
+    //1. 获取用户的用户名
+    String username = token.getUsername();
+    //2. 获取用户的密码
+    String password = new String(token.getPassword());
+
+    //3. 根据用户名去数据库中查询用户是否存在
+    User user = new User(&quot;zhangsan&quot;, &quot;123456&quot;);
+    if (!user.getUsername().equals(username)) {
+        throw new UnknownAccountException(&quot;用户不存在&quot;);
+    }
+    if (!user.getPassword().equals(password)) {
+        throw new CredentialsException(&quot;密码错误&quot;);
+    }
+    System.out.println(&quot;登录认证...&quot;);
+    return new SimpleAuthenticationInfo(token.getPrincipal(), token.getCredentials(), getName());
+}
+}
+
+</code></pre></li>
+</ul>
+
+<p>测试类：</p>
+
+<pre><code class="language-java">
+@Test
+    public void testShrioRealm() {
+
+        Subject subject = ShrioUtils.login(&quot;zhangsan&quot;, &quot;123456&quot;);
+
+        //用户触发某个按钮--&gt;需要验证权限
+        System.out.println(&quot;检查新增的用户的权限&quot; + subject.isPermitted(&quot;sys:user:create&quot;));
+        System.out.println(&quot;检查新增的角色的权限&quot; + subject.isPermitted(&quot;sys:role:create&quot;));
+
+        System.out.println(&quot;检查给用户是否是系统管理员&quot;+subject.hasRole(&quot;系统管理员&quot;));
+        System.out.println(&quot;检查给用户是否是系统运维&quot;+subject.hasRole(&quot;系统运维&quot;));
+
+        subject.logout();
+
+    }
+
+</code></pre>
+
+<p>运行结果：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/%E8%87%AA%E5%AE%9A%E4%B9%89Realms%E6%8E%88%E6%9D%83%E6%B5%8B%E8%AF%95.png?raw=true" alt="" /></p>
+
+<h2 id="shrio异常">Shrio异常</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">常见异常</th>
+<th align="center">意义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><code>org.apache.shiro.authc.UnknownAccountException</code></td>
+<td align="center">用户名不存在</td>
+</tr>
+
+<tr>
+<td align="center"><code>org.apache.shiro.authc.CredentialsException</code></td>
+<td align="center">认证不合法</td>
+</tr>
+
+<tr>
+<td align="center"><code>org.apache.shiro.authc.DisabledAccountException</code></td>
+<td align="center">账号禁用</td>
+</tr>
+
+<tr>
+<td align="center"><code>org.apache.shiro.authc.LockedAccountException</code></td>
+<td align="center">账号锁定</td>
+</tr>
+
+<tr>
+<td align="center"><code>org.apache.shiro.authc.ExpiredCredentialsException</code></td>
+<td align="center">凭证过期</td>
+</tr>
+
+<tr>
+<td align="center"><code>org.apache.shiro.authc.AuthenticationException</code></td>
+<td align="center">认证异常</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="密码加密">密码加密</h2>
+
+<h3 id="散列算法">散列算法</h3>
+
+<blockquote>
+<p><strong>散列算法</strong>可以把[任意尺寸]的数据(原始数据)转变为一个[固定尺寸]的”小数据”(叫”散列值”或”摘要”)
+特点： 1.<strong>不可逆性</strong> 2.<strong>确定性</strong></p>
+</blockquote>
+
+<p><strong><em>但是&hellip;.</em></strong></p>
+
+<blockquote>
+<p>直接对密码进行散列，可以对通过获得这个密码散列值，通过MD5密码破解网站得到某用户的密码。 <strong>不安全</strong></p>
+</blockquote>
+
+<p><strong><em>于是&hellip;.</em></strong></p>
+
+<blockquote>
+<p>加<strong>Salt</strong>可以一定程度上解决这一问题。所谓加Salt方法，就是加点“佐料”。其基本想法是这样的：当用户首次提供密码时（通常是注册时），由系统自动往这个密码里撒一些“佐料”，然后再散列。而当用户登录时，系统为用户提供的代码撒上同样的“佐料”，然后散列，再比较散列值，已确定密码是否正确。
+这里的“佐料”被称作“Salt值”，这个值是由系统随机生成的，并且只有系统知道。这样，即便两个用户使用了同一个密码，由于系统为它们生成的salt值不同，他们的散列值也是不同的。即便黑客可以通过自己的密码和自己生成的散列值来找具有特定密码的用户，但这个几率太小了</p>
+</blockquote>
+
+<ul>
+<li><p><strong>直接MD5加密</strong></p>
+
+<pre><code class="language-java">Md5Hash md5Hash = new Md5Hash(&quot;123&quot;);
+System.out.println(md5Hash);
+</code></pre></li>
+</ul>
+
+<p>得到：<code>202cb962ac59075b964b07152d234b70</code>
+去 <a href="https://www.cmd5.com/">https://www.cmd5.com/</a> 破解
+如图：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/MD5%E7%A0%B4%E8%A7%A3.png?raw=true" alt="" /></p>
+
+<ul>
+<li><p><strong>采用加盐和多次hash</strong></p>
+
+<pre><code class="language-java">Md5Hash md5HashWithSalt = new Md5Hash(&quot;123&quot;, UUID.randomUUID().toString());
+System.out.println(md5HashWithSalt);
+
+Md5Hash md5HashWithSalt_2 = new Md5Hash(&quot;123&quot;, UUID.randomUUID().toString(), 2);
+System.out.println(md5HashWithSalt_2);
+</code></pre></li>
+</ul>
+
+<p>如图：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/MD5%E7%A0%B4%E8%A7%A3_salt.png?raw=true" alt="" /></p>
+
+<h3 id="md5utils">MD5Utils</h3>
+
+<pre><code class="language-java">/**
+ * @program: shirodemo
+ * @description: MD5工具类
+ * @author: 袁阊越
+ * @create: 2019-11-16 23:32
+ */
+public class MD5Utils {
+
+    private static int hashCount = 3;
+    /**
+       * UUID随机生成码处理后的
+       */
+    private static final String PRIVATE_SALT = &quot;832EC407D7AA4393A193D2BAF4747472&quot;;
+    
+    /**
+     * 生成DM5
+     *
+     * @param source 生成数据
+     * @param salt   盐
+     * @return MD5
+     */
+    public static String md5(String source, String salt) {
+        return new Md5Hash(source, salt, hashCount).toString();
+    }
+
+    /**
+     * 生成盐
+     *
+     * @param source 生成数据
+     * @return MD5
+     */
+    public static String md5GeneratedSalt(String source) {
+        return new Md5Hash(source, PRIVATE_SALT, hashCount).toString();
+
+    }
+}
+
+</code></pre>
+
+<p>测试类：</p>
+
+<pre><code class="language-java">    /**
+     * 测试结果 4d669a8578bfd2bf309ae16e198263f4
+     */
+    @Test
+    public void testPasswordWithMD5() {
+
+        //模拟客户端接收到的用户名和密码 （明文）
+        String username = &quot;zhangsan&quot;;
+        String password = &quot;123456&quot;;
+
+        String str = username + password;
+        // 将密码加上其它信息生成salt
+        // 破解密码,需要破解salt
+        // 破解salt,又要需要破解密码
+        String salt = MD5Utils.md5GeneratedSalt(str);
+        //最后加密密码
+        password = MD5Utils.md5(password, salt);
+
+        Subject subject = ShrioUtils.login(&quot;zhangsan&quot;, password);
+        //用户认证的状态
+        System.out.println(&quot;用户认证的状态：&quot; + subject.isAuthenticated());
+    }
+</code></pre>
+
+<p>存入数据库的密码MD5加密成：<code>4d669a8578bfd2bf309ae16e198263f4</code>
+测试结果：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/MD5%E7%A0%B4%E8%A7%A3_salt_success.png?raw=true" alt="" /></p>
+
+<h3 id="更进一步">更进一步</h3>
+
+<blockquote>
+<p>用户注册的时候,为每一个用户生成一个私盐, 将用户私盐用系统的公盐加密,最后得到密码的盐</p>
+</blockquote>
+
+<ul>
+<li><p>升级的MD5Utils</p>
+
+<pre><code class="language-java">/**
+* @program: shirodemo
+* @description: MD5工具类
+* @author: 袁阊越
+* @create: 2019-11-16 23:32
+*/
+public class MD5Utils {
+
+private static int hashCount = 3;
+
+/**
+ * UUID随机生成码处理后的
+ */
+private static final String PUBLIC_SALT = &quot;832EC407D7AA4393A193D2BAF4747472&quot;;
+
+/**
+ * 私有化
+ *
+ * @param source 公盐加密
+ * @return MD5
+ */
+private static String md5PublicSalt(String source) {
+    return new Md5Hash(source, PUBLIC_SALT, hashCount).toString();
+}
+
+/**
+ * 公用化
+ *
+ * @param source 原始密码
+ * @param salt   私盐
+ * @return MD5
+ */
+public static String md5PrivateSalt(String source, String salt) {
+    return new Md5Hash(md5PublicSalt(source), salt, hashCount).toString();
+}
+
+}
+</code></pre></li>
+
+<li><p>自定的Realm</p>
+
+<pre><code class="language-java">/**
+* @program: shirodemo
+* @description: 自定义realm
+* @author: 袁阊越
+* @create: 2019-11-16 22:04
+*/
+public class ShrioRealm extends AuthorizingRealm {
+
+/**
+ * 授权
+ * 将认证的通过的用户信息和权限信息设置给认证的主体
+ */
+@Override
+protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+
+    //用户的身份信息
+    String username = principals.getPrimaryPrincipal().toString();
+
+    //通过username从数据库获取当前用户的角色
+    Set&lt;String&gt; rolesNames = new HashSet&lt;&gt;();
+    rolesNames.add(&quot;系统管理员&quot;);
+    rolesNames.add(&quot;系统运维&quot;);
+    //从数据库获取当前用户的权限
+    Set&lt;String&gt; permissionName = new HashSet&lt;&gt;();
+    permissionName.add(&quot;sys:user:create&quot;);
+    permissionName.add(&quot;sys:user:update&quot;);
+    permissionName.add(&quot;sys:user:list&quot;);
+    permissionName.add(&quot;sys:user:delete&quot;);
+    permissionName.add(&quot;sys:user:info&quot;);
+
+    //简单授权的信息，对象的中包含用户的角色和权限信息
+    SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+    info.addRoles(rolesNames);
+    info.addStringPermissions(permissionName);
+
+    System.out.println(&quot;授权...&quot;);
+    return info;
+}
+
+/**
+ * 认证
+ */
+@Override
+protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+
+    UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+
+    //1. 获取用户的用户名
+    String username = token.getUsername();
+    //2. 获取用户的密码
+    String password = new String(token.getPassword());
+
+    //3. 根据用户名去数据库中查询用户是否存在
+    //3. 模拟获得用户在数据库的信息
+    User user = new User(&quot;zhangsan&quot;, &quot;6d58d495d0517b4e7205346a72e211bc&quot;, 0, &quot;f4af64b5c211be990ec6f26feef0f1ff&quot;);
+    //3. 明文加密
+    password = MD5Utils.md5PrivateSalt(password, user.getPrivateSalt());
+
+    if (!user.getUsername().equals(username)) {
+        throw new UnknownAccountException(&quot;用户不存在&quot;);
+    }
+
+    if (!user.getPassword().equals(password)) {
+        throw new CredentialsException(&quot;密码错误&quot;);
+    }
+
+    if (user.getStatus() == 1) {
+        throw new DisabledAccountException(&quot;账号被禁用&quot;);
+    }
+
+    if (user.getStatus() == 2) {
+        throw new LockedAccountException(&quot;账号被锁定&quot;);
+    }
+
+    System.out.println(&quot;登录认证...&quot;);
+    return new SimpleAuthenticationInfo(token.getPrincipal(), token.getCredentials(), getName());
+}
+}
+</code></pre></li>
+</ul>
+
+<p>测试结果：</p>
+
+<p><img src="https://github.com/yuanchangyue/ShiroDemo/blob/master/img/MD5%E7%A0%B4%E8%A7%A3_salt_success_update.png?raw=true" alt="" /></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/shiro/" rel="tag">Shiro</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="袁阊越 avatar" src="/post/img/avatar.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 袁阊越</span>
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Mybatis原理浅析和践行</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 袁阊越.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Mybatis简单理解 - ChangYue</title>
+	<title>Mybatis原理浅析和践行 - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	
@@ -36,8 +36,8 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Mybatis简单理解</h1>
-			<p class="post__lead">阿里云 CentOS7.3 安装redis</p>
+			<h1 class="post__title">Mybatis原理浅析和践行</h1>
+			<p class="post__lead">原理浅析和践行</p>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
@@ -58,6 +58,7 @@
 <li><a href="#mybatis原理浅析和践行">Mybatis原理浅析和践行</a>
 <ul>
 <li><a href="#mybatis-是如何和spring连接起来的">Mybatis 是如何和Spring连接起来的？</a></li>
+<li><a href="#加载多个mapper给spring容器">加载多个Mapper给Spring容器</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -72,7 +73,6 @@
 <p>官方网站的提供非xml的自定的的类 实现的mybatis创建SqlSessionFactory和进行配置</p>
 
 <p><a href="https://mybatis.org/mybatis-3/getting-started.html">https://mybatis.org/mybatis-3/getting-started.html</a></p>
-</blockquote>
 
 <pre><code class="language-java">//获得数据源
 DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();
@@ -87,44 +87,60 @@ configuration.addMapper(BlogMapper.class);
 //创建出sqlSessionFatory
 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration); 
 </code></pre>
+</blockquote>
 
 <p><strong>使用以上官方的代码</strong></p>
 
 <ul>
 <li><p>配置数据源</p>
 
-<pre><code class="language-java">public ComboPooledDataSource createDateSource() {
-    ComboPooledDataSource dataSource = new ComboPooledDataSource();
-    try {
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&quot;);
-        dataSource.setUser(&quot;root&quot;);
-        dataSource.setPassword(&quot;root&quot;);
-    } catch (PropertyVetoException e) {
-        e.printStackTrace();
-    }
-    return dataSource;
-}
+<pre><code class="language-java">  /**
+  * 使用c3p0创建数据源
+  *
+  * @return dataSource
+  */
+ public ComboPooledDataSource createDateSource() {
+     ComboPooledDataSource dataSource = new ComboPooledDataSource();
+     try {
+         dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
+         dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&quot;);
+         dataSource.setUser(&quot;root&quot;);
+         dataSource.setPassword(&quot;root&quot;);
+     } catch (PropertyVetoException e) {
+         e.printStackTrace();
+     }
+     return dataSource;
+ }
 </code></pre></li>
 
 <li><p>创建SqlSession后,获得UserDao接口,直接就可以使用接口方法进行数据库的操作</p>
 
-<pre><code class="language-java">@Test
-public void testMybatis() {
-    DataSource dataSource = createDateSource();
-    TransactionFactory transactionFactory = new JdbcTransactionFactory();
-    Environment environment =
-            new Environment(&quot;development&quot;, transactionFactory, dataSource);
-    Configuration configuration = new Configuration(environment);
-    configuration.addMapper(UserDao.class);
-    SqlSessionFactory sqlSessionFactory =
-            new SqlSessionFactoryBuilder().build(configuration);
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-    UserDao mapper = sqlSession.getMapper(UserDao.class);
-    List&lt;Map&lt;String, Object&gt;&gt; list = mapper.getList();
-    System.out.println(list);
-
-}
+<pre><code class="language-java">  /**
+  * 测试官方提供非xml的MyBatis配置实现
+  */
+ @Test
+ public void testMybatis() {
+     DataSource dataSource = createDateSource();
+     TransactionFactory transactionFactory = new JdbcTransactionFactory();
+ 
+     //mybatis-config.xml 中的配置相似 构建环境 添加mapper文件
+     Environment environment =
+             new Environment(&quot;development&quot;, transactionFactory, dataSource);
+     Configuration configuration = new Configuration(environment);
+     configuration.addMapper(UserDao.class);
+ 
+     //根据以上的配置 创建出一个sqlSessionFactory
+     SqlSessionFactory sqlSessionFactory =
+             new SqlSessionFactoryBuilder().build(configuration);
+ 
+     //获得sqlSession
+     SqlSession sqlSession = sqlSessionFactory.openSession();
+     UserDao mapper = sqlSession.getMapper(UserDao.class);
+ 
+     //执行mapper
+     List&lt;Map&lt;String, Object&gt;&gt; list = mapper.getList();
+     System.out.println(list);
+ }
 </code></pre></li>
 </ul>
 
@@ -132,21 +148,19 @@ public void testMybatis() {
 
 <blockquote>
 <p>通过以上的Mybatis的代码可以知道, UserDao接口我们是没有自己去实现的,
-接口也是不能直接new出来的,只能去实现接口中的方法</p>
-</blockquote>
+接口也是不能直接new出来的,只能去实现接口中的方法
+* 实现接口1 匿名内部类</p>
+
+<pre><code class="language-java"> UserDao userDao = new UserDao() {
+            @Override
+            public List&lt;Map&lt;String, Object&gt;&gt; getList() {
+                return null;
+            }
+        };
+</code></pre>
 
 <ul>
-<li><p>实现接口1</p>
-
-<pre><code class="language-java">UserDao userDao = new UserDao() {
-        @Override
-        public List&lt;Map&lt;String, Object&gt;&gt; getList() {
-            return null;
-        }
-    };
-</code></pre></li>
-
-<li><p>实现接口2</p>
+<li><p>实现接口2 实现类</p>
 
 <pre><code class="language-java">public class UserDaoImpl implements UserDao {
 
@@ -161,13 +175,12 @@ public List&lt;Map&lt;String, Object&gt;&gt; getList() {
 </code></pre></li>
 </ul>
 
-<blockquote>
-<p><strong>Mybatis 是怎么将一个接口变成一个对象的呢？</strong></p>
+<p><strong>接口是不能实例化的，MyBatis是怎么调用接口中的方法的呢？</strong></p>
 
 <p><strong>为什么在接口上使用@Select等注解写上sql 就可以执行数据库操作？</strong></p>
 </blockquote>
 
-<p>选中<code>getMapper</code>使用idea的快捷键<code>ctrl</code>+<code>alt</code>+<code>b</code>  ， 查看<code>getMapper</code>实现类</p>
+<p>选中<code>getMapper</code>使用idea的快捷键<code>ctrl</code>+<code>alt</code>+<code>b</code>  -&gt; 查看<code>getMapper</code>实现类</p>
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/getMapper.png?raw=true" alt="" /></p>
 
@@ -175,7 +188,7 @@ public List&lt;Map&lt;String, Object&gt;&gt; getList() {
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/newProxyInstance.png?raw=true" alt="" /></p>
 
-<p><strong>可以知道Mybatis使用的是jdk的动态代理，将一个接口变成一个对象</strong></p>
+<p><strong>可以知道Mybatis使用的是jdk的是动态代理,传入一个接口返回实现这个接口的对象</strong></p>
 
 <ul>
 <li><p>创建一个类似SqlSession , 使用动态代理</p>
@@ -197,7 +210,8 @@ public class MapperSession {
 
 <li><p>动态代理的InvocationHandler</p>
 
-<pre><code class="language-java">/**
+<pre><code class="language-java">
+/**
 * @program: handwritngmybits
 * @description: 处理传递过来的接口
 * @author: 袁阊越
@@ -243,11 +257,9 @@ List&lt;Map&lt;String, Object&gt;&gt; getList();
 
 <pre><code class="language-java">@Test
 public void testMapperSession() {
-    MapperSession mapperSession = new MapperSession();
     UserDao userDao = (UserDao) MapperSession.getMapper(UserDao.class);
     userDao.getList();
 }
-
 </code></pre></li>
 </ul>
 
@@ -255,24 +267,25 @@ public void testMapperSession() {
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/%E6%89%A7%E8%A1%8C%E6%88%90%E5%8A%9F.png?raw=true" alt="" /></p>
 
-<p><strong>使用动态代理，在InvocationHandler中可以获取注解上面的sql语句，执行数据库的操作</strong></p>
+<p><strong>使用动态代理，在InvocationHandler中获取接口方法上的Annotation可以获取注解上面的sql语句，执行数据库的操作</strong></p>
 
 <hr />
 
 <h2 id="mybatis-是如何和spring连接起来的">Mybatis 是如何和Spring连接起来的？</h2>
 
 <blockquote>
-<p>spring 把产生的代理对象注入到容器中？</p>
+<p>上面MyBatis使用使用动态代理创建了实现的接口的对象，那么Spring是怎么把产生的代理对象注入到容器中？
+同样如何将自己产生的对象或者是三方产生的对象交给Spring管理？
+平时使用的@Service和@Component等注解，是将类交给Spring管理，由Spring去实例化对象。</p>
 </blockquote>
 
 <ul>
-<li><p><code>@Bean</code>  可行</p>
+<li><p><code>@Bean</code>  可行 但是代码重复</p>
 
 <pre><code class="language-java">@Bean
 public UserDao userDao() {
     return (UserDao) MapperSession.getMapper(UserDao.class);
 }
-
 </code></pre></li>
 
 <li><p><code>registerSingleton</code>  可行 ， 在一些场景下面是不能拿到 <code>AnnotationConfigApplicationContext</code> (上下文) 比如：在web开发环境下面，在xml中初始化了上下文。</p>
@@ -288,19 +301,18 @@ AnnotationConfigApplicationContext();
     context.refresh();
 
     context.getBean(UserService.class).getList();
-
 </code></pre></li>
 
-<li><p><code>FactoryBean</code></p></li>
+<li><p><code>FactoryBean</code> 可行。这里有一个问题。</p></li>
 </ul>
 
 <blockquote>
-<p>FactoryBean和Beanfactory有什么区别？</p>
+<p>FactoryBean和BeanFactory，Bean有什么区别？</p>
 </blockquote>
 
-<p>BeanFactory是spring中的一个工厂,可以创建bean也可以获取bean。</p>
+<p>BeanFactory是spring中的一个工厂,可以创建bean也可以获取bean。它的职责包括：实例化，定位，配置应用程序中的对象及建立这些对象间的依赖。</p>
 
-<p>FactoryBean本身是一个bean，还会返回了一个bean。</p>
+<p>FactoryBean实现了FactoryBean接口的Bean，本身是一个bean，getObject()还会返回了一个bean。除此以外还有getObjectType()和isSingleton()（jdk1.8后默认实现）</p>
 
 <p><strong>自定义MyFactoryBean</strong></p>
 
@@ -329,14 +341,12 @@ public class MyFactoryBean implements FactoryBean {
     }
 
 }
-
 </code></pre>
 
 <p>返回除了自己的对象</p>
 
 <pre><code class="language-java">  AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
         System.out.println(context.getBean(&quot;myFactoryBean&quot;));
-
 </code></pre>
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/factoryBean%E8%BF%94%E5%9B%9E%E5%AF%B9%E8%B1%A1.png?raw=true" alt="" /></p>
@@ -345,7 +355,6 @@ public class MyFactoryBean implements FactoryBean {
 
 <pre><code class="language-java">        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
         System.out.println(context.getBean(&quot;&amp;myFactoryBean&quot;));
-
 </code></pre>
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/factoryBean%E8%BF%94%E5%9B%9E%E8%87%AA%E5%B7%B1.png?raw=true" alt="" /></p>
@@ -383,7 +392,6 @@ public class MyFactoryBean implements FactoryBean {
     }
 }
 
-
 </code></pre>
 
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -391,12 +399,11 @@ public class MyFactoryBean implements FactoryBean {
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
 
-    &lt;bean id=&quot;userDao&quot; class=&quot;com.changyue.test.MyFactoryBean&quot;&gt;
+    &lt;bean id=&quot;userDao&quot; class=&quot;com.changyue.web.MyFactoryBean&quot;&gt;
         &lt;property name=&quot;mapperInterface&quot; value=&quot;com.changyue.mapper.UserDao&quot;/&gt;
     &lt;/bean&gt;
 
 &lt;/beans&gt;
-
 </code></pre>
 
 <pre><code class="language-java">/**
@@ -411,17 +418,15 @@ public class MyFactoryBean implements FactoryBean {
 public class MyConfig {
     
 }
-
 </code></pre>
 
 <pre><code class="language-java">    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
         System.out.println(context.getBean(&quot;userDao&quot;));
-
 </code></pre>
 
 <p><img src="https://github.com/yuanchangyue/MybatisSampleAnalysis/blob/master/img/factoryBean%E8%BF%94%E5%9B%9E%E8%87%AA%E5%B7%B1.png?raw=true" alt="" /></p>
 
-<p><strong>使用FactoryBean自定义后，在xml中及配置生效，可以返回自己本身和代理创建的对象，但是只能注册一个</strong></p>
+<p><strong>使用FactoryBean自定义后，在xml中及配置生效，可以返回自己本身和代理创建的对象，使用XML配置还是只能注册一个</strong></p>
 
 <blockquote>
 <p>FactoryBean和一般的baen有什么区别？</p>
@@ -431,7 +436,14 @@ public class MyConfig {
 <li><code>FactoryMothod</code></li>
 </ul>
 
-<p><strong>待续&hellip;..</strong></p>
+<h2 id="加载多个mapper给spring容器">加载多个Mapper给Spring容器</h2>
+
+<blockquote>
+<p>如何加载多个Mapper给Spring?
++ XML 配置只能一个
++ 注解 不行 属性没有办法赋值
++ Spring拓展</p>
+</blockquote>
 
 		</div>
 		<footer class="post__footer">
@@ -458,6 +470,9 @@ public class MyConfig {
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/post/idea%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Idea远程调试</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/post/shiro%E5%88%9D%E8%AF%86/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Shiro初识</p></a>
 	</div>
 </nav>
 

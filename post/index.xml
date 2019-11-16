@@ -6,22 +6,33 @@
     <description>Recent content in Posts on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Oct 2019 16:41:39 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2019 01:06:10 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Mybatis简单理解</title>
+      <title>Shiro初识</title>
+      <link>http://example.org/post/shiro%E5%88%9D%E8%AF%86/</link>
+      <pubDate>Sun, 17 Nov 2019 01:06:10 +0800</pubDate>
+      
+      <guid>http://example.org/post/shiro%E5%88%9D%E8%AF%86/</guid>
+      <description>Shiro学习 简介  Apache Shiro 是 Java 的一个安全框架。目前，使用 Apache Shiro 的人越来越多，因为它相当简单，对比 Spring Security，可能没有 Spring Security 做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。
+ 概念  https://www.w3cschool.cn/shiro/co4m1if2.html 详细
+ 使用 依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.11&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;commons-logging&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-logging&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.1.3&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;shiro-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.3.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  配置文件 [users] zhangsan=123456,admin lisi=123123,superadmin [roles] admin=product:create,product:delete,product:update,product:view public=product:view  读取配置类 //1.初始化SecurityManger安全管理器 DefaultSecurityManager sm = new DefaultSecurityManager(); //2.配置用户的权限信息到安全管理器中 Realm realm = new IniRealm(&amp;quot;classpath:shrio.ini&amp;quot;); sm.setRealm(realm); //3.使用SecurityUtils将securityManager设置到运行环境中 SecurityUtils.setSecurityManager(sm);  因为没有slf4j的配置，运行控制台报出</description>
+    </item>
+    
+    <item>
+      <title>Mybatis原理浅析和践行</title>
       <link>http://example.org/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</link>
       <pubDate>Tue, 22 Oct 2019 16:41:39 +0800</pubDate>
       
       <guid>http://example.org/post/mybatis%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</guid>
       <description>Mybatis原理浅析和践行  官方网站的提供非xml的自定的的类 实现的mybatis创建SqlSessionFactory和进行配置
 https://mybatis.org/mybatis-3/getting-started.html
- //获得数据源 DataSource dataSource = BlogDataSourceFactory.getBlogDataSource(); //初始化事务,Mybatis的运行使用到事务 TransactionFactory transactionFactory = new JdbcTransactionFactory(); //初始化Mybatis的运行环境 Environment environment = new Environment(&amp;quot;development&amp;quot;, transactionFactory, dataSource); //在以上初始化的环境中，获得配置信息 Configuration configuration = new Configuration(environment); //添加mapper类到配置类中 configuration.addMapper(BlogMapper.class); //创建出sqlSessionFatory SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);  使用以上官方的代码
+//获得数据源 DataSource dataSource = BlogDataSourceFactory.getBlogDataSource(); //初始化事务,Mybatis的运行使用到事务 TransactionFactory transactionFactory = new JdbcTransactionFactory(); //初始化Mybatis的运行环境 Environment environment = new Environment(&amp;quot;development&amp;quot;, transactionFactory, dataSource); //在以上初始化的环境中，获得配置信息 Configuration configuration = new Configuration(environment); //添加mapper类到配置类中 configuration.addMapper(BlogMapper.class); //创建出sqlSessionFatory SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);   使用以上官方的代码
  配置数据源
-public ComboPooledDataSource createDateSource() { ComboPooledDataSource dataSource = new ComboPooledDataSource(); try { dataSource.setDriverClass(&amp;quot;com.mysql.jdbc.Driver&amp;quot;); dataSource.setJdbcUrl(&amp;quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;quot;); dataSource.setUser(&amp;quot;root&amp;quot;); dataSource.setPassword(&amp;quot;root&amp;quot;); } catch (PropertyVetoException e) { e.printStackTrace(); } return dataSource; }  创建SqlSession后,获得UserDao接口,直接就可以使用接口方法进行数据库的操作</description>
+/** * 使用c3p0创建数据源 * * @return dataSource */ public ComboPooledDataSource createDateSource() { ComboPooledDataSource dataSource = new ComboPooledDataSource(); try { dataSource.setDriverClass(&amp;quot;com.mysql.jdbc.Driver&amp;quot;); dataSource.setJdbcUrl(&amp;quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=utf8&amp;quot;); dataSource.setUser(&amp;quot;root&amp;quot;); dataSource.setPassword(&amp;quot;root&amp;quot;); } catch (PropertyVetoException e) { e.</description>
     </item>
     
     <item>
@@ -52,16 +63,6 @@ systemctl start firewalld  接着
 firewall-cmd --add-masquerade --permanen  再将80端口映射到8080端口
 firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最后重载firewall
 firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。</description>
-    </item>
-    
-    <item>
-      <title>阿里云安装redis</title>
-      <link>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</link>
-      <pubDate>Wed, 11 Sep 2019 23:05:27 +0800</pubDate>
-      
-      <guid>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</guid>
-      <description> 在阿里云CentOS7.3 系统环境下安装 Redis
- </description>
     </item>
     
     <item>
@@ -104,16 +105,6 @@ firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。</de
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-jdbc&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;mysql&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mysql-connector-java&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;5.1.47&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  application.yml
 spring: datasource: username: root password: url: jdbc:mysql://localhost:3306/jdbc driver-class-name: com.mysql.jdbc.Driver   2. 创建表  springboot创建表相关源码， 通过DataSourceInitializer拿到数据源，可以创建表结构或者表数据
  //创建表结构 public boolean createSchema() { List&amp;lt;Resource&amp;gt; scripts = this.</description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>http://example.org/post/springboot%E4%B8%8Edocker/</link>
-      <pubDate>Mon, 19 Aug 2019 20:31:45 +0800</pubDate>
-      
-      <guid>http://example.org/post/springboot%E4%B8%8Edocker/</guid>
-      <description> Docker  Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
- </description>
     </item>
     
     <item>
@@ -203,36 +194,12 @@ Simple expressions:（表达式语法） Variable Expressions: ${...}：获取�
     </item>
     
     <item>
-      <title>单词-Day2</title>
-      <link>http://example.org/post/%E5%8D%95%E8%AF%8Dday2/</link>
-      <pubDate>Fri, 09 Aug 2019 10:26:14 +0800</pubDate>
-      
-      <guid>http://example.org/post/%E5%8D%95%E8%AF%8Dday2/</guid>
-      <description>1. accommodate v. 使适应，提供住宿  commod- = 方便 -tion 名词后缀 accommodation n. 住宿
- [ 搭配 ]
- accommodate to 改变&amp;hellip; 以适应&amp;hellip; accommodate with 向&amp;hellip; 供应  【 例句 】
- she tried to accommodate her way of life to his . 他试图是自己的生活方式与他的生活方式相适应。 to accommodate a friend with money . 把钱借给一位朋友  2. accompany v. 陪伴，伴奏  pan- = bread 面包
-    衍生 意思     companion n.</description>
-    </item>
-    
-    <item>
       <title>桶排序</title>
       <link>http://example.org/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Wed, 07 Aug 2019 18:01:01 +0800</pubDate>
       
       <guid>http://example.org/post/%E6%A1%B6%E6%8E%92%E5%BA%8F/</guid>
       <description>import java.util.Scanner; /** * @program: DSClassDesign * @description: 72:桶式排序 * @author: YuanChangYue * @TestData 6634 9796 435 1405 6123 10001 11459 12018 10372 19874 12860 11326 7096 30205 27010 * 6634,9796,435,1405,6123,10001,11459,12018,10372,19874,12860,11326,7096,30205,27010 * @create: 2019-06-18 11:49 */ public class Main { public static void main(String[] args) { Scanner in = new Scanner(System.in); int[] arrays = new int[15]; for (int i = 0; i &amp;lt; 15; i++) arrays[i] = in.nextInt(); in.close(); barrelSort(arrays); } /** * 进行桶排序 * * @param arr 排序的数组 */ private static void barrelSort(int[] arr) { int[][] bucket = new int[10][arr.</description>
-    </item>
-    
-    <item>
-      <title>单词-Day1</title>
-      <link>http://example.org/post/%E5%8D%95%E8%AF%8Dday1/</link>
-      <pubDate>Wed, 07 Aug 2019 10:26:14 +0800</pubDate>
-      
-      <guid>http://example.org/post/%E5%8D%95%E8%AF%8Dday1/</guid>
-      <description>abruptly adv.突然地（suddenly）  rupt - = 破 ab - = 加强 -ly= 副词后缀
-    衍生 意思     abrupt adj. 突然的 唐突的 陡峭的   interrupt v. 中断 干扰    erupt v. 爆发 喷出    disrupt v. 破坏 分裂    bankrupt adj. 破产的    【 例句 】：The sky darkened abruptly 天突然暗了下来
-absent a. 缺席的  ab- = 否定</description>
     </item>
     
     <item>

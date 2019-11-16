@@ -6,10 +6,19 @@
     <description>Recent content in Tags on ChangYue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Oct 2019 16:41:39 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2019 01:06:10 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Shiro</title>
+      <link>http://example.org/tags/shiro/</link>
+      <pubDate>Sun, 17 Nov 2019 01:06:10 +0800</pubDate>
+      
+      <guid>http://example.org/tags/shiro/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Mybatis</title>
@@ -48,15 +57,6 @@
     </item>
     
     <item>
-      <title>redis</title>
-      <link>http://example.org/tags/redis/</link>
-      <pubDate>Wed, 11 Sep 2019 23:05:27 +0800</pubDate>
-      
-      <guid>http://example.org/tags/redis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>git</title>
       <link>http://example.org/tags/git/</link>
       <pubDate>Fri, 30 Aug 2019 14:49:43 +0800</pubDate>
@@ -89,15 +89,6 @@
       <pubDate>Tue, 20 Aug 2019 10:55:58 +0800</pubDate>
       
       <guid>http://example.org/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>http://example.org/tags/docker/</link>
-      <pubDate>Mon, 19 Aug 2019 20:31:45 +0800</pubDate>
-      
-      <guid>http://example.org/tags/docker/</guid>
       <description></description>
     </item>
     
@@ -143,24 +134,6 @@
       <pubDate>Sat, 10 Aug 2019 22:20:04 +0800</pubDate>
       
       <guid>http://example.org/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>单词</title>
-      <link>http://example.org/tags/%E5%8D%95%E8%AF%8D/</link>
-      <pubDate>Fri, 09 Aug 2019 10:26:14 +0800</pubDate>
-      
-      <guid>http://example.org/tags/%E5%8D%95%E8%AF%8D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>英语</title>
-      <link>http://example.org/tags/%E8%8B%B1%E8%AF%AD/</link>
-      <pubDate>Fri, 09 Aug 2019 10:26:14 +0800</pubDate>
-      
-      <guid>http://example.org/tags/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     

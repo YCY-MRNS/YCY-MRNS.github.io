@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>拦截器 - ChangYue</title>
+	<title>Shiro - ChangYue</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link rel="alternate" type="application/rss+xml" href="/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/index.xml" title="ChangYue">
+	<link rel="alternate" type="application/rss+xml" href="/tags/shiro/index.xml" title="ChangYue">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
 	
@@ -36,19 +36,19 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">拦截器</h1>
+		<h1 class="main__title">Shiro</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" rel="bookmark">
-			SpringBoot与web开发(四)-----登录拦截
+			<a href="/post/shiro%E5%88%9D%E8%AF%86/" rel="bookmark">
+			Shiro初识
 			</a>
 		</h3>
-		<p class="list__lead post__lead">拦截器登录</p>
+		<p class="list__lead post__lead">Shiro学习</p>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+	<time class="meta__text" datetime="2019-11-17T01:06:10">November 17, 2019</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -58,13 +58,12 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		准备工作  页面downloadboostrap的官方实例页面，方便练习
-资源来自：https://getbootstrap.com/docs/4.3/examples/
- 资源的目录如下：
-1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;.
+		Shiro学习 简介  Apache Shiro 是 Java 的一个安全框架。目前，使用 Apache Shiro 的人越来越多，因为它相当简单，对比 Spring Security，可能没有 Spring Security 做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。
+ 概念  https://www.w3cschool.cn/shiro/co4m1if2.html 详细
+ 使用 依赖 &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt; &lt;version&gt;4.11&lt;/version&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;commons-logging&lt;/groupId&gt; &lt;artifactId&gt;commons-logging&lt;/artifactId&gt; &lt;version&gt;1.1.3&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.apache.shiro&lt;/groupId&gt; &lt;artifactId&gt;shiro-core&lt;/artifactId&gt; &lt;version&gt;1.3.2&lt;/version&gt; &lt;/dependency&gt;  配置文件 [users] zhangsan=123456,admin lisi=123123,superadmin [roles] admin=product:create,product:delete,product:update,product:view public=product:view  读取配置类 //1.初始化SecurityManger安全管理器 DefaultSecurityManager sm = new DefaultSecurityManager(); //2.配置用户的权限信息到安全管理器中 Realm realm = new IniRealm(&quot;classpath:shrio.ini&quot;); sm.setRealm(realm); //3.使用SecurityUtils将securityManager设置到运行环境中 SecurityUtils.setSecurityManager(sm);  因为没有slf4j的配置，运行控制台报出
 	</div>
 	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/">Read more…</a>
+		<a class="list__footer-readmore btn" href="/post/shiro%E5%88%9D%E8%AF%86/">Read more…</a>
 	</div>
 </article>
 </main>

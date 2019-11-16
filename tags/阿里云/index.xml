@@ -41,15 +41,5 @@ firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最�
 firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。</description>
     </item>
     
-    <item>
-      <title>阿里云安装redis</title>
-      <link>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</link>
-      <pubDate>Wed, 11 Sep 2019 23:05:27 +0800</pubDate>
-      
-      <guid>http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85redis/</guid>
-      <description> 在阿里云CentOS7.3 系统环境下安装 Redis
- </description>
-    </item>
-    
   </channel>
 </rss>
