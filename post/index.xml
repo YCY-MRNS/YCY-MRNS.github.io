@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on ChangYue</title>
+    <title>Posts on 袁阊越</title>
     <link>http://example.org/post/</link>
-    <description>Recent content in Posts on ChangYue</description>
+    <description>Recent content in Posts on 袁阊越</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Nov 2019 01:06:10 +0800</lastBuildDate>
@@ -20,6 +20,18 @@
       <description>Shiro学习 简介  Apache Shiro 是 Java 的一个安全框架。目前，使用 Apache Shiro 的人越来越多，因为它相当简单，对比 Spring Security，可能没有 Spring Security 做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。
  概念  https://www.w3cschool.cn/shiro/co4m1if2.html 详细
  使用 依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.11&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;commons-logging&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-logging&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.1.3&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;shiro-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.3.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  配置文件 [users] zhangsan=123456,admin lisi=123123,superadmin [roles] admin=product:create,product:delete,product:update,product:view public=product:view  读取配置类 //1.初始化SecurityManger安全管理器 DefaultSecurityManager sm = new DefaultSecurityManager(); //2.配置用户的权限信息到安全管理器中 Realm realm = new IniRealm(&amp;quot;classpath:shrio.ini&amp;quot;); sm.setRealm(realm); //3.使用SecurityUtils将securityManager设置到运行环境中 SecurityUtils.setSecurityManager(sm);  因为没有slf4j的配置，运行控制台报出</description>
+    </item>
+    
+    <item>
+      <title>设计模式-单例模式</title>
+      <link>http://example.org/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Wed, 30 Oct 2019 14:13:05 +0800</pubDate>
+      
+      <guid>http://example.org/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>单例模式  这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+ 单例&amp;mdash;饿汉式  类初始化直接创建对象 不管是否需要这个对象 线程安全
+/** * &amp;lt;p&amp;gt; * 1. 构造器私有化 不能被实例化 * 2. 私有变量保存 * &amp;lt;p&amp;gt; * @author: YuanChangYue * @create: 2019-10-08 14:05 */ public class Singleton1 { public static final Singleton1 INSTANCE = new Singleton1(); private Singleton1() { } }  枚举类 该类型的对象只有几个有限的状态 通过限定一个 就是单例了
+/** * @author: YuanChangYue * @create: 2019-10-08 14:05 */ public enum Singleton2 { //单例 INSTANCE }  在静态块中初始化，从properties文件中读取带参构造器的值。</description>
     </item>
     
     <item>

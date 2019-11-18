@@ -4,16 +4,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SpringBoot与Web开发(三)-----Spring MVC - ChangYue</title>
+	<title>SpringBoot与Web开发(三)-----Spring MVC - 袁阊越</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
+	<meta property="og:title" content="SpringBoot与Web开发(三)-----Spring MVC" />
+<meta property="og:description" content="Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
+本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
+ 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
+Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
+The auto-configuration adds the following features on top of Spring’s defaults:
+ Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
+ 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document))." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E4%B8%89/" />
+<meta property="article:published_time" content="2019-08-12T16:36:54+08:00" />
+<meta property="article:modified_time" content="2019-08-12T16:36:54+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot与Web开发(三)-----Spring MVC"/>
+<meta name="twitter:description" content="Spring Boot 与 Spring MVC  根据SpringBoot 官方文档中的资料 ，可以看出SpringBoot和SpringMVC的关系。
+本章节提到的官文文档地址如下： &lt;https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-auto-configuration
+ 1. Spring Boot 中Spring MVC 自动配置 官方文档中的原文如下：
+Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
+The auto-configuration adds the following features on top of Spring’s defaults:
+ Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
+ 自动配置viewResolver （视图解析器：根据方法返回的值获得视图对象 ） ContentNegotiatingViewResolver ： 组合所有的试图解析器 自定义：==可以自己给容器中添加视图解析器 ，自动为我们组合起来==  Support for serving static resources, including support for WebJars (covered later in this document))."/>
+
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -22,9 +43,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="ChangYue" rel="home">
-				<div class="logo__title">ChangYue</div>
-				<div class="logo__tagline">我的博客</div>
+			<a class="logo__link" href="/" title="袁阊越" rel="home">
+				<div class="logo__title">袁阊越</div>
+				<div class="logo__tagline">There&#39;s only being in and then being out.</div>
 			</a>
 		</div>
 		<div class="divider"></div>
@@ -41,7 +62,7 @@
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-12T16:36:54">August 12, 2019</time>
+	<time class="meta__text" datetime="2019-08-12T16:36:54">2019-08-12</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -273,6 +294,9 @@ public class WebMvcAutoConfiguration
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
 	</div>
+	<div class="authorbox__description">
+		There&#39;s only being in and then being out.
+	</div>
 </div>
 
 <nav class="post-nav flex">
@@ -299,6 +323,6 @@ public class WebMvcAutoConfiguration
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>

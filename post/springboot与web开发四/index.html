@@ -4,16 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SpringBoot与web开发(四)-----登录拦截 - ChangYue</title>
+	<title>SpringBoot与web开发(四)-----登录拦截 - 袁阊越</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
+	<meta property="og:title" content="SpringBoot与web开发(四)-----登录拦截" />
+<meta property="og:description" content="准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/springboot%E4%B8%8Eweb%E5%BC%80%E5%8F%91%E5%9B%9B/" />
+<meta property="article:published_time" content="2019-08-13T08:56:37+08:00" />
+<meta property="article:modified_time" content="2019-08-13T08:56:37+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringBoot与web开发(四)-----登录拦截"/>
+<meta name="twitter:description" content="准备工作  页面downloadboostrap的官方实例页面，方便练习
+资源来自：https://getbootstrap.com/docs/4.3/examples/
+ 资源的目录如下：
+1.controller层 package com.changyue.springbootresetfucrud.controller; import org.springframework.stereotype.Controller; import org.springframework.util.StringUtils; import org.springframework.web.bind.annotation.PostMapping; import org.springframework.web.bind.annotation.RequestParam; import javax.servlet.http.HttpSession; import java.util.Map; /** * @program: spring-boot-restful-crud * @description: 用户控制器 * @author: YuanChangYue * @create: 2019-08-13 17:59 */ @Controller public class LoginController { /** * 用户登录 * * @param username 用户名 默认测试 123 * @param password 密码 默认测试 123 * @param map map * @param httpSession session * @return 页面名称 */ @PostMapping(&quot;/user/login&quot;) public String login(@RequestParam(&quot;username&quot;) String username, @RequestParam(&quot;password&quot;) String password, Map&lt;String, Object&gt; map, HttpSession httpSession) { if (&quot;123&quot;."/>
+
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -22,9 +37,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="ChangYue" rel="home">
-				<div class="logo__title">ChangYue</div>
-				<div class="logo__tagline">我的博客</div>
+			<a class="logo__link" href="/" title="袁阊越" rel="home">
+				<div class="logo__title">袁阊越</div>
+				<div class="logo__tagline">There&#39;s only being in and then being out.</div>
 			</a>
 		</div>
 		<div class="divider"></div>
@@ -41,7 +56,7 @@
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-13T08:56:37">August 13, 2019</time>
+	<time class="meta__text" datetime="2019-08-13T08:56:37">2019-08-13</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -465,6 +480,9 @@ public WebMvcConfigurer WebMvcConfigurer() {
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
 	</div>
+	<div class="authorbox__description">
+		There&#39;s only being in and then being out.
+	</div>
 </div>
 
 <nav class="post-nav flex">
@@ -491,6 +509,6 @@ public WebMvcConfigurer WebMvcConfigurer() {
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>

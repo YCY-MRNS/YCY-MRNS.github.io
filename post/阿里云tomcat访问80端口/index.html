@@ -4,16 +4,41 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>阿里云Tomcat访问80端口 - ChangYue</title>
+	<title>阿里云Tomcat访问80端口 - 袁阊越</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
+	<meta property="og:title" content="阿里云Tomcat访问80端口" />
+<meta property="og:description" content="阿里云轻应用服务器Tomcat访问80端口  使用阿里云轻应用服务器, 系统为centOS 7.3 , 在配置好JDK，MySql，Tomcat 后部署自己的项目 ，tomcat8080端口访问，设置80端口却不行，安全组和防火墙配置好了，域名备案也成功了，以及配置server.xml修改为80，同样是不能访问80
+ 问题重现： 安全组: 防火墙： 监听端口： 防火墙启动: 之上的方式都是不能解决的，于是请求了阿里人工：
+问题依然没有解决
+解决方式： 首先查看防火墙是否启动：
+systemctl status firewalld  这样就是启动了，没有启动可以用：
+systemctl start firewalld  接着
+firewall-cmd --add-masquerade --permanen  再将80端口映射到8080端口
+firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最后重载firewall
+firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E9%98%BF%E9%87%8C%E4%BA%91tomcat%E8%AE%BF%E9%97%AE80%E7%AB%AF%E5%8F%A3/" />
+<meta property="article:published_time" content="2019-09-20T18:49:02+08:00" />
+<meta property="article:modified_time" content="2019-09-20T18:49:02+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="阿里云Tomcat访问80端口"/>
+<meta name="twitter:description" content="阿里云轻应用服务器Tomcat访问80端口  使用阿里云轻应用服务器, 系统为centOS 7.3 , 在配置好JDK，MySql，Tomcat 后部署自己的项目 ，tomcat8080端口访问，设置80端口却不行，安全组和防火墙配置好了，域名备案也成功了，以及配置server.xml修改为80，同样是不能访问80
+ 问题重现： 安全组: 防火墙： 监听端口： 防火墙启动: 之上的方式都是不能解决的，于是请求了阿里人工：
+问题依然没有解决
+解决方式： 首先查看防火墙是否启动：
+systemctl status firewalld  这样就是启动了，没有启动可以用：
+systemctl start firewalld  接着
+firewall-cmd --add-masquerade --permanen  再将80端口映射到8080端口
+firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080 --permanent  最后重载firewall
+firewall-cmd --reload  这样就可以成功使用80端口访问tomcat了。"/>
+
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -22,9 +47,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="ChangYue" rel="home">
-				<div class="logo__title">ChangYue</div>
-				<div class="logo__tagline">我的博客</div>
+			<a class="logo__link" href="/" title="袁阊越" rel="home">
+				<div class="logo__title">袁阊越</div>
+				<div class="logo__tagline">There&#39;s only being in and then being out.</div>
 			</a>
 		</div>
 		<div class="divider"></div>
@@ -41,7 +66,7 @@
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-20T18:49:02">September 20, 2019</time>
+	<time class="meta__text" datetime="2019-09-20T18:49:02">2019-09-20</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -157,6 +182,9 @@
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
 	</div>
+	<div class="authorbox__description">
+		There&#39;s only being in and then being out.
+	</div>
 </div>
 
 <nav class="post-nav flex">
@@ -182,5 +210,7 @@
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script></body>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
 </html>

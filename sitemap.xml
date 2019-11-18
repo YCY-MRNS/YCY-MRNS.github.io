@@ -9,12 +9,6 @@
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
-    <lastmod>2019-11-17T01:06:10+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://example.org/post/</loc>
     <lastmod>2019-11-17T01:06:10+08:00</lastmod>
     <priority>0</priority>
@@ -41,6 +35,17 @@
     <loc>http://example.org/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2019-11-17T01:06:10+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <lastmod>2019-11-17T01:06:10+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2019-10-30T14:13:05+08:00</lastmod>
   </url>
   
   <url>
@@ -72,13 +77,13 @@
   </url>
   
   <url>
-    <loc>http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <loc>http://example.org/categories/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     <lastmod>2019-09-23T23:28:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <loc>http://example.org/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     <lastmod>2019-09-23T23:28:40+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -100,13 +105,13 @@
   </url>
   
   <url>
-    <loc>http://example.org/tags/git/</loc>
+    <loc>http://example.org/categories/git/</loc>
     <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/git/</loc>
+    <loc>http://example.org/tags/git/</loc>
     <lastmod>2019-08-30T14:49:43+08:00</lastmod>
     <priority>0</priority>
   </url>

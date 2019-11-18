@@ -4,16 +4,43 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>java后端开发通过虚拟路径访问本地图片 - ChangYue</title>
+	<title>java后端开发通过虚拟路径访问本地图片 - 袁阊越</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
+	<meta property="og:title" content="java后端开发通过虚拟路径访问本地图片" />
+<meta property="og:description" content="通过虚拟路径访问本地图片  情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。
+ 1. 错误重现 数据库：
+没有做任何设置之前：
+2. 解决步骤  第一步：  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt; &lt;!-- eclipse --&gt; &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt; &lt;/Context&gt; &lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&gt; &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt; &lt;/Context&gt; &lt;/Host&gt;   第二步： 开发工具为 Idea  快捷键： shift&#43;alt&#43;F10 , 进入Run小窗口
+​ 进入Tomcat设置界面：
+​ 选择自己的当前项目的Tomcat：
+​ 设置路径：
+​ 重启tomcat:
+​ 访问成功：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/%E5%90%8E%E7%AB%AF%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-%E9%80%9A%E8%BF%87%E8%99%9A%E6%8B%9F%E8%B7%AF%E5%BE%84%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" />
+<meta property="article:published_time" content="2019-08-21T10:56:01+08:00" />
+<meta property="article:modified_time" content="2019-08-21T10:56:01+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="java后端开发通过虚拟路径访问本地图片"/>
+<meta name="twitter:description" content="通过虚拟路径访问本地图片  情况说明： 之前存入在数据库中的图片地址是本地的相对路径，需要实现的是在html页面中img标签src中直接写上本地图片资源的相对路径，得以显示。
+ 1. 错误重现 数据库：
+没有做任何设置之前：
+2. 解决步骤  第一步：  在Tomcat目录下找到conf文件夹，打开server.xml D:\apache-tomcat-9.0.22\conf\server.xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;/&gt; &lt;!-- eclipse --&gt; &lt;Context docBase=&quot;shopping&quot; path=&quot;/shopping&quot; reloadble=&quot;true&quot; source=&quot; org.eclipse.jst.jee.server:o2o&quot;&gt; &lt;/Context&gt; &lt;!-- 在此处添加以下内容 我的图片位置为 ： D:\projectdev\img\upload\item\headtitle\XXXXX.jpg --&gt; &lt;Context path=&quot;/upload&quot; docBase=&quot;D:\projectdev\img\upload&quot; crossContext=&quot;true&quot; reloadable=&quot;true&quot; debug=&quot;0&quot;&gt; &lt;/Context&gt; &lt;/Host&gt;   第二步： 开发工具为 Idea  快捷键： shift&#43;alt&#43;F10 , 进入Run小窗口
+​ 进入Tomcat设置界面：
+​ 选择自己的当前项目的Tomcat：
+​ 设置路径：
+​ 重启tomcat:
+​ 访问成功："/>
+
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 </head>
@@ -22,9 +49,9 @@
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="ChangYue" rel="home">
-				<div class="logo__title">ChangYue</div>
-				<div class="logo__tagline">我的博客</div>
+			<a class="logo__link" href="/" title="袁阊越" rel="home">
+				<div class="logo__title">袁阊越</div>
+				<div class="logo__tagline">There&#39;s only being in and then being out.</div>
 			</a>
 		</div>
 		<div class="divider"></div>
@@ -41,7 +68,7 @@
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-21T10:56:01">August 21, 2019</time>
+	<time class="meta__text" datetime="2019-08-21T10:56:01">2019-08-21</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -162,6 +189,9 @@
 	<div class="authorbox__header">
 		<span class="authorbox__name">About 袁阊越</span>
 	</div>
+	<div class="authorbox__description">
+		There&#39;s only being in and then being out.
+	</div>
 </div>
 
 <nav class="post-nav flex">
@@ -188,6 +218,6 @@
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>
